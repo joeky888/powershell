@@ -48,7 +48,7 @@ The code is under Public-domain licence.
 | Ctrl →    | Next word                                             | |
 | Ctrl ←    | Previous word                                         | |
 | Ctrl Backspace    |  Delete a word backward                       | |
-| Shift+Insert      |  Delete a word forward                        | Paste |
+| Shift+Insert      |  Paste                                        | |
 
 ## Extra commands (Most of them were added to the GUI Edit menu already)
 
