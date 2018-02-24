@@ -58,24 +58,25 @@ The code is under Public-domain licence.
 
 | Command   | Action                                                    | Description |
 | --------- | --------------------------------------------------------- | ----------- |
-| upgradeChoco      | Upgrade all installed choco packages                          | |
-| upgradeModule     | Upgrade all installed Modules from Powershell Gallery         | |
-| upgradeConda      | Upgrade all Anaconda/Miniconda packages                       | |
-| upgradeConda2     | Upgrade all Miniconda2 packages                               | choco install miniconda2 |
-| upgradeConda3     | Upgrade all Miniconda3 packages                               | choco install miniconda3 |
-| upgradePip        | Upgrade all pip packages                                      | |
-| upgradePip2       | Upgrade all pip2 packages                                     | choco install miniconda2 |
-| upgradePip3       | Upgrade all pip3 packages                                     | choco install miniconda3 |
-| upgradeVimrc      | Upgrade [vimrc](https://github.com/j16180339887/vimrc) file   | |
-| MtuForWifiGaming  | Network MTU value for better gaming experience                | |
-| MtuForWifiNormal  | Network MTU value reset                                       | |
-| Reset-Networking  | Reset all network cache                                       | Useful when internet is broken |
-| python2           | C:\ProgramData\Miniconda2\python.exe                          | choco install miniconda2 |
-| python3           | C:\ProgramData\Miniconda3\python.exe                          | choco install miniconda3 |
-| conda2            | C:\ProgramData\Miniconda2\Scripts\conda.exe                   | choco install miniconda2 |
-| conda3            | C:\ProgramData\Miniconda3\Scripts\conda.exe                   | choco install miniconda3 |
-| pip2              | C:\ProgramData\Miniconda2\Scripts\pip.exe                     | choco install miniconda2 |
-| pip3              | C:\ProgramData\Miniconda3\Scripts\pip.exe                     | choco install miniconda3 |
+| upgradeProfile    | Upgrade [this file](https://github.com/j16180339887/powershell)   | |
+| upgradeChoco      | Upgrade all installed choco packages                              | |
+| upgradeModule     | Upgrade all installed Modules from Powershell Gallery             | |
+| upgradeConda      | Upgrade all Anaconda/Miniconda packages                           | |
+| upgradeConda2     | Upgrade all Miniconda2 packages                                   | choco install miniconda2 |
+| upgradeConda3     | Upgrade all Miniconda3 packages                                   | choco install miniconda3 |
+| upgradePip        | Upgrade all pip packages                                          | |
+| upgradePip2       | Upgrade all pip2 packages                                         | choco install miniconda2 |
+| upgradePip3       | Upgrade all pip3 packages                                         | choco install miniconda3 |
+| upgradeVimrc      | Upgrade [vimrc](https://github.com/j16180339887/vimrc) file       | |
+| MtuForWifiGaming  | Network MTU value for better gaming experience                    | |
+| MtuForWifiNormal  | Network MTU value reset                                           | |
+| Reset-Networking  | Reset all network cache                                           | Useful when internet is broken |
+| python2           | C:\ProgramData\Miniconda2\python.exe                              | choco install miniconda2 |
+| python3           | C:\ProgramData\Miniconda3\python.exe                              | choco install miniconda3 |
+| conda2            | C:\ProgramData\Miniconda2\Scripts\conda.exe                       | choco install miniconda2 |
+| conda3            | C:\ProgramData\Miniconda3\Scripts\conda.exe                       | choco install miniconda3 |
+| pip2              | C:\ProgramData\Miniconda2\Scripts\pip.exe                         | choco install miniconda2 |
+| pip3              | C:\ProgramData\Miniconda3\Scripts\pip.exe                         | choco install miniconda3 |
 
 
 ### Extra notes
