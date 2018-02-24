@@ -47,6 +47,8 @@ The code is under Public-domain licence.
 | Ctrl O    | Open file explorer here                               | |
 | Ctrl →    | Next word                                             | |
 | Ctrl ←    | Previous word                                         | |
+| ↑         | Previous command in history                           | |
+| ↓         | Next command in history                               | |
 | Ctrl Backspace    |  Delete a word backward                       | |
 | Shift+Insert      |  Paste                                        | |
 
