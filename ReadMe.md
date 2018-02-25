@@ -40,12 +40,12 @@ The code is under Public-domain licence.
 | Ctrl D    | Exit                                                  | |
 | Ctrl K    | Kill whole line                                       | Just like nano |
 | Ctrl F    | Run current command forever                           | |
-| Ctrl R    | Search the history backward                           | |
+| Ctrl R    | Search the history backward                           | Just like bash |
 | Ctrl G    | Select all                                            | |
 | Ctrl T    | New Window                                            | Open new tab in Powershell ISE |
 | Ctrl Z    | Undo                                                  | |
 | Ctrl Y    | Redo                                                  | |
-| Ctrl S    | Search the history forward                            | |
+| Ctrl S    | Search the history forward                            | Just like Emacs |
 | Ctrl W    | Close tab                                             | Powershell ISE only |
 | Ctrl L    | Clear                                                 | |
 | Ctrl O    | Open file explorer here                               | |
