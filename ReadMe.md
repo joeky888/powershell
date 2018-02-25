@@ -72,8 +72,8 @@ The code is under Public-domain licence.
 | upgradePip2       | Upgrade all pip2 packages                                         | choco install miniconda2 |
 | upgradePip3       | Upgrade all pip3 packages                                         | choco install miniconda3 |
 | upgradeVimrc      | Upgrade [vimrc](https://github.com/j16180339887/vimrc) file       | |
-| MtuForWifiGaming  | Network MTU value for better gaming experience                    | |
-| MtuForWifiNormal  | Network MTU value reset                                           | |
+| MtuForWifiGaming  | Network MTU value for better gaming experience                    | MTU = 296 |
+| MtuForWifiNormal  | Network MTU value reset                                           | MTU = 1500 |
 | Reset-Networking  | Reset all network cache                                           | Useful when internet is broken |
 | python2           | C:\ProgramData\Miniconda2\python.exe                              | choco install miniconda2 |
 | python3           | C:\ProgramData\Miniconda3\python.exe                              | choco install miniconda3 |
