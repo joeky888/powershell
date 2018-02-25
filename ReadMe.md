@@ -10,8 +10,12 @@ Install
 Set-ExecutionPolicy RemoteSigned
 Invoke-WebRequest https://raw.githubusercontent.com/j16180339887/powershell/master/profile.ps1 -o ~/Documents/WindowsPowerShell/profile.ps1
 
-# Optional packages
+# Optional packages, Open powershell (as administrator)
 choco install 7zip vim-tux.portable git poshgit aria2 miniconda miniconda3 ffmpeg youtube-dl -y
+
+# Optional modules, for better tab-completion, Open powershell (as administrator)
+PowerShellGet\Install-Module -Scope CurrentUser posh-git
+PowerShellGet\Install-Module -Scope CurrentUser posh-docker
 ```
 
 Features
