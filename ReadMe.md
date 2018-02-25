@@ -86,7 +86,7 @@ The code is under Public-domain licence.
 ### Extra notes
 
 * The python2 `PYTHONIOENCODING` and java `JAVA_TOOL_OPTIONS` variables were set to UTF-8
-* The best font for Powershell is [Sarasa-Gothic](https://github.com/be5invis/Sarasa-Gothic/releases) (previously [Iosevka](https://github.com/be5invis/Iosevka/releases)), the developers of this font works at Microsoft
+* The best font for Powershell is [Sarasa-Gothic](https://github.com/be5invis/Sarasa-Gothic/releases) (previously [Iosevka](https://github.com/be5invis/Iosevka/releases)), the developers of this font works at Microsoft. see [this Chinese post](https://www.zhihu.com/question/19637242/answer/41116173)
 
 ### TODO
 * Compatible with upcoming Powershell 6
