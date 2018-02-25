@@ -58,10 +58,10 @@ The code is under Public-domain licence.
 | Ctrl Backspace    |  Delete a word backward                       | |
 | Shift+Insert      |  Paste                                        | |
 
-## Extra commands (Most of them were added to the GUI Edit menu already)
+## Extra commands
 
-| Command   | Action                                                    | Description |
-| --------- | --------------------------------------------------------- | ----------- |
+| Command   | Action                                                                    | Description |
+| --------- | ------------------------------------------------------------------------- | ----------- |
 | upgradeProfile    | Upgrade [this file](https://github.com/j16180339887/powershell)   | |
 | upgradeChoco      | Upgrade all installed choco packages                              | |
 | upgradeModule     | Upgrade all installed Modules from Powershell Gallery             | |
