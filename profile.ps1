@@ -259,6 +259,14 @@ if($env:Path -NotLike "*C:\ProgramData\Miniconda2*") {
     C:\ProgramData\Miniconda2\Scripts\pip.exe install --upgrade https://github.com/requests/requests/archive/master.zip
   }
 }
+if($env:Path -NotLike "*C:\Program Files\Sublime Text 3*") {
+  # choco install nmap
+  $env:Path += ";C:\Program Files\Sublime Text 3"
+}
+if($env:Path -NotLike "*C:\Program Files\Sublime Text 2*") {
+  # choco install nmap
+  $env:Path += ";C:\Program Files\Sublime Text 2"
+}
 if($env:Path -NotLike "*C:\Program Files (x86)\Nmap*") {
   # choco install nmap
   $env:Path += ";C:\Program Files (x86)\Nmap"
