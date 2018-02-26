@@ -260,12 +260,24 @@ if($env:Path -NotLike "*C:\ProgramData\Miniconda2*") {
   }
 }
 if($env:Path -NotLike "*C:\Program Files\Sublime Text 3*") {
-  # choco install nmap
+  # choco install sublimetext3
   $env:Path += ";C:\Program Files\Sublime Text 3"
 }
 if($env:Path -NotLike "*C:\Program Files\Sublime Text 2*") {
-  # choco install nmap
+  # choco install sublimetext2
   $env:Path += ";C:\Program Files\Sublime Text 2"
+}
+if($env:Path -NotLike "*C:\Program Files\Microsoft VS Code*") {
+  # VS code insider
+  $env:Path += ";C:\Program Files\Microsoft VS Code"
+}
+if($env:Path -NotLike "*C:\Program Files\Microsoft VS Code Insiders*") {
+  # VS code insider
+  $env:Path += ";C:\Program Files\Microsoft VS Code Insiders"
+}
+if($env:Path -Like "*"$env:USERPROFILE"\AppData\Local\atom\bin*") {
+  # Atom
+  $env:Path += ";"$env:USERPROFILE"\AppData\Local\atom"
 }
 if($env:Path -NotLike "*C:\Program Files (x86)\Nmap*") {
   # choco install nmap
@@ -278,4 +290,5 @@ if (Test-Path -Path "C:\zulu"){
     $env:JAVA_HOME="C:\zulu"
   }
 }
+
 
