@@ -275,10 +275,6 @@ if($env:Path -NotLike "*C:\Program Files\Microsoft VS Code Insiders*") {
   # VS code insider
   $env:Path += ";C:\Program Files\Microsoft VS Code Insiders"
 }
-if($env:Path -Like "*"$env:USERPROFILE"\AppData\Local\atom\bin*") {
-  # Atom
-  $env:Path += ";"$env:USERPROFILE"\AppData\Local\atom"
-}
 if($env:Path -NotLike "*C:\Program Files (x86)\Nmap*") {
   # choco install nmap
   $env:Path += ";C:\Program Files (x86)\Nmap"
