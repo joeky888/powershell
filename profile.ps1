@@ -114,6 +114,14 @@ Function Prompt {
 # alias bash/zsh command
 New-Alias which get-command
 New-Alias grep select-string
+Remove-Item alias:cd
+Function cd {
+  if ($args.count -gt 0) {
+    Set-Location $($args)
+  } else {
+    Set-Location $($env:USERPROFILE)
+  }
+}
 
 # Choco tab completion
 $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
