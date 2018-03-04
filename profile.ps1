@@ -65,7 +65,7 @@ if (Get-Command Set-PSReadlineKeyHandler -errorAction SilentlyContinue)
     $cursor = $null
     [Microsoft.PowerShell.PSConsoleReadLine]::GetBufferState([ref]$line, [ref]$cursor)
     [Microsoft.PowerShell.PSConsoleReadLine]::RevertLine()
-    [Microsoft.PowerShell.PSConsoleReadLine]::Insert( "while(1){ " + $line + " ; if(`$?){break} }")
+    [Microsoft.PowerShell.PSConsoleReadLine]::Insert( "while(1){ " + $line + " ; if(`$lastExitCode -eq 0){break} }")
   }
   Set-PSReadlineKeyHandler -Chord Ctrl+V -ScriptBlock {
     $clipboard = Get-Clipboard -Raw
