@@ -226,14 +226,18 @@ Function MtuForWifiNormal {
   netsh interface ipv4 set subinterface Wi-Fi mtu=1500 store=persistent
 }
 
-if($env:Path -NotLike "*C:\ProgramData\chocolatey\bin*") {
+if(Test-Path -Path "C:\ProgramData\chocolatey\bin*") {
   # Just in case
-  $env:Path += ";C:\ProgramData\chocolatey\bin"
+  if($env:Path -NotLike "*C:\ProgramData\chocolatey\bin*") {
+    $env:Path += ";C:\ProgramData\chocolatey\bin"
+  }
 }
-if($env:Path -NotLike "*C:\ProgramData\Miniconda3*") {
+if(Test-Path -Path "C:\ProgramData\Miniconda3*") {
   # choco install miniconda3
-  $env:Path += ";C:\ProgramData\Miniconda3"
-  $env:Path += ";C:\ProgramData\Miniconda3\Scripts"
+  if($env:Path -NotLike "*C:\ProgramData\Miniconda3*") {
+    $env:Path += ";C:\ProgramData\Miniconda3"
+    $env:Path += ";C:\ProgramData\Miniconda3\Scripts"
+  }
   Set-Alias pip3 C:\ProgramData\Miniconda3\Scripts\pip.exe
   Set-Alias conda3 C:\ProgramData\Miniconda3\Scripts\conda.exe
   Set-Alias python3 C:\ProgramData\Miniconda3\python.exe
@@ -250,10 +254,12 @@ if($env:Path -NotLike "*C:\ProgramData\Miniconda3*") {
     C:\ProgramData\Miniconda3\Scripts\pip.exe install --upgrade https://github.com/requests/requests/archive/master.zip
   }
 }
-if($env:Path -NotLike "*C:\ProgramData\Miniconda2*") {
+if(Test-Path -Path "C:\ProgramData\Miniconda2*") {
   # choco install miniconda
-  $env:Path += ";C:\ProgramData\Miniconda2"
-  $env:Path += ";C:\ProgramData\Miniconda2\Scripts"
+  if($env:Path -NotLike "*C:\ProgramData\Miniconda2*") {
+    $env:Path += ";C:\ProgramData\Miniconda2"
+    $env:Path += ";C:\ProgramData\Miniconda2\Scripts"
+  }
   Set-Alias pip2 C:\ProgramData\Miniconda2\Scripts\pip.exe
   Set-Alias conda2 C:\ProgramData\Miniconda2\Scripts\conda.exe
   Set-Alias python2 C:\ProgramData\Miniconda2\python.exe
@@ -270,31 +276,52 @@ if($env:Path -NotLike "*C:\ProgramData\Miniconda2*") {
     C:\ProgramData\Miniconda2\Scripts\pip.exe install --upgrade https://github.com/requests/requests/archive/master.zip
   }
 }
-if($env:Path -NotLike "*C:\Program Files\Sublime Text 3*") {
+if(Test-Path -Path "C:\Program Files\Sublime Text 3*") {
   # choco install sublimetext3
-  $env:Path += ";C:\Program Files\Sublime Text 3"
+  if($env:Path -NotLike "*C:\Program Files\Sublime Text 3*") {
+    $env:Path += ";C:\Program Files\Sublime Text 3"
+  }
 }
-if($env:Path -NotLike "*C:\Program Files\Sublime Text 2*") {
+if(Test-Path -Path "C:\Program Files\Sublime Text 2*") {
   # choco install sublimetext2
-  $env:Path += ";C:\Program Files\Sublime Text 2"
+  if($env:Path -NotLike "*C:\Program Files\Sublime Text 2*") {
+    $env:Path += ";C:\Program Files\Sublime Text 2"
+  }
 }
-if($env:Path -NotLike "*C:\Program Files\Microsoft VS Code*") {
+if(Test-Path -Path "C:\Program Files\Microsoft VS Code*") {
   # VS code insider
-  $env:Path += ";C:\Program Files\Microsoft VS Code"
+  if($env:Path -NotLike "*C:\Program Files\Microsoft VS Code*") {
+    $env:Path += ";C:\Program Files\Microsoft VS Code"
+  }
 }
-if($env:Path -NotLike "*C:\Program Files\Microsoft VS Code Insiders*") {
+if(Test-Path -Path "C:\Program Files\Microsoft VS Code Insiders*") {
   # VS code insider
-  $env:Path += ";C:\Program Files\Microsoft VS Code Insiders"
+  if($env:Path -NotLike "*C:\Program Files\Microsoft VS Code Insiders*") {
+    $env:Path += ";C:\Program Files\Microsoft VS Code Insiders"
+  }
 }
-if($env:Path -NotLike "*C:\Program Files (x86)\Nmap*") {
+if(Test-Path -Path "C:\Program Files\Nmap*") {
   # choco install nmap
-  $env:Path += ";C:\Program Files (x86)\Nmap"
+  if($env:Path -NotLike "*C:\Program Files\Nmap*") {
+    $env:Path += ";C:\Program Files\Nmap"
+  }
+}
+if(Test-Path -Path "C:\Program Files (x86)\Nmap*") {
+  # choco install nmap
+  if($env:Path -NotLike "*C:\Program Files (x86)\Nmap*") {
+    $env:Path += ";C:\Program Files (x86)\Nmap"
+  }
 }
 if (Test-Path -Path "C:\zulu"){
   # Download openjdk from Zulu
+  $env:JAVA_HOME="C:\zulu"
   if($env:Path -NotLike "*C:\zulu\bin*") {
     $env:Path += ";C:\zulu\bin"
-    $env:JAVA_HOME="C:\zulu"
   }
 }
-
+if (Test-Path -Path "C:\Program Files\Oracle\VirtualBox"){
+  # choco install virtualbox
+  if($env:Path -NotLike "*C:\Program Files\Oracle\VirtualBox*") {
+    $env:Path += ";C:\Program Files\Oracle\VirtualBox"
+  }
+}
