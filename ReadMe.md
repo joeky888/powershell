@@ -9,6 +9,7 @@ Install
 # Install this config, Open powershell (as administrator)
 Set-ExecutionPolicy RemoteSigned
 Invoke-WebRequest https://raw.githubusercontent.com/j16180339887/powershell/master/profile.ps1 -o ~/Documents/WindowsPowerShell/profile.ps1
+Unblock-File ~/Documents/WindowsPowerShell/profile.ps1
 
 # Optional packages, Open powershell (as administrator)
 choco install 7zip vim-tux.portable git poshgit aria2 miniconda miniconda3 ffmpeg youtube-dl -y
