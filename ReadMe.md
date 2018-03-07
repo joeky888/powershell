@@ -32,7 +32,7 @@ New-Item -ItemType file -Force -Path $profile
 notepad $profile # Paste this config into the file
 ```
 
-Paste this config to the file
+Paste [this file](https://github.com/j16180339887/powershell/blob/master/profile.ps1) to the notepad
 
 ## Install chocolatey (Recommend)
 
