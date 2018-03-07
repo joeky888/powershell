@@ -7,7 +7,7 @@ Features
 * Default startup directory is Desktop
 * Zsh-like Tab-Completion
 * Powershell ISE supported
-* Runs on Powershell > 1.0
+* Runs on Powershell > 1.0 (Windows 7+)
 * UTF-8
 
 The code is under Public-domain licence.
