@@ -12,7 +12,7 @@ Features
 
 The code is under Public-domain licence.
 
-Install
+Install for Windows 8+
 ====
 ```sh
 # Install this config, Open powershell (as administrator)
