@@ -1,31 +1,5 @@
 ![PS](https://i.imgur.com/onDinT2.png)
 
-Install
-====
-```sh
-# Open cmd.exe (as administrator) to install choco command
-@"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
-
-# Install this config, Open powershell (as administrator)
-Set-ExecutionPolicy RemoteSigned
-New-Item -ItemType Directory -Force -Path ~/Documents/WindowsPowerShell
-Invoke-WebRequest https://raw.githubusercontent.com/j16180339887/powershell/master/profile.ps1 -o ~/Documents/WindowsPowerShell/profile.ps1
-Unblock-File ~/Documents/WindowsPowerShell/profile.ps1
-
-# Install this config for Windows 7, Open powershell (as administrator)
-Set-ExecutionPolicy RemoteSigned
-New-Item -ItemType Directory -Force -Path ~/Documents/WindowsPowerShell
-New-Item -ItemType file -Force -Path $profile
-notepad $profile # Paste this config into the file
-
-# Optional packages, Open powershell (as administrator)
-choco install 7zip vim-tux.portable git poshgit aria2 miniconda miniconda3 ffmpeg youtube-dl -y
-
-# Optional modules, for better tab-completion, Open powershell (as administrator)
-PowerShellGet\Install-Module -Scope CurrentUser posh-git
-PowerShellGet\Install-Module -Scope CurrentUser posh-docker
-```
-
 Features
 =====
 * No plugins, just one file
@@ -37,6 +11,45 @@ Features
 * UTF-8
 
 The code is under Public-domain licence.
+
+Install
+====
+```sh
+# Install this config, Open powershell (as administrator)
+Set-ExecutionPolicy RemoteSigned
+New-Item -ItemType Directory -Force -Path ~/Documents/WindowsPowerShell
+Invoke-WebRequest https://raw.githubusercontent.com/j16180339887/powershell/master/profile.ps1 -o ~/Documents/WindowsPowerShell/profile.ps1
+Unblock-File ~/Documents/WindowsPowerShell/profile.ps1
+```
+
+Install for Windows 7
+=====
+```sh
+# Open powershell (as administrator)
+Set-ExecutionPolicy RemoteSigned
+New-Item -ItemType Directory -Force -Path ~/Documents/WindowsPowerShell
+New-Item -ItemType file -Force -Path $profile
+notepad $profile # Paste this config into the file
+```
+
+Paste this config to the file
+
+## Install chocolatey (Recommend)
+
+```sh
+# Open powershell (as administrator)
+Set-ExecutionPolicy Bypass -Scope Process
+Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+choco install 7zip vim-tux.portable git poshgit aria2 miniconda miniconda3 ffmpeg youtube-dl -y
+```
+
+## Install Powershell modules from Powershell Gallery (Recommend)
+
+```sh
+# Open powershell (as administrator)
+PowerShellGet\Install-Module -Scope CurrentUser posh-git
+PowerShellGet\Install-Module -Scope CurrentUser posh-docker
+```
 
 | Keys      | Action                                                | Description |
 | --------- | ----------------------------------------------------- | ----------- |
