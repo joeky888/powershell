@@ -98,7 +98,11 @@ if (Get-Command Set-PSReadlineOption -errorAction SilentlyContinue)
 }
 
 Function Prompt {
-  Write-Host  "$([Char]9581)$([Char]9472)" -NoNewline
+  try {
+   Write-Host  "$([Char]9581)$([Char]9472)" -NoNewline
+  } catch [Exception] {
+    # Older version of powershell does't support special characters
+  }
   Write-Host  "$env:username" -NoNewline -ForegroundColor Red
   Write-Host "@" -NoNewline
   Write-Host "$env:computername" -NoNewline -ForegroundColor Green
@@ -106,7 +110,11 @@ Function Prompt {
   # Use full path since it's easier to understand for newbies
 #   Write-Host "$PWD".Replace("$HOME", "~") -ForegroundColor Yellow
   Write-Host "$PWD" -ForegroundColor Cyan
-  Write-Host  "$([Char]9584)$([Char]9472)" -NoNewline
+  try {
+   Write-Host  "$([Char]9584)$([Char]9472)" -NoNewline
+  } catch [Exception] {
+    # Older version of powershell does't support special characters
+  }
   Write-Host "$" -NoNewline
   Return " "
 }
