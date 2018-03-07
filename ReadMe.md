@@ -34,7 +34,7 @@ notepad $profile # Paste this config into the file
 
 Paste [this file](https://github.com/j16180339887/powershell/blob/master/profile.ps1) to the notepad
 
-## Install chocolatey (Recommend)
+## Install chocolatey and chocolatey packages (Recommend)
 
 ```sh
 # Open powershell (as administrator)
@@ -43,7 +43,7 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.We
 choco install 7zip vim-tux.portable git poshgit aria2 miniconda miniconda3 ffmpeg youtube-dl -y
 ```
 
-## Install Powershell modules from Powershell Gallery (Recommend)
+## Install Powershell modules from Powershell Gallery, for tab-completion (Recommend)
 
 ```sh
 # Open powershell (as administrator)
