@@ -6,18 +6,15 @@ $env:JAVA_TOOL_OPTIONS = " -Dfile.encoding=UTF8 "
 # Increase history size
 $global:MaximumHistoryCount = 10000
 
-if ($host.name -eq 'ConsoleHost')
-{
-  # Not in Powershell ISE
-
+try {
   # UTF8
   [Console]::InputEncoding = [Text.UTF8Encoding]::UTF8
   [Console]::OutputEncoding = [Text.UTF8Encoding]::UTF8
 
   # Increase history in console buffer
   [Console]::BufferHeight = 20000
-} else {
-  # Powershell ISE UTF8
+} catch [Exception] {
+  # Older version of powershell does't support [Console]
   chcp 65001
 }
 
