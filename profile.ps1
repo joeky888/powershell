@@ -186,6 +186,9 @@ Function upgradePip {
   pip install --upgrade https://github.com/pyca/pyopenssl/archive/master.zip
   pip install --upgrade https://github.com/requests/requests/archive/master.zip
 }
+Function upgradeNpm {
+  npm update -g
+}
 Function upgradeProfile {
   Invoke-WebRequest https://raw.githubusercontent.com/j16180339887/powershell/master/profile.ps1 -o ~/Documents/WindowsPowerShell/profile.ps1
 }
