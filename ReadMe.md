@@ -81,8 +81,8 @@ PowerShellGet\Install-Module -Scope CurrentUser posh-docker
 
 ## Extra commands
 
-| Command   | Action                                                                                            | Description |
-| --------- | ------------------------------------------------------------------------------------------------- | ----------- |
+| Command           | Action                                                                                    | Description |
+| ----------------- | ----------------------------------------------------------------------------------------- | ----------- |
 | upgradeProfile    | Upgrade [this file](https://github.com/j16180339887/powershell/blob/master/profile.ps1)   | Windows8+ only |
 | upgradeChoco      | Upgrade all installed choco packages                                                      | |
 | upgradeModule     | Upgrade all installed Modules from Powershell Gallery                                     | |
@@ -103,6 +103,13 @@ PowerShellGet\Install-Module -Scope CurrentUser posh-docker
 | pip2              | C:\ProgramData\Miniconda2\Scripts\pip.exe                                                 | choco install miniconda2 |
 | pip3              | C:\ProgramData\Miniconda3\Scripts\pip.exe                                                 | choco install miniconda3 |
 
+## Extra Linux commands
+
+| Command           | Action                                                                                    | Example       |
+| ----------------- | ----------------------------------------------------------------------------------------- | ------------- |
+| find              | Find a file in current folder, you don't have to input the full name                      | `find bun.mp` |
+| grep              | Search a string in current folder                                                         | `grep TODO`   |
+| touch             | Create an empty file                                                                      | `touch 1.txt` |
 
 ### Extra notes
 
