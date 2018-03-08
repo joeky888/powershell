@@ -120,12 +120,27 @@ Function Prompt {
 New-Alias which get-command
 New-Alias grep select-string
 Remove-Item alias:cd
+Remove-Item alias:grep
+Remove-Item alias:rm
 Function cd {
   if ($args.count -gt 0) {
     Set-Location $($args)
   } else {
     Set-Location $($env:USERPROFILE)
   }
+}
+Function find {
+  Get-ChildItem -Recurse -File -Filter "*$args*"
+}
+Function grep {
+  # Get-ChildItem -recurse . | Get-Content | findstr -i $args
+  Get-ChildItem -recurse | Select-String $args | Select Path, LineNumber, Line | Format-List
+}
+Function rm {
+  Remove-Item -Recurse -Force $args
+}
+Function touch {
+  echo $null >> $args
 }
 
 # Choco tab completion
