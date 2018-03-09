@@ -98,7 +98,7 @@ Function Prompt {
   try {
    Write-Host  "$([Char]9581)$([Char]9472)" -NoNewline
   } catch [Exception] {
-    # Older version of powershell does't support special characters
+    # Older version of powershell doesn't support special characters
   }
   Write-Host  "$env:username" -NoNewline -ForegroundColor Red
   Write-Host "@" -NoNewline
@@ -110,7 +110,7 @@ Function Prompt {
   try {
    Write-Host  "$([Char]9584)$([Char]9472)" -NoNewline
   } catch [Exception] {
-    # Older version of powershell does't support special characters
+    # Older version of powershell doesn't support special characters
   }
   Write-Host "$" -NoNewline
   Return " "
