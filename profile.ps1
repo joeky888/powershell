@@ -284,7 +284,7 @@ if(Test-Path -Path "C:\ProgramData\Miniconda3*") {
     C:\ProgramData\Miniconda3\Scripts\pip.exe install --upgrade https://github.com/pyca/pyopenssl/archive/master.zip
     C:\ProgramData\Miniconda3\Scripts\pip.exe install --upgrade https://github.com/requests/requests/archive/master.zip
   }
-} else if(Test-Path -Path "C:\tools\Miniconda3*") {
+} elseif(Test-Path -Path "C:\tools\Miniconda3*") {
   # choco install miniconda3
   if($env:Path -NotLike "*C:\tools\Miniconda3*") {
     $env:Path += ";C:\tools\Miniconda3"
