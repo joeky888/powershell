@@ -289,27 +289,6 @@ if(Test-Path -Path "C:\ProgramData\Miniconda3*") {
     C:\ProgramData\Miniconda3\Scripts\pip.exe install --upgrade https://github.com/pyca/pyopenssl/archive/master.zip
     C:\ProgramData\Miniconda3\Scripts\pip.exe install --upgrade https://github.com/requests/requests/archive/master.zip
   }
-} elseif(Test-Path -Path "C:\tools\Miniconda3*") {
-  # choco install miniconda3
-  if($env:Path -NotLike "*C:\tools\Miniconda3*") {
-    $env:Path += ";C:\tools\Miniconda3"
-    $env:Path += ";C:\tools\Miniconda3\Scripts"
-  }
-  Set-Alias pip3 C:\tools\Miniconda3\Scripts\pip.exe
-  Set-Alias conda3 C:\tools\Miniconda3\Scripts\conda.exe
-  Set-Alias python3 C:\tools\Miniconda3\python.exe
-  Function upgradeConda3 {
-    C:\tools\Miniconda3\Scripts\conda.exe update -n base conda -y
-    C:\tools\Miniconda3\Scripts\conda.exe update --all --yes
-  }
-  Function upgradePip3 {
-    C:\tools\Miniconda3\Scripts\pip.exe freeze -l > requirements.txt
-    (Get-Content requirements.txt).replace('==', '>=') | Set-Content requirements.txt
-    C:\tools\Miniconda3\Scripts\pip.exe install -r requirements.txt --upgrade
-    Remove-Item requirements.txt
-    C:\tools\Miniconda3\Scripts\pip.exe install --upgrade https://github.com/pyca/pyopenssl/archive/master.zip
-    C:\tools\Miniconda3\Scripts\pip.exe install --upgrade https://github.com/requests/requests/archive/master.zip
-  }
 }
 if(Test-Path -Path "C:\ProgramData\Miniconda2*") {
   # choco install miniconda
