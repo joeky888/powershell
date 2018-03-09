@@ -108,7 +108,8 @@ PowerShellGet\Install-Module -Scope CurrentUser posh-docker
 
 | Command           | Action                                                                                    | Example       |
 | ----------------- | ----------------------------------------------------------------------------------------- | ------------- |
-| find              | Find a file in current folder, you don't have to input the full name                      | `find bun.mp` |
+| which             | Which command is this                                                                     | `which python` |
+| find              | Find a file in current folder, you don't have to input the full name                      | `find bun.htm` |
 | grep              | Search a string in current folder                                                         | `grep TODO`   |
 | touch             | Create an empty file                                                                      | `touch 1.txt` |
 
