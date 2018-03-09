@@ -150,7 +150,6 @@ if (Test-Path($ChocolateyProfile)) {
 }
 
 # Choco variables
-$env:ToolsDir = "C:\ProgramData"
 $env:ChocolateyBinRoot = "C:\ProgramData"
 $env:ChocolateyToolsLocation = "C:\ProgramData"
 
