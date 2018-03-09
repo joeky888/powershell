@@ -149,6 +149,11 @@ if (Test-Path($ChocolateyProfile)) {
   Import-Module "$ChocolateyProfile"
 }
 
+# Choco variables
+$env:ToolsDir = "C:\ProgramData"
+$env:ChocolateyBinRoot = "C:\ProgramData"
+$env:ChocolateyToolsLocation = "C:\ProgramData"
+
 # Import modules from Powershell Gallery
 if (Get-Module -ListAvailable -Name posh-git) {
   Import-Module posh-git
