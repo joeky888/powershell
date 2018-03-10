@@ -150,9 +150,8 @@ if (Test-Path($ChocolateyProfile)) {
 }
 
 # Choco variables
-$env:chocolatey_bin_root = "C:\ProgramData"
-$env:ChocolateyBinRoot = "C:\ProgramData"
-$env:ChocolateyToolsLocation = "C:\ProgramData"
+[Environment]::SetEnvironmentVariable("ChocolateyBinRoot", $env:Path + "C:\ProgramData", [EnvironmentVariableTarget]::Machine)
+[Environment]::SetEnvironmentVariable("ChocolateyToolsLocation", $env:Path + "C:\ProgramData", [EnvironmentVariableTarget]::Machine)
 
 # Import modules from Powershell Gallery
 if (Get-Module -ListAvailable -Name posh-git) {
