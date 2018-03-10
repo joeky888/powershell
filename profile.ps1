@@ -133,8 +133,12 @@ Function find {
   Get-ChildItem -Recurse -File -Filter "*$args*"
 }
 Function grep {
-  # Get-ChildItem -recurse . | Get-Content | findstr -i $args
-  Get-ChildItem -recurse | Select-String $args | Select Path, LineNumber, Line | Format-List
+  $pipeline = $input | Out-String -stream
+  if ($pipeline.length -gt 0) {
+    $pipeline | Out-String -stream | Select-String $args | Select Path, LineNumber, Line | Format-List
+  } else {
+    Get-ChildItem -recurse | Select-String $args | Select Path, LineNumber, Line | Format-List
+  }
 }
 Function rm {
   Remove-Item -Recurse -Force $args
