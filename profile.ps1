@@ -166,7 +166,7 @@ Function uname {
     "Operating System: " + $computerOS.caption + ", Service Pack: " + $computerOS.ServicePackMajorVersion
     "User logged In: " + $computerSystem.UserName
     "Last Reboot: " + $computerOS.LastBootUpTime
-  } catch Exception {
+  } catch [Exception] {
     # Older version of powershell doesn't support Get-CimInstance
     Clear-Host
     Get-WmiObject Win32_OperatingSystem
