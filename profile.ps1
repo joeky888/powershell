@@ -153,6 +153,8 @@ if (Test-Path($ChocolateyProfile)) {
 try {
   [Environment]::SetEnvironmentVariable("ChocolateyBinRoot", "C:\ProgramData", [EnvironmentVariableTarget]::Machine)
   [Environment]::SetEnvironmentVariable("ChocolateyToolsLocation", "C:\ProgramData", [EnvironmentVariableTarget]::Machine)
+  [Environment]::SetEnvironmentVariable("ChocolateyToolsLocation", "C:\ProgramData", [EnvironmentVariableTarget]::User)
+  [Environment]::SetEnvironmentVariable("ChocolateyToolsLocation", "C:\ProgramData", [EnvironmentVariableTarget]::User)
 } catch [Exception] {
   $env:ChocolateyBinRoot = "C:\ProgramData"
   $env:ChocolateyToolsLocation = "C:\ProgramData"
