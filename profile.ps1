@@ -153,7 +153,6 @@ Function uname {
     $computerOS = Get-CimInstance CIM_OperatingSystem
     $computerCPU = Get-CimInstance CIM_Processor
     $computerHDD = Get-CimInstance Win32_LogicalDisk -Filter "DeviceID = 'C:'"
-    Clear-Host
 
     Write-Host "System Information for: " $computerSystem.Name -BackgroundColor DarkRed
     "Manufacturer: " + $computerSystem.Manufacturer
@@ -168,7 +167,6 @@ Function uname {
     "Last Reboot: " + $computerOS.LastBootUpTime
   } catch [Exception] {
     # Older version of powershell doesn't support Get-CimInstance
-    Clear-Host
     Get-WmiObject Win32_OperatingSystem
   }
   Get-PSDrive -PSProvider 'FileSystem'
