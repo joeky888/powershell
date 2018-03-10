@@ -112,6 +112,7 @@ PowerShellGet\Install-Module -Scope CurrentUser posh-docker
 | find              | Find a file in current folder, you don't have to input the full name                      | `find bun.htm` |
 | grep              | Search a string in current folder or stdout pipeline                                      | `grep TODO`   |
 | touch             | Create an empty file                                                                      | `touch 1.txt` |
+| uname             | System Information                                                                        | `uname` |
 
 ### Extra notes
 
