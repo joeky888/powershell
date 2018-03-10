@@ -7,7 +7,7 @@ Features
 * Default startup directory is Desktop
 * Zsh-like Tab-Completion
 * Powershell ISE supported
-* Runs on Powershell >= 2.0 (Windows 7+)
+* Runs on Powershell >= 2.0 (Windows XP+)
 * UTF-8
 
 The code is under Public-domain licence.
@@ -22,7 +22,7 @@ Invoke-WebRequest https://raw.githubusercontent.com/j16180339887/powershell/mast
 Unblock-File ~/Documents/WindowsPowerShell/profile.ps1
 ```
 
-Install for Windows 7
+Install for Windows XP and Windows 7
 =====
 ```sh
 # Open powershell (as administrator)
