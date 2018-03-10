@@ -281,8 +281,8 @@ if(Test-Path -Path "C:\ProgramData\chocolatey\bin*") {
 if(Test-Path -Path "C:\ProgramData\Miniconda2*") {
   # choco install miniconda
   if($env:Path -NotLike "*C:\ProgramData\Miniconda2*") {
-    $env:Path = ";C:\ProgramData\Miniconda2;"$env:Path
-    $env:Path = ";C:\ProgramData\Miniconda2\Scripts;"$env:Path
+    $env:Path = "C:\ProgramData\Miniconda2;$env:Path"
+    $env:Path = "C:\ProgramData\Miniconda2\Scripts;$env:Path"
   }
   Set-Alias pip2 C:\ProgramData\Miniconda2\Scripts\pip.exe
   Set-Alias conda2 C:\ProgramData\Miniconda2\Scripts\conda.exe
