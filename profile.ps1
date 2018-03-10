@@ -130,7 +130,7 @@ Function cd {
   }
 }
 Function find {
-  Get-ChildItem -Recurse -File -Filter "*$args*"
+  Get-ChildItem -Recurse -Filter "*$args*"
 }
 Function grep {
   $pipeline = $input | Out-String -stream
