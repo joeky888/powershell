@@ -92,7 +92,7 @@ PowerShellGet\Install-Module -Scope CurrentUser posh-docker
 | upgradePip        | Upgrade all pip packages                                                                  | |
 | upgradePip2       | Upgrade all pip2 packages                                                                 | choco install miniconda2 |
 | upgradePip3       | Upgrade all pip3 packages                                                                 | choco install miniconda3 |
-| upgradeNpm        | Upgrade all npm global packages                                                                  | choco install nodejs |
+| upgradeNpm        | Upgrade all npm global packages                                                           | choco install nodejs |
 | upgradeVimrc      | Upgrade [vimrc](https://github.com/j16180339887/vimrc) file                               | |
 | MtuForWifiGaming  | Network MTU value for better gaming experience                                            | MTU = 296 |
 | MtuForWifiNormal  | Network MTU value reset                                                                   | MTU = 1500 |
