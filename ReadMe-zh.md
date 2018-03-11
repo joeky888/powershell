@@ -6,9 +6,9 @@
 =====
 * 沒有插件，只有一個檔案需要下載
 * 預設啟動的路徑為桌面
-* 智慧的 tab 補全 (需要 Powershell 5+)
-* 支援 Powershell ISE (可開分頁的 Powershell)
-* 支援 Powershell 2 以上 (Windows XP+)，但建議使用 Powershell 5
+* 智慧的 tab 補全
+* 支援 Powershell ISE
+* 支援 Powershell 2 以上 (Windows XP+)
 * UTF-8
 
 ## 下載到 Windows 8+ (一行一行複製貼上即可)
