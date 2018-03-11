@@ -34,7 +34,7 @@ New-Item -ItemType file -Force -Path $profile
 notepad $profile # Paste this config into the file
 ```
 
-Paste [this file](https://github.com/j16180339887/powershell/blob/master/profile.ps1) to the notepad
+Paste [this file](profile.ps1) to the notepad
 
 ## Install chocolatey and chocolatey packages (Recommend)
 
@@ -85,7 +85,7 @@ PowerShellGet\Install-Module -Scope CurrentUser posh-docker
 
 | Command           | Action                                                                                    | Description |
 | ----------------- | ----------------------------------------------------------------------------------------- | ----------- |
-| upgradeProfile    | Upgrade [this file](https://github.com/j16180339887/powershell/blob/master/profile.ps1)   | Windows8+ only |
+| upgradeProfile    | Upgrade [this file](profile.ps1)   | Windows8+ only |
 | upgradeChoco      | Upgrade all installed choco packages                                                      | |
 | upgradeModule     | Upgrade all installed Modules from Powershell Gallery                                     | |
 | upgradeConda      | Upgrade all Anaconda/Miniconda packages                                                   | |

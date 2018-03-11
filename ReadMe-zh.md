@@ -31,7 +31,7 @@ New-Item -ItemType file -Force -Path $profile
 notepad $profile
 ```
 
-將 [這個檔案](https://github.com/j16180339887/powershell/blob/master/profile.ps1) 貼進記事本裡
+將 [這個檔案](profile.ps1) 貼進記事本裡
 
 | Keys      | Action                                                | Description |
 | --------- | ----------------------------------------------------- | ----------- |
@@ -50,7 +50,7 @@ notepad $profile
 
 | Command           | Action                                                                                    | Description |
 | ----------------- | ----------------------------------------------------------------------------------------- | ----------- |
-| upgradeProfile    | 升級 [這個檔案](https://github.com/j16180339887/powershell/blob/master/profile.ps1)       | Windows8+ only |
+| upgradeProfile    | 升級 [這個檔案](profile.ps1)       | Windows8+ only |
 
 ## 額外的 Linux 指令
 
