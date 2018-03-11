@@ -219,10 +219,10 @@ Function upgradeConda {
   conda update --all --yes
 }
 Function upgradeYoutube-dl {
-  pip install --upgrade https://github.com/rg3/youtube-dl/archive/master.zip
+  pip3 install --upgrade https://github.com/rg3/youtube-dl/archive/master.zip
 }
 Function upgradeYou-get {
-  pip install --upgrade https://github.com/soimort/you-get/archive/master.zip
+  pip3 install --upgrade https://github.com/soimort/you-get/archive/master.zip
 }
 Function upgradePip {
   pip freeze -l > requirements.txt
