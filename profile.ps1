@@ -73,9 +73,9 @@ if (Get-Command Set-PSReadlineKeyHandler -errorAction SilentlyContinue)
 
 
 # Set default starting path to USERPROFILE
-try {
+if (Test-Path($env:USERPROFILE\\Desktop)) {
   Set-Location $env:USERPROFILE\\Desktop
-} catch [Exception] {
+} else {
   # Windows XP doesn't have Desktop
   Set-Location $env:USERPROFILE
 }
