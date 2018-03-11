@@ -1,5 +1,7 @@
 ![PS](https://i.imgur.com/onDinT2.png)
 
+[中文說明](ReadMe-zh.md)
+
 Features
 =====
 * No plugins, just one file
@@ -9,8 +11,6 @@ Features
 * Powershell ISE supported
 * Runs on Powershell >= 2.0 (Windows XP+)
 * UTF-8
-
-[中文說明](ReadMe-zh.md)
 
 The code is under Public-domain licence.
 
