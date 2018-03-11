@@ -121,4 +121,3 @@ PowerShellGet\Install-Module -Scope CurrentUser posh-docker
 
 ### TODO
 * Compatible with upcoming Powershell 6
-* Another ReadMe file in Chinese
