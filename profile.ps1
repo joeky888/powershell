@@ -170,6 +170,7 @@ Function uname {
     "Operating System: " + $computerOS.caption + ", Service Pack: " + $computerOS.ServicePackMajorVersion
     "User logged In: " + $computerSystem.UserName
     "Last Reboot: " + $computerOS.LastBootUpTime
+    wmic path win32_VideoController get name
   } catch [Exception] {
     # Older version of powershell doesn't support Get-CimInstance
     Get-WmiObject Win32_OperatingSystem
