@@ -73,7 +73,12 @@ if (Get-Command Set-PSReadlineKeyHandler -errorAction SilentlyContinue)
 
 
 # Set default starting path to USERPROFILE
-Set-Location $env:USERPROFILE\\Desktop
+try {
+  Set-Location $env:USERPROFILE\\Desktop
+} catch [Exception] {
+  # Windows XP doesn't have Desktop
+  Set-Location $env:USERPROFILE
+}
 
 # Theme
 $Host.UI.RawUI.ForegroundColor = "Gray"
