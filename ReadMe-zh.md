@@ -33,23 +33,6 @@ notepad $profile
 
 將 [this file](https://github.com/j16180339887/powershell/blob/master/profile.ps1) 貼進記事本裡
 
-## 安裝 chocolatey 以及 chocolatey 套件 (推薦)
-
-```sh
-# Open powershell (as administrator)
-Set-ExecutionPolicy Bypass -Scope Process
-Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-choco install 7zip vim-tux.portable git poshgit aria2 miniconda miniconda3 ffmpeg youtube-dl -y
-```
-
-## 安裝 Powershell modules, 為了 tab-completion (推薦)
-
-```sh
-# Open powershell (as administrator)
-PowerShellGet\Install-Module -Scope CurrentUser posh-git
-PowerShellGet\Install-Module -Scope CurrentUser posh-docker
-```
-
 | Keys      | Action                                                | Description |
 | --------- | ----------------------------------------------------- | ----------- |
 | Ctrl C    | 複製/撤銷 當前指令                                    | |
