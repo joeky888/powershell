@@ -11,8 +11,8 @@
 * 支援 Powershell 2 以上 (Windows XP+)，但建議使用 Powershell 5
 * UTF-8
 
-下載到 Windows 8+ (一行一行複製貼上即可)
-====
+## 下載到 Windows 8+ (一行一行複製貼上即可)
+
 ```sh
 # Install this config, Open powershell (as administrator)
 Set-ExecutionPolicy RemoteSigned
@@ -21,8 +21,8 @@ Invoke-WebRequest https://raw.githubusercontent.com/j16180339887/powershell/mast
 Unblock-File ~/Documents/WindowsPowerShell/profile.ps1
 ```
 
-下載到 Windows XP and Windows 7 (最後一步設定檔需要手動複製貼上)
-=====
+## 下載到 Windows XP and Windows 7 (最後一步設定檔需要手動複製貼上)
+
 ```sh
 # Open powershell (as administrator)
 Set-ExecutionPolicy RemoteSigned
@@ -31,7 +31,7 @@ New-Item -ItemType file -Force -Path $profile
 notepad $profile
 ```
 
-將 [this file](https://github.com/j16180339887/powershell/blob/master/profile.ps1) 貼進記事本裡
+將 [這個檔案](https://github.com/j16180339887/powershell/blob/master/profile.ps1) 貼進記事本裡
 
 | Keys      | Action                                                | Description |
 | --------- | ----------------------------------------------------- | ----------- |
