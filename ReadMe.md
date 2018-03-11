@@ -10,6 +10,8 @@ Features
 * Runs on Powershell >= 2.0 (Windows XP+)
 * UTF-8
 
+[中文說明](ReadMe-zh.md)
+
 The code is under Public-domain licence.
 
 Install for Windows 8+
