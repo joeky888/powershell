@@ -186,13 +186,13 @@ if (Test-Path($ChocolateyProfile)) {
 
 # Choco variables
 try {
-  [Environment]::SetEnvironmentVariable("ChocolateyBinRoot", "C:\ProgramData", [EnvironmentVariableTarget]::Machine)
-  [Environment]::SetEnvironmentVariable("ChocolateyToolsLocation", "C:\ProgramData", [EnvironmentVariableTarget]::Machine)
-  [Environment]::SetEnvironmentVariable("ChocolateyBinRoot", "C:\ProgramData", [EnvironmentVariableTarget]::User)
-  [Environment]::SetEnvironmentVariable("ChocolateyToolsLocation", "C:\ProgramData", [EnvironmentVariableTarget]::User)
+  [Environment]::SetEnvironmentVariable("ChocolateyBinRoot", $env:ALLUSERSPROFILE, [EnvironmentVariableTarget]::Machine)
+  [Environment]::SetEnvironmentVariable("ChocolateyToolsLocation", $env:ALLUSERSPROFILE, [EnvironmentVariableTarget]::Machine)
+  [Environment]::SetEnvironmentVariable("ChocolateyBinRoot", $env:ALLUSERSPROFILE, [EnvironmentVariableTarget]::User)
+  [Environment]::SetEnvironmentVariable("ChocolateyToolsLocation", $env:ALLUSERSPROFILE, [EnvironmentVariableTarget]::User)
 } catch [Exception] {
-  $env:ChocolateyBinRoot = "C:\ProgramData"
-  $env:ChocolateyToolsLocation = "C:\ProgramData"
+  $env:ChocolateyBinRoot = $env:ALLUSERSPROFILE
+  $env:ChocolateyToolsLocation = $env:ALLUSERSPROFILE
 }
 
 # Import modules from Powershell Gallery
@@ -251,7 +251,7 @@ Function vim {
 }
 
 Function gvim {
-  $Commandvim = "C:\ProgramData\chocolatey\bin\gvim.exe"
+  $Commandvim = "$env:ALLUSERSPROFILE\chocolatey\bin\gvim.exe"
   $Parmsvim = ""
   if ($args.count -gt 0) {
     $Parmsvim = "-p --remote-tab-silent $args"
@@ -303,54 +303,54 @@ Function MtuForWifiNormal {
   netsh interface ipv4 set subinterface Wi-Fi mtu=1500 store=persistent
 }
 
-if(Test-Path -Path "C:\ProgramData\chocolatey\bin*") {
+if(Test-Path -Path "$env:ALLUSERSPROFILE\chocolatey\bin*") {
   # Just in case
-  if($env:Path -NotLike "*C:\ProgramData\chocolatey\bin*") {
-    $env:Path += ";C:\ProgramData\chocolatey\bin"
+  if($env:Path -NotLike "*$env:ALLUSERSPROFILE\chocolatey\bin*") {
+    $env:Path += ";$env:ALLUSERSPROFILE\chocolatey\bin"
   }
 }
-if(Test-Path -Path "C:\ProgramData\Miniconda2*") {
+if(Test-Path -Path "$env:ALLUSERSPROFILE\Miniconda2*") {
   # choco install miniconda
-  if($env:Path -NotLike "*C:\ProgramData\Miniconda2*") {
-    $env:Path = "C:\ProgramData\Miniconda2;$env:Path"
-    $env:Path = "C:\ProgramData\Miniconda2\Scripts;$env:Path"
+  if($env:Path -NotLike "*$env:ALLUSERSPROFILE\Miniconda2*") {
+    $env:Path = "$env:ALLUSERSPROFILE\Miniconda2;$env:Path"
+    $env:Path = "$env:ALLUSERSPROFILE\Miniconda2\Scripts;$env:Path"
   }
-  Set-Alias pip2 C:\ProgramData\Miniconda2\Scripts\pip.exe
-  Set-Alias conda2 C:\ProgramData\Miniconda2\Scripts\conda.exe
-  Set-Alias python2 C:\ProgramData\Miniconda2\python.exe
+  Set-Alias pip2 $env:ALLUSERSPROFILE\Miniconda2\Scripts\pip.exe
+  Set-Alias conda2 $env:ALLUSERSPROFILE\Miniconda2\Scripts\conda.exe
+  Set-Alias python2 $env:ALLUSERSPROFILE\Miniconda2\python.exe
   Function upgradeConda2 {
-    C:\ProgramData\Miniconda2\Scripts\conda.exe update -n base conda -y
-    C:\ProgramData\Miniconda2\Scripts\conda.exe update --all --yes
+    $env:ALLUSERSPROFILE\Miniconda2\Scripts\conda.exe update -n base conda -y
+    $env:ALLUSERSPROFILE\Miniconda2\Scripts\conda.exe update --all --yes
   }
   Function upgradePip2 {
-    C:\ProgramData\Miniconda2\Scripts\pip.exe freeze -l > requirements.txt
+    $env:ALLUSERSPROFILE\Miniconda2\Scripts\pip.exe freeze -l > requirements.txt
     (Get-Content requirements.txt).replace('==', '>=') | Set-Content requirements.txt
-    C:\ProgramData\Miniconda2\Scripts\pip.exe install -r requirements.txt --upgrade
+    $env:ALLUSERSPROFILE\Miniconda2\Scripts\pip.exe install -r requirements.txt --upgrade
     Remove-Item requirements.txt
-    C:\ProgramData\Miniconda2\Scripts\pip.exe install --upgrade https://github.com/pyca/pyopenssl/archive/master.zip
-    C:\ProgramData\Miniconda2\Scripts\pip.exe install --upgrade https://github.com/requests/requests/archive/master.zip
+    $env:ALLUSERSPROFILE\Miniconda2\Scripts\pip.exe install --upgrade https://github.com/pyca/pyopenssl/archive/master.zip
+    $env:ALLUSERSPROFILE\Miniconda2\Scripts\pip.exe install --upgrade https://github.com/requests/requests/archive/master.zip
   }
 }
-if(Test-Path -Path "C:\ProgramData\Miniconda3*") {
+if(Test-Path -Path "$env:ALLUSERSPROFILE\Miniconda3*") {
   # choco install miniconda3
-  if($env:Path -NotLike "*C:\ProgramData\Miniconda3*") {
-    $env:Path += ";C:\ProgramData\Miniconda3"
-    $env:Path += ";C:\ProgramData\Miniconda3\Scripts"
+  if($env:Path -NotLike "*$env:ALLUSERSPROFILE\Miniconda3*") {
+    $env:Path += ";$env:ALLUSERSPROFILE\Miniconda3"
+    $env:Path += ";$env:ALLUSERSPROFILE\Miniconda3\Scripts"
   }
-  Set-Alias pip3 C:\ProgramData\Miniconda3\Scripts\pip.exe
-  Set-Alias conda3 C:\ProgramData\Miniconda3\Scripts\conda.exe
-  Set-Alias python3 C:\ProgramData\Miniconda3\python.exe
+  Set-Alias pip3 $env:ALLUSERSPROFILE\Miniconda3\Scripts\pip.exe
+  Set-Alias conda3 $env:ALLUSERSPROFILE\Miniconda3\Scripts\conda.exe
+  Set-Alias python3 $env:ALLUSERSPROFILE\Miniconda3\python.exe
   Function upgradeConda3 {
-    C:\ProgramData\Miniconda3\Scripts\conda.exe update -n base conda -y
-    C:\ProgramData\Miniconda3\Scripts\conda.exe update --all --yes
+    $env:ALLUSERSPROFILE\Miniconda3\Scripts\conda.exe update -n base conda -y
+    $env:ALLUSERSPROFILE\Miniconda3\Scripts\conda.exe update --all --yes
   }
   Function upgradePip3 {
-    C:\ProgramData\Miniconda3\Scripts\pip.exe freeze -l > requirements.txt
+    $env:ALLUSERSPROFILE\Miniconda3\Scripts\pip.exe freeze -l > requirements.txt
     (Get-Content requirements.txt).replace('==', '>=') | Set-Content requirements.txt
-    C:\ProgramData\Miniconda3\Scripts\pip.exe install -r requirements.txt --upgrade
+    $env:ALLUSERSPROFILE\Miniconda3\Scripts\pip.exe install -r requirements.txt --upgrade
     Remove-Item requirements.txt
-    C:\ProgramData\Miniconda3\Scripts\pip.exe install --upgrade https://github.com/pyca/pyopenssl/archive/master.zip
-    C:\ProgramData\Miniconda3\Scripts\pip.exe install --upgrade https://github.com/requests/requests/archive/master.zip
+    $env:ALLUSERSPROFILE\Miniconda3\Scripts\pip.exe install --upgrade https://github.com/pyca/pyopenssl/archive/master.zip
+    $env:ALLUSERSPROFILE\Miniconda3\Scripts\pip.exe install --upgrade https://github.com/requests/requests/archive/master.zip
   }
 }
 if(Test-Path -Path "C:\Program Files\Sublime Text 3*") {
