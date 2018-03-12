@@ -126,6 +126,7 @@ New-Alias which get-command
 New-Alias grep select-string
 Remove-Item alias:cd
 Remove-Item alias:grep
+Remove-Item alias:ls
 Remove-Item alias:rm
 Function cd {
   if ($args.count -gt 0) {
@@ -144,6 +145,9 @@ Function grep {
   } else {
     Get-ChildItem -recurse | Select-String $args | Select Path, LineNumber, Line | Format-List
   }
+}
+Function ls {
+  Get-ChildItem -Force $args
 }
 Function rm {
   Remove-Item -Recurse -Force $args
