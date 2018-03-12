@@ -151,13 +151,13 @@ Function ls {
 }
 Function rm {
   $numOfArgs = $args.Length
-  for ($i=0; $i -le $numOfArgs; $i++) {
+  for ($i=0; $i -lt $numOfArgs; $i++) {
     Remove-Item -Recurse -Force $($args[$i])
   }
 }
 Function touch {
   $numOfArgs = $args.Length
-  for ($i=0; $i -le $numOfArgs; $i++) {
+  for ($i=0; $i -lt $numOfArgs; $i++) {
     echo $null >> $($args[$i])
   }
 }
