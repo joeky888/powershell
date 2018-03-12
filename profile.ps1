@@ -150,18 +150,24 @@ Function ls {
   Get-ChildItem -Force $args
 }
 Function rm {
-  Remove-Item -Recurse -Force $args
+  $numOfArgs = $args.Length
+  for ($i=0; $i -le $numOfArgs; $i++) {
+    Remove-Item -Recurse -Force $($args[$i])
+  }
 }
 Function touch {
-  echo $null >> $args
+  $numOfArgs = $args.Length
+  for ($i=0; $i -le $numOfArgs; $i++) {
+    echo $null >> $($args[$i])
+  }
 }
 Function uname {
   try {
     $computerSystem = Get-CimInstance CIM_ComputerSystem
-    $computerBIOS = Get-CimInstance CIM_BIOSElement
-    $computerOS = Get-CimInstance CIM_OperatingSystem
-    $computerCPU = Get-CimInstance CIM_Processor
-    $computerHDD = Get-CimInstance Win32_LogicalDisk -Filter "DeviceID = 'C:'"
+    $computerBIOS   = Get-CimInstance CIM_BIOSElement
+    $computerOS     = Get-CimInstance CIM_OperatingSystem
+    $computerCPU    = Get-CimInstance CIM_Processor
+    $computerHDD    = Get-CimInstance Win32_LogicalDisk -Filter "DeviceID = 'C:'"
 
     Write-Host "System Information for: " $computerSystem.Name -BackgroundColor DarkRed
     "Manufacturer: " + $computerSystem.Manufacturer
