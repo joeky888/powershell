@@ -252,14 +252,6 @@ Function upgradeVimrc {
   Invoke-WebRequest https://raw.githubusercontent.com/j16180339887/vimrc/master/.vimrc -o ~/.vimrc
 }
 
-Function vim {
-  if ($args.count -eq 0) {
-    vim.exe -u NONE +"syntax enable" +"colo murphy"
-  } else {
-    vim.exe -u NONE +"syntax enable" +"colo murphy" $args
-  }
-}
-
 Function gvim {
   $Commandvim = "$env:ALLUSERSPROFILE\chocolatey\bin\gvim.exe"
   $Parmsvim = ""
