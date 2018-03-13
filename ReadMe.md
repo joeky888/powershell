@@ -40,8 +40,6 @@ if(!(Split-Path -parent $path) -or !(Test-Path -pathType Container (Split-Path -
 (New-Object System.Net.WebClient).DownloadFile($url, $path)
 ```
 
-Paste [this file](profile.ps1) to the notepad
-
 ## Install chocolatey and chocolatey packages (Recommend)
 
 ```sh

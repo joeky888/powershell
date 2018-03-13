@@ -37,8 +37,6 @@ if(!(Split-Path -parent $path) -or !(Test-Path -pathType Container (Split-Path -
 (New-Object System.Net.WebClient).DownloadFile($url, $path)
 ```
 
-將 [這個檔案](profile.ps1) 貼進記事本裡
-
 | Keys      | Action                                                | Description |
 | --------- | ----------------------------------------------------- | ----------- |
 | Ctrl C    | 複製/撤銷 當前指令                                    | |
