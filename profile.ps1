@@ -254,7 +254,8 @@ Function upgradeNpm {
 }
 Function upgradeProfile {
   $url = "https://raw.githubusercontent.com/j16180339887/powershell/master/profile.ps1"
-  $path = "$env:USERPROFILE\WindowsPowerShell\profile.ps1"
+  $doc = [Environment]::GetFolderPath("MyDocuments")
+  $path = "$doc\WindowsPowerShell\profile.ps1"
 
   if(!(Split-Path -parent $path) -or !(Test-Path -pathType Container (Split-Path -parent $path))) {
     $targetFile = Join-Path $pwd (Split-Path -leaf $path)
