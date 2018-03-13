@@ -18,7 +18,7 @@ Install for Windows 8+
 ====
 ```sh
 # Install this config, Open powershell (as administrator)
-Set-ExecutionPolicy RemoteSigned
+Set-ExecutionPolicy RemoteSigned -Force
 New-Item -ItemType file -Force -Path $profile
 Invoke-WebRequest https://raw.githubusercontent.com/j16180339887/powershell/master/profile.ps1 -o $profile
 Unblock-File $profile
@@ -28,7 +28,7 @@ Install for Windows XP and Windows 7
 =====
 ```sh
 # Open powershell (as administrator)
-Set-ExecutionPolicy RemoteSigned
+Set-ExecutionPolicy RemoteSigned -Force
 New-Item -ItemType file -Force -Path $profile
 $url = "https://raw.githubusercontent.com/j16180339887/powershell/master/profile.ps1"
 $path = $profile
