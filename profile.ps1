@@ -253,10 +253,24 @@ Function upgradeNpm {
   npm update -g
 }
 Function upgradeProfile {
-  Invoke-WebRequest https://raw.githubusercontent.com/j16180339887/powershell/master/profile.ps1 -o ~/Documents/WindowsPowerShell/profile.ps1
+  $url = "https://raw.githubusercontent.com/j16180339887/powershell/master/profile.ps1"
+  $path = "$env:USERPROFILE\WindowsPowerShell\profile.ps1"
+
+  if(!(Split-Path -parent $path) -or !(Test-Path -pathType Container (Split-Path -parent $path))) {
+    $targetFile = Join-Path $pwd (Split-Path -leaf $path)
+  }
+
+  (New-Object System.Net.WebClient).DownloadFile($url, $path)
 }
 Function upgradeVimrc {
-  Invoke-WebRequest https://raw.githubusercontent.com/j16180339887/vimrc/master/.vimrc -o ~/.vimrc
+  $url = "https://raw.githubusercontent.com/j16180339887/vimrc/master/.vimrc"
+  $path = "$env:USERPROFILE\.vimrc"
+
+  if(!(Split-Path -parent $path) -or !(Test-Path -pathType Container (Split-Path -parent $path))) {
+    $targetFile = Join-Path $pwd (Split-Path -leaf $path)
+  }
+
+  (New-Object System.Net.WebClient).DownloadFile($url, $path)
 }
 
 Function gvim {
