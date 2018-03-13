@@ -180,7 +180,14 @@ Function uname {
     "Operating System: " + $computerOS.caption + ", Service Pack: " + $computerOS.ServicePackMajorVersion
     "User logged In: " + $computerSystem.UserName
     "Last Reboot: " + $computerOS.LastBootUpTime
-    wmic path win32_VideoController get name
+    Write-Host "All of the Graphics cards Informations " -BackgroundColor DarkRed
+    wmic path win32_VideoController get Name
+    wmic path win32_VideoController get VideoModeDescription
+    wmic path win32_VideoController get CurrentRefreshRate
+    wmic path win32_VideoController get MaxRefreshRate
+    wmic path win32_VideoController get MinRefreshRate
+    wmic path win32_VideoController get DriverDate
+    wmic path win32_VideoController get DriverVersion
   } catch [Exception] {
     # Older version of powershell doesn't support Get-CimInstance
     Get-WmiObject Win32_OperatingSystem
