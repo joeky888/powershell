@@ -20,8 +20,8 @@ Install for Windows 8+
 # Install this config, Open powershell (as administrator)
 Set-ExecutionPolicy RemoteSigned
 New-Item -ItemType Directory -Force -Path ~/Documents/WindowsPowerShell
-Invoke-WebRequest https://raw.githubusercontent.com/j16180339887/powershell/master/profile.ps1 -o ~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1
-Unblock-File ~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1
+Invoke-WebRequest https://raw.githubusercontent.com/j16180339887/powershell/master/profile.ps1 -o $profile
+Unblock-File $profile
 ```
 
 Install for Windows XP and Windows 7 (manually)
