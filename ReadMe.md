@@ -19,19 +19,25 @@ Install for Windows 8+
 ```sh
 # Install this config, Open powershell (as administrator)
 Set-ExecutionPolicy RemoteSigned
-New-Item -ItemType Directory -Force -Path ~/Documents/WindowsPowerShell
+New-Item -ItemType file -Force -Path $profile
 Invoke-WebRequest https://raw.githubusercontent.com/j16180339887/powershell/master/profile.ps1 -o $profile
 Unblock-File $profile
 ```
 
-Install for Windows XP and Windows 7 (manually)
+Install for Windows XP and Windows 7
 =====
 ```sh
 # Open powershell (as administrator)
 Set-ExecutionPolicy RemoteSigned
-New-Item -ItemType Directory -Force -Path ~/Documents/WindowsPowerShell
 New-Item -ItemType file -Force -Path $profile
-notepad $profile # Paste this config into the file
+$url = "https://raw.githubusercontent.com/j16180339887/powershell/master/profile.ps1"
+$path = $profile
+
+if(!(Split-Path -parent $path) -or !(Test-Path -pathType Container (Split-Path -parent $path))) {
+  $targetFile = Join-Path $pwd (Split-Path -leaf $path)
+}
+
+(New-Object System.Net.WebClient).DownloadFile($url, $path)
 ```
 
 Paste [this file](profile.ps1) to the notepad

@@ -16,19 +16,25 @@
 ```sh
 # Install this config, Open powershell (as administrator)
 Set-ExecutionPolicy RemoteSigned
-New-Item -ItemType Directory -Force -Path ~/Documents/WindowsPowerShell
+New-Item -ItemType file -Force -Path $profile
 Invoke-WebRequest https://raw.githubusercontent.com/j16180339887/powershell/master/profile.ps1 -o $profile
 Unblock-File $profile
 ```
 
-## 下載到 Windows XP and Windows 7 (最後一步設定檔需要手動複製貼上)
+## 下載到 Windows XP and Windows 7 (一行一行複製貼上即可)
 
 ```sh
 # Open powershell (as administrator)
 Set-ExecutionPolicy RemoteSigned
-New-Item -ItemType Directory -Force -Path ~/Documents/WindowsPowerShell
 New-Item -ItemType file -Force -Path $profile
-notepad $profile
+$url = "https://raw.githubusercontent.com/j16180339887/powershell/master/profile.ps1"
+$path = $profile
+
+if(!(Split-Path -parent $path) -or !(Test-Path -pathType Container (Split-Path -parent $path))) {
+  $targetFile = Join-Path $pwd (Split-Path -leaf $path)
+}
+
+(New-Object System.Net.WebClient).DownloadFile($url, $path)
 ```
 
 將 [這個檔案](profile.ps1) 貼進記事本裡
