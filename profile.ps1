@@ -106,6 +106,10 @@ Function Prompt {
     # Older version of powershell doesn't support special characters
   }
   Write-Host  "$env:username" -NoNewline -ForegroundColor Red
+  If (([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole(`
+    [Security.Principal.WindowsBuiltInRole] "Administrator")) {
+    Write-Host  "(Admin)" -NoNewline -ForegroundColor Yellow
+  }
   Write-Host "@" -NoNewline
   Write-Host "$env:computername" -NoNewline -ForegroundColor Green
   Write-Host " " -NoNewline
