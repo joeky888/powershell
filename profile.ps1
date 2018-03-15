@@ -238,7 +238,7 @@ Function upgradeYoutube-dl {
   pip3 install --upgrade https://github.com/rg3/youtube-dl/archive/master.zip
 }
 Function upgradeYou-get {
-  pip3 install --upgrade https://github.com/soimort/you-get/archive/master.zip
+  pip3 install --upgrade https://github.com/soimort/you-get/archive/develop.zip
 }
 Function upgradePip {
   pip freeze -l > requirements.txt
