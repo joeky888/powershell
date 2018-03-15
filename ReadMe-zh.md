@@ -11,7 +11,7 @@
 * 支援 Powershell 2 以上 (Windows XP+)
 * UTF-8
 
-## 下載到 Windows 8+ (一行一行複製貼上即可)
+## 下載到 Windows 8+ (全部複製貼上按 Enter 即可)
 
 ```sh
 # Install this config, Open powershell (as administrator)
@@ -21,7 +21,7 @@ Invoke-WebRequest https://raw.githubusercontent.com/j16180339887/powershell/mast
 Unblock-File $profile
 ```
 
-## 下載到 Windows XP and Windows 7 (一行一行複製貼上即可)
+## 下載到 Windows XP and Windows 7 (全部複製貼上按 Enter 即可)
 
 ```sh
 # Open powershell (as administrator)
