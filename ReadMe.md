@@ -19,9 +19,9 @@ Install for Windows 8+ (Copy all and paste to powershell, then press Enter)
 ```sh
 # Install this config, Open powershell (as administrator)
 Set-ExecutionPolicy RemoteSigned -Force
-New-Item -ItemType file -Force -Path $profile
-Invoke-WebRequest https://raw.githubusercontent.com/j16180339887/powershell/master/profile.ps1 -o $profile
-Unblock-File $profile
+New-Item -ItemType file -Force -Path $Profile.CurrentUserAllHosts
+Invoke-WebRequest https://raw.githubusercontent.com/j16180339887/powershell/master/profile.ps1 -o $Profile.CurrentUserAllHosts
+Unblock-File $Profile.CurrentUserAllHosts
 ```
 
 Install for Windows XP and Windows 7 (Copy all and paste to powershell, then press Enter)
@@ -29,9 +29,9 @@ Install for Windows XP and Windows 7 (Copy all and paste to powershell, then pre
 ```sh
 # Open powershell (as administrator)
 Set-ExecutionPolicy RemoteSigned -Force
-New-Item -ItemType file -Force -Path $profile
+New-Item -ItemType file -Force -Path $Profile.CurrentUserAllHosts
 $url = "https://raw.githubusercontent.com/j16180339887/powershell/master/profile.ps1"
-$path = $profile
+$path = $Profile.CurrentUserAllHosts
 
 if(!(Split-Path -parent $path) -or !(Test-Path -pathType Container (Split-Path -parent $path))) {
   $targetFile = Join-Path $pwd (Split-Path -leaf $path)

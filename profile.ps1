@@ -253,7 +253,7 @@ Function upgradeNpm {
 }
 Function upgradeProfile {
   $url = "https://raw.githubusercontent.com/j16180339887/powershell/master/profile.ps1"
-  $path = $profile
+  $path = $Profile.CurrentUserAllHosts
 
   if(!(Split-Path -parent $path) -or !(Test-Path -pathType Container (Split-Path -parent $path))) {
     $targetFile = Join-Path $pwd (Split-Path -leaf $path)
