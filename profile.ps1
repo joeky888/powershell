@@ -2,6 +2,8 @@
 $env:PYTHONIOENCODING = "UTF-8"
 # Java UTF8
 $env:JAVA_TOOL_OPTIONS = " -Dfile.encoding=UTF8 "
+# Python2 Disable ssl checking
+$env:PYTHONHTTPSVERIFY = 0
 
 # Increase history size
 $global:MaximumHistoryCount = 10000
