@@ -121,8 +121,8 @@ Function Prompt {
 }
 
 # alias bash/zsh command
-New-Alias which get-command
-New-Alias grep select-string
+Set-Alias which get-command
+Set-Alias grep select-string
 Remove-Item alias:cd
 Remove-Item alias:grep
 Remove-Item alias:ls
