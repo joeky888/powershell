@@ -135,14 +135,14 @@ Function cd {
   }
 }
 Function find {
-  Get-ChildItem -Recurse -Force -Filter "*$args*" | Where-Object { $_.fullname -NotLike "*.git*" }
+  Get-ChildItem -Recurse -Force -Filter "*$args*" | Where-Object { $_.fullname -NotLike "*.git\*" }
 }
 Function grep {
   $pipeline = $input | Out-String -stream
   if ($pipeline.length -gt 0) {
     $pipeline | Out-String -stream | Select-String $args | Select Path, LineNumber, Line | Format-List
   } else {
-    Get-ChildItem -Recurse -Force | Where-Object { $_.fullname -NotLike "*.git*" } | Select-String $args | Select Path, LineNumber, Line | Format-List
+    Get-ChildItem -Recurse -Force | Where-Object { $_.fullname -NotLike "*.git\*" } | Select-String $args | Select Path, LineNumber, Line | Format-List
   }
 }
 Function ls {
