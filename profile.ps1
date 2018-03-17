@@ -123,10 +123,10 @@ Function Prompt {
 # alias bash/zsh command
 Set-Alias which get-command
 Set-Alias grep select-string
-Remove-Item alias:cd
-Remove-Item alias:grep
-Remove-Item alias:ls
-Remove-Item alias:rm
+If (Test-Path alias:cd)   {Remove-Item alias:cd}
+If (Test-Path alias:grep) {Remove-Item alias:grep}
+If (Test-Path alias:ls)   {Remove-Item alias:ls}
+If (Test-Path alias:rm)   {Remove-Item alias:rm}
 Function cd {
   if ($args.count -gt 0) {
     Set-Location $($args)
