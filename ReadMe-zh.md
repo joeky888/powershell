@@ -66,8 +66,15 @@ if(!(Split-Path -parent $path) -or !(Test-Path -pathType Container (Split-Path -
 | touch             | 建立一個空檔案                                                                            | `touch 1.txt`                     |
 | uname             | 系統資訊                                                                                  | `uname`                           |
 
+## 額外的環境變數
+
+| Variable              | Value                                     | Description                   |
+| --------------------- | ----------------------------------------- | ----------------------------- |
+| `PYTHONIOENCODING`    | `UTF-8`                                   | Python2 UTF-8                 |
+| `PYTHONHTTPSVERIFY`   | `0`                                       | Python2 不檢查 SSL 認證       |
+| `JAVA_TOOL_OPTIONS`   | ` -Dfile.encoding=UTF8 `                  | Java UTF-8                    |
+
 ### 另外
 
-* 環境變數 `PYTHONIOENCODING` 以及 `JAVA_TOOL_OPTIONS` 已經設定為 UTF-8
 * 支援度最好的字體是 [Sarasa-Gothic](https://github.com/be5invis/Sarasa-Gothic/releases) (原本是叫 [Iosevka](https://github.com/be5invis/Iosevka/releases)), 由微軟員工設計的. 詳見 [這篇問答](https://www.zhihu.com/question/19637242/answer/41116173)
 

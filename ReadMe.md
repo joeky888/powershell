@@ -120,9 +120,16 @@ PowerShellGet\Install-Module -Scope CurrentUser posh-docker
 | touch             | Create an empty file                                                                      | `touch 1.txt`  |
 | uname             | System Information                                                                        | `uname`        |
 
+## Extra Environment variables
+
+| Variable              | Value                                     | Description                   |
+| --------------------- | ----------------------------------------- | ----------------------------- |
+| `PYTHONIOENCODING`    | `UTF-8`                                   | Python2 UTF-8                 |
+| `PYTHONHTTPSVERIFY`   | `0`                                       | Python2 SSL checking disabled |
+| `JAVA_TOOL_OPTIONS`   | ` -Dfile.encoding=UTF8 `                  | Java UTF-8                    |
+
 ### Extra notes
 
-* The python2 `PYTHONIOENCODING` and java `JAVA_TOOL_OPTIONS` variables were set to UTF-8
 * The best font for Powershell is [Sarasa-Gothic](https://github.com/be5invis/Sarasa-Gothic/releases) (previously [Iosevka](https://github.com/be5invis/Iosevka/releases)), which is made by one of the Microsoft employees. see [this Chinese post](https://www.zhihu.com/question/19637242/answer/41116173)
 
 ### TODO
