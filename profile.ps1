@@ -341,6 +341,11 @@ if(Test-Path -Path "$env:ALLUSERSPROFILE\chocolatey\bin*") {
     $env:Path += ";$env:ALLUSERSPROFILE\chocolatey\bin"
   }
 }
+
+if (Test-Path -Path "$env:USERPROFILE\.pythonrc") {
+  $env:PYTHONSTARTUP = "$env:USERPROFILE\.pythonrc"
+}
+
 if(Test-Path -Path "$env:ALLUSERSPROFILE\Miniconda2*") {
   # choco install miniconda
   if($env:Path -NotLike "*$env:ALLUSERSPROFILE\Miniconda2*") {
