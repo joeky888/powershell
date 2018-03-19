@@ -123,12 +123,11 @@ Function Prompt {
 }
 
 # alias bash/zsh command
-Set-Alias which get-command
-Set-Alias grep select-string
-If (Test-Path alias:cd)   {Remove-Item alias:cd}
-If (Test-Path alias:grep) {Remove-Item alias:grep}
-If (Test-Path alias:ls)   {Remove-Item alias:ls}
-If (Test-Path alias:rm)   {Remove-Item alias:rm}
+If (Test-Path alias:which)  {Remove-Item alias:which}
+If (Test-Path alias:cd)     {Remove-Item alias:cd}
+If (Test-Path alias:grep)   {Remove-Item alias:grep}
+If (Test-Path alias:ls)     {Remove-Item alias:ls}
+If (Test-Path alias:rm)     {Remove-Item alias:rm}
 Function cd {
   if ($args.count -gt 0) {
     Set-Location $($args)
@@ -194,6 +193,10 @@ Function uname {
     Get-WmiObject Win32_OperatingSystem
   }
   Get-PSDrive -PSProvider 'FileSystem'
+}
+Function which {
+  Get-Command -All $args
+  Get-Command -All -ShowCommandInfo $args
 }
 
 # Choco tab completion
