@@ -128,6 +128,11 @@ If (Test-Path alias:cd)     {Remove-Item alias:cd}
 If (Test-Path alias:grep)   {Remove-Item alias:grep}
 If (Test-Path alias:ls)     {Remove-Item alias:ls}
 If (Test-Path alias:rm)     {Remove-Item alias:rm}
+
+if (Get-Command curl.exe -errorAction SilentlyContinue) {
+    If (Test-Path alias:curl)  {Remove-Item alias:curl}
+}
+
 Function cd {
   if ($args.count -gt 0) {
     Set-Location $($args)
