@@ -200,8 +200,13 @@ Function uname {
   Get-PSDrive -PSProvider 'FileSystem'
 }
 Function which {
-  Get-Command -All $args
-  Get-Command -All -ShowCommandInfo $args
+  try {
+    Get-Command -All $args
+    Get-Command -All -ShowCommandInfo $args
+  } catch [Exception] {
+    # Old version doesn't support -All and -ShowCommandInfo
+    Get-Command $args
+  }
 }
 
 # Choco tab completion
