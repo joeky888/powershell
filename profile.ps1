@@ -344,6 +344,8 @@ if(Test-Path -Path "$env:ALLUSERSPROFILE\chocolatey\bin*") {
 
 if (Test-Path -Path "$env:USERPROFILE\.pythonrc") {
   $env:PYTHONSTARTUP = "$env:USERPROFILE\.pythonrc"
+} elseif (Test-Path -Path "$env:USERPROFILE\.pythonrc.py") {
+  $env:PYTHONSTARTUP = "$env:USERPROFILE\.pythonrc.py"
 }
 
 if(Test-Path -Path "$env:ALLUSERSPROFILE\Miniconda2*") {
