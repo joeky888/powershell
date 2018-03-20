@@ -200,12 +200,13 @@ Function uname {
   Get-PSDrive -PSProvider 'FileSystem'
 }
 Function which {
+  $cmd = $args
   try {
-    Get-Command -All $args
-    Get-Command -All -ShowCommandInfo $args
+    Get-Command -All $cmd
+    Get-Command -All -ShowCommandInfo $cmd
   } catch [Exception] {
     # Old version doesn't support -All and -ShowCommandInfo
-    Get-Command $args
+    Get-Command $cmd
   }
 }
 
