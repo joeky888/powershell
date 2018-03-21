@@ -461,6 +461,12 @@ if(Test-Path -Path "$env:ALLUSERSPROFILE\Miniconda3*") {
     Invoke-Expression "$env:ALLUSERSPROFILE\Anaconda3\Scripts\pip.exe install --upgrade https://github.com/requests/requests/archive/master.zip"
   }
 }
+if(Test-Path -Path "C:\Program Files\OpenSSH-Win64*") {
+  # choco install openssh
+  if($env:Path -NotLike "*C:\Program Files\OpenSSH-Win64*") {
+    $env:Path += ";C:\Program Files\OpenSSH-Win64"
+  }
+}
 if(Test-Path -Path "C:\Program Files\Sublime Text 3*") {
   # choco install sublimetext3
   if($env:Path -NotLike "*C:\Program Files\Sublime Text 3*") {
