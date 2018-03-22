@@ -195,6 +195,7 @@ Function uname {
     wmic path win32_VideoController get DriverVersion
   } catch [Exception] {
     # Older version of powershell doesn't support Get-CimInstance
+    systeminfo
     Get-WmiObject Win32_OperatingSystem
   }
   Get-PSDrive -PSProvider 'FileSystem'
