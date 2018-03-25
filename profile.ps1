@@ -350,27 +350,25 @@ Function getConda2path()
   return ""
 }
 
-Function setConda2Alias()
-{
-  $c2 = getConda2path
-  if ($c2 -ne "") {
-    $env:Path = "$c2;$env:Path"
-    $env:Path = "$c2\Scripts;$env:Path"
-    Set-Alias pip2 "$c2\Scripts\pip.exe"
-    Set-Alias conda2 "$c2\Scripts\conda.exe"
-    Set-Alias python2 "$c2\python.exe"
-    Function upgradeConda2 {
-      Invoke-Expression "$c2\Scripts\conda.exe update -n base conda -y"
-      Invoke-Expression "$c2\Scripts\conda.exe update --all --yes"
-    }
-    Function upgradePip2 {
-      Invoke-Expression "$c2\Scripts\pip.exe freeze -l > requirements.txt"
-      (Get-Content requirements.txt).replace('==', '>=') | Set-Content requirements.txt
-      Invoke-Expression "$c2\Scripts\pip.exe install -r requirements.txt --upgrade"
-      Remove-Item requirements.txt
-      Invoke-Expression "$c2\Scripts\pip.exe install --upgrade https://github.com/pyca/pyopenssl/archive/master.zip"
-      Invoke-Expression "$c2\Scripts\pip.exe install --upgrade https://github.com/requests/requests/archive/master.zip"
-    }
+
+$c2 = getConda2path
+if ($c2 -ne "") {
+  $env:Path = "$c2;$env:Path"
+  $env:Path = "$c2\Scripts;$env:Path"
+  Set-Alias pip2 "$c2\Scripts\pip.exe"
+  Set-Alias conda2 "$c2\Scripts\conda.exe"
+  Set-Alias python2 "$c2\python.exe"
+  Function upgradeConda2 {
+    Invoke-Expression "$c2\Scripts\conda.exe update -n base conda -y"
+    Invoke-Expression "$c2\Scripts\conda.exe update --all --yes"
+  }
+  Function upgradePip2 {
+    Invoke-Expression "$c2\Scripts\pip.exe freeze -l > requirements.txt"
+    (Get-Content requirements.txt).replace('==', '>=') | Set-Content requirements.txt
+    Invoke-Expression "$c2\Scripts\pip.exe install -r requirements.txt --upgrade"
+    Remove-Item requirements.txt
+    Invoke-Expression "$c2\Scripts\pip.exe install --upgrade https://github.com/pyca/pyopenssl/archive/master.zip"
+    Invoke-Expression "$c2\Scripts\pip.exe install --upgrade https://github.com/requests/requests/archive/master.zip"
   }
 }
 
@@ -385,32 +383,26 @@ Function getConda3path()
   return ""
 }
 
-Function setConda3Alias()
-{
-  $c3 = getConda3path
-  if ($c3 -ne "") {
-    $env:Path = "$c3;$env:Path"
-    $env:Path = "$c3\Scripts;$env:Path"
-    Set-Alias pip3 "$c3\Scripts\pip.exe"
-    Set-Alias conda3 "$c3\Scripts\conda.exe"
-    Set-Alias python3 "$c3\python.exe"
-    Function upgradeConda3 {
-      Invoke-Expression "$c3\Scripts\conda.exe update -n base conda -y"
-      Invoke-Expression "$c3\Scripts\conda.exe update --all --yes"
-    }
-    Function upgradePip3 {
-      Invoke-Expression "$c3\Scripts\pip.exe freeze -l > requirements.txt"
-      (Get-Content requirements.txt).replace('==', '>=') | Set-Content requirements.txt
-      Invoke-Expression "$c3\Scripts\pip.exe install -r requirements.txt --upgrade"
-      Remove-Item requirements.txt
-      Invoke-Expression "$c3\Scripts\pip.exe install --upgrade https://github.com/pyca/pyopenssl/archive/master.zip"
-      Invoke-Expression "$c3\Scripts\pip.exe install --upgrade https://github.com/requests/requests/archive/master.zip"
-    }
+$c3 = getConda3path
+if ($c3 -ne "") {
+  $env:Path = "$c3;$env:Path"
+  $env:Path = "$c3\Scripts;$env:Path"
+  Set-Alias pip3 "$c3\Scripts\pip.exe"
+  Set-Alias conda3 "$c3\Scripts\conda.exe"
+  Set-Alias python3 "$c3\python.exe"
+  Function upgradeConda3 {
+    Invoke-Expression "$c3\Scripts\conda.exe update -n base conda -y"
+    Invoke-Expression "$c3\Scripts\conda.exe update --all --yes"
+  }
+  Function upgradePip3 {
+    Invoke-Expression "$c3\Scripts\pip.exe freeze -l > requirements.txt"
+    (Get-Content requirements.txt).replace('==', '>=') | Set-Content requirements.txt
+    Invoke-Expression "$c3\Scripts\pip.exe install -r requirements.txt --upgrade"
+    Remove-Item requirements.txt
+    Invoke-Expression "$c3\Scripts\pip.exe install --upgrade https://github.com/pyca/pyopenssl/archive/master.zip"
+    Invoke-Expression "$c3\Scripts\pip.exe install --upgrade https://github.com/requests/requests/archive/master.zip"
   }
 }
-
-setConda2Alias
-setConda3Alias
 
 if(Test-Path -Path "C:\Program Files\OpenSSH-Win64") {
   # choco install openssh
