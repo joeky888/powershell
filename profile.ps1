@@ -391,14 +391,14 @@ Function setConda3Alias ()
   if ($c3 -ne "") {
     $env:Path = "$c3;$env:Path"
     $env:Path = "$c3;$env:Path"
-    Set-Alias pip2 "$c3\Scripts\pip.exe"
-    Set-Alias conda2 "$c3\Scripts\conda.exe"
-    Set-Alias python2 "$c3\python.exe"
-    Function upgradeConda2 {
+    Set-Alias pip3 "$c3\Scripts\pip.exe"
+    Set-Alias conda3 "$c3\Scripts\conda.exe"
+    Set-Alias python3 "$c3\python.exe"
+    Function upgradeConda3 {
       Invoke-Expression "$c3\Scripts\conda.exe update -n base conda -y"
       Invoke-Expression "$c3\Scripts\conda.exe update --all --yes"
     }
-    Function upgradePip2 {
+    Function upgradePip3 {
       Invoke-Expression "$c3\Scripts\pip.exe freeze -l > requirements.txt"
       (Get-Content requirements.txt).replace('==', '>=') | Set-Content requirements.txt
       Invoke-Expression "$c3\Scripts\pip.exe install -r requirements.txt --upgrade"
