@@ -350,7 +350,7 @@ Function getConda2path()
   return ""
 }
 
-Function setConda2Alias ()
+Function setConda2Alias()
 {
   $c2 = getConda2path
   if ($c2 -ne "") {
@@ -385,7 +385,7 @@ Function getConda3path()
   return ""
 }
 
-Function setConda3Alias ()
+Function setConda3Alias()
 {
   $c3 = getConda3path
   if ($c3 -ne "") {
@@ -408,6 +408,9 @@ Function setConda3Alias ()
     }
   }
 }
+
+setConda2Alias
+setConda3Alias
 
 if(Test-Path -Path "C:\Program Files\OpenSSH-Win64*") {
   # choco install openssh
