@@ -354,8 +354,8 @@ Function setConda2Alias()
 {
   $c2 = getConda2path
   if ($c2 -ne "") {
-    $env:Path += ";$c2"
-    $env:Path += ";$c2\Scripts"
+    $env:Path = "$c2;$env:Path"
+    $env:Path = "$c2\Scripts;$env:Path"
     Set-Alias pip2 "$c2\Scripts\pip.exe"
     Set-Alias conda2 "$c2\Scripts\conda.exe"
     Set-Alias python2 "$c2\python.exe"
@@ -389,8 +389,8 @@ Function setConda3Alias()
 {
   $c3 = getConda3path
   if ($c3 -ne "") {
-    $env:Path += ";$c3"
-    $env:Path += ";$c3\Scripts"
+    $env:Path = "$c3;$env:Path"
+    $env:Path = "$c3\Scripts;$env:Path"
     Set-Alias pip3 "$c3\Scripts\pip.exe"
     Set-Alias conda3 "$c3\Scripts\conda.exe"
     Set-Alias python3 "$c3\python.exe"
