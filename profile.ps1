@@ -326,7 +326,7 @@ Function MtuForWifiNormal {
   netsh interface ipv4 set subinterface Wi-Fi mtu=1500 store=persistent
 }
 
-if(Test-Path -Path "$env:ALLUSERSPROFILE\chocolatey\bin*") {
+if(Test-Path -Path "$env:ALLUSERSPROFILE\chocolatey\bin") {
   # Just in case
   if($env:Path -NotLike "*$env:ALLUSERSPROFILE\chocolatey\bin*") {
     $env:Path += ";$env:ALLUSERSPROFILE\chocolatey\bin"
@@ -342,11 +342,11 @@ if (Test-Path -Path "$env:USERPROFILE\.pythonrc") {
 Function getConda2path()
 {
   # choco install miniconda
-  if(Test-Path -Path "$env:ALLUSERSPROFILE\Miniconda2*")  { return "$env:ALLUSERSPROFILE\Miniconda2" }
-  if(Test-Path -Path "$env:ALLUSERSPROFILE\miniconda2*")  { return "$env:ALLUSERSPROFILE\miniconda2" }
-  if(Test-Path -Path "C:\ProgramData\Miniconda2*")        { return "C:\ProgramData\Miniconda2" }
-  if(Test-Path -Path "$env:ALLUSERSPROFILE\Anaconda2*")   { return "$env:ALLUSERSPROFILE\Anaconda2" }
-  if(Test-Path -Path "$env:ALLUSERSPROFILE\anaconda2*")   { return "$env:ALLUSERSPROFILE\anaconda2" }
+  if(Test-Path -Path "$env:ALLUSERSPROFILE\Miniconda2")  { return "$env:ALLUSERSPROFILE\Miniconda2" }
+  if(Test-Path -Path "$env:ALLUSERSPROFILE\miniconda2")  { return "$env:ALLUSERSPROFILE\miniconda2" }
+  if(Test-Path -Path "C:\ProgramData\Miniconda2")        { return "C:\ProgramData\Miniconda2" }
+  if(Test-Path -Path "$env:ALLUSERSPROFILE\Anaconda2")   { return "$env:ALLUSERSPROFILE\Anaconda2" }
+  if(Test-Path -Path "$env:ALLUSERSPROFILE\anaconda2")   { return "$env:ALLUSERSPROFILE\anaconda2" }
   return ""
 }
 
@@ -377,11 +377,11 @@ Function setConda2Alias()
 Function getConda3path()
 {
   # choco install miniconda3
-  if(Test-Path -Path "$env:ALLUSERSPROFILE\Miniconda3*")  { return "$env:ALLUSERSPROFILE\Miniconda3" }
-  if(Test-Path -Path "$env:ALLUSERSPROFILE\miniconda3*")  { return "$env:ALLUSERSPROFILE\miniconda3" }
-  if(Test-Path -Path "C:\ProgramData\Miniconda3*")        { return "C:\ProgramData\Miniconda3" }
-  if(Test-Path -Path "$env:ALLUSERSPROFILE\Anaconda3*")   { return "$env:ALLUSERSPROFILE\Anaconda3" }
-  if(Test-Path -Path "$env:ALLUSERSPROFILE\anaconda3*")   { return "$env:ALLUSERSPROFILE\anaconda3" }
+  if(Test-Path -Path "$env:ALLUSERSPROFILE\Miniconda3")  { return "$env:ALLUSERSPROFILE\Miniconda3" }
+  if(Test-Path -Path "$env:ALLUSERSPROFILE\miniconda3")  { return "$env:ALLUSERSPROFILE\miniconda3" }
+  if(Test-Path -Path "C:\ProgramData\Miniconda3")        { return "C:\ProgramData\Miniconda3" }
+  if(Test-Path -Path "$env:ALLUSERSPROFILE\Anaconda3")   { return "$env:ALLUSERSPROFILE\Anaconda3" }
+  if(Test-Path -Path "$env:ALLUSERSPROFILE\anaconda3")   { return "$env:ALLUSERSPROFILE\anaconda3" }
   return ""
 }
 
@@ -412,43 +412,43 @@ Function setConda3Alias()
 setConda2Alias
 setConda3Alias
 
-if(Test-Path -Path "C:\Program Files\OpenSSH-Win64*") {
+if(Test-Path -Path "C:\Program Files\OpenSSH-Win64") {
   # choco install openssh
   if($env:Path -NotLike "*C:\Program Files\OpenSSH-Win64*") {
     $env:Path += ";C:\Program Files\OpenSSH-Win64"
   }
 }
-if(Test-Path -Path "C:\Program Files\Sublime Text 3*") {
+if(Test-Path -Path "C:\Program Files\Sublime Text 3") {
   # choco install sublimetext3
   if($env:Path -NotLike "*C:\Program Files\Sublime Text 3*") {
     $env:Path += ";C:\Program Files\Sublime Text 3"
   }
 }
-if(Test-Path -Path "C:\Program Files\Sublime Text 2*") {
+if(Test-Path -Path "C:\Program Files\Sublime Text 2") {
   # choco install sublimetext2
   if($env:Path -NotLike "*C:\Program Files\Sublime Text 2*") {
     $env:Path += ";C:\Program Files\Sublime Text 2"
   }
 }
-if(Test-Path -Path "C:\Program Files\Microsoft VS Code*") {
+if(Test-Path -Path "C:\Program Files\Microsoft VS Code") {
   # VS code insider
   if($env:Path -NotLike "*C:\Program Files\Microsoft VS Code*") {
     $env:Path += ";C:\Program Files\Microsoft VS Code"
   }
 }
-if(Test-Path -Path "C:\Program Files\Microsoft VS Code Insiders*") {
+if(Test-Path -Path "C:\Program Files\Microsoft VS Code Insiders") {
   # VS code insider
   if($env:Path -NotLike "*C:\Program Files\Microsoft VS Code Insiders*") {
     $env:Path += ";C:\Program Files\Microsoft VS Code Insiders"
   }
 }
-if(Test-Path -Path "C:\Program Files\Nmap*") {
+if(Test-Path -Path "C:\Program Files\Nmap") {
   # choco install nmap
   if($env:Path -NotLike "*C:\Program Files\Nmap*") {
     $env:Path += ";C:\Program Files\Nmap"
   }
 }
-if(Test-Path -Path "C:\Program Files (x86)\Nmap*") {
+if(Test-Path -Path "C:\Program Files (x86)\Nmap") {
   # choco install nmap
   if($env:Path -NotLike "*C:\Program Files (x86)\Nmap*") {
     $env:Path += ";C:\Program Files (x86)\Nmap"
