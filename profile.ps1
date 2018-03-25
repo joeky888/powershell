@@ -339,155 +339,76 @@ if (Test-Path -Path "$env:USERPROFILE\.pythonrc") {
   $env:PYTHONSTARTUP = "$env:USERPROFILE\.pythonrc.py"
 }
 
-if(Test-Path -Path "$env:ALLUSERSPROFILE\Miniconda2*") {
+Function getConda2path()
+{
   # choco install miniconda
-  if($env:Path -NotLike "*$env:ALLUSERSPROFILE\Miniconda2*") {
-    $env:Path = "$env:ALLUSERSPROFILE\Miniconda2;$env:Path"
-    $env:Path = "$env:ALLUSERSPROFILE\Miniconda2\Scripts;$env:Path"
-  }
-  Set-Alias pip2 $env:ALLUSERSPROFILE\Miniconda2\Scripts\pip.exe
-  Set-Alias conda2 $env:ALLUSERSPROFILE\Miniconda2\Scripts\conda.exe
-  Set-Alias python2 $env:ALLUSERSPROFILE\Miniconda2\python.exe
-  Function upgradeConda2 {
-    Invoke-Expression "$env:ALLUSERSPROFILE\Miniconda2\Scripts\conda.exe update -n base conda -y"
-    Invoke-Expression "$env:ALLUSERSPROFILE\Miniconda2\Scripts\conda.exe update --all --yes"
-  }
-  Function upgradePip2 {
-    Invoke-Expression "$env:ALLUSERSPROFILE\Miniconda2\Scripts\pip.exe freeze -l > requirements.txt"
-    (Get-Content requirements.txt).replace('==', '>=') | Set-Content requirements.txt
-    Invoke-Expression "$env:ALLUSERSPROFILE\Miniconda2\Scripts\pip.exe install -r requirements.txt --upgrade"
-    Remove-Item requirements.txt
-    Invoke-Expression "$env:ALLUSERSPROFILE\Miniconda2\Scripts\pip.exe install --upgrade https://github.com/pyca/pyopenssl/archive/master.zip"
-    Invoke-Expression "$env:ALLUSERSPROFILE\Miniconda2\Scripts\pip.exe install --upgrade https://github.com/requests/requests/archive/master.zip"
-  }
-} elseif(Test-Path -Path "$env:ALLUSERSPROFILE\miniconda2*") {
-  # choco install miniconda
-  if($env:Path -NotLike "*$env:ALLUSERSPROFILE\miniconda2*") {
-    $env:Path = "$env:ALLUSERSPROFILE\miniconda2;$env:Path"
-    $env:Path = "$env:ALLUSERSPROFILE\miniconda2\Scripts;$env:Path"
-  }
-  Set-Alias pip2 $env:ALLUSERSPROFILE\miniconda2\Scripts\pip.exe
-  Set-Alias conda2 $env:ALLUSERSPROFILE\miniconda2\Scripts\conda.exe
-  Set-Alias python2 $env:ALLUSERSPROFILE\miniconda2\python.exe
-  Function upgradeConda2 {
-    Invoke-Expression "$env:ALLUSERSPROFILE\miniconda2\Scripts\conda.exe update -n base conda -y"
-    Invoke-Expression "$env:ALLUSERSPROFILE\miniconda2\Scripts\conda.exe update --all --yes"
-  }
-  Function upgradePip2 {
-    Invoke-Expression "$env:ALLUSERSPROFILE\miniconda2\Scripts\pip.exe freeze -l > requirements.txt"
-    (Get-Content requirements.txt).replace('==', '>=') | Set-Content requirements.txt
-    Invoke-Expression "$env:ALLUSERSPROFILE\miniconda2\Scripts\pip.exe install -r requirements.txt --upgrade"
-    Remove-Item requirements.txt
-    Invoke-Expression "$env:ALLUSERSPROFILE\miniconda2\Scripts\pip.exe install --upgrade https://github.com/pyca/pyopenssl/archive/master.zip"
-    Invoke-Expression "$env:ALLUSERSPROFILE\miniconda2\Scripts\pip.exe install --upgrade https://github.com/requests/requests/archive/master.zip"
-  }
-} elseif(Test-Path -Path "C:\ProgramData\Miniconda2*") {
-  # choco install miniconda
-  if($env:Path -NotLike "*C:\ProgramData\Miniconda2*") {
-    $env:Path = "C:\ProgramData\Miniconda2;$env:Path"
-    $env:Path = "C:\ProgramData\Miniconda2\Scripts;$env:Path"
-  }
-  Set-Alias pip2 C:\ProgramData\Miniconda2\Scripts\pip.exe
-  Set-Alias conda2 C:\ProgramData\Miniconda2\Scripts\conda.exe
-  Set-Alias python2 C:\ProgramData\Miniconda2\python.exe
-  Function upgradeConda2 {
-    Invoke-Expression "C:\ProgramData\Miniconda2\Scripts\conda.exe update -n base conda -y"
-    Invoke-Expression "C:\ProgramData\Miniconda2\Scripts\conda.exe update --all --yes"
-  }
-  Function upgradePip2 {
-    Invoke-Expression "C:\ProgramData\Miniconda2\Scripts\pip.exe freeze -l > requirements.txt"
-    (Get-Content requirements.txt).replace('==', '>=') | Set-Content requirements.txt
-    Invoke-Expression "C:\ProgramData\Miniconda2\Scripts\pip.exe install -r requirements.txt --upgrade"
-    Remove-Item requirements.txt
-    Invoke-Expression "C:\ProgramData\Miniconda2\Scripts\pip.exe install --upgrade https://github.com/pyca/pyopenssl/archive/master.zip"
-    Invoke-Expression "C:\ProgramData\Miniconda2\Scripts\pip.exe install --upgrade https://github.com/requests/requests/archive/master.zip"
-  }
-} elseif(Test-Path -Path "$env:ALLUSERSPROFILE\Anaconda2*") {
-  # choco install miniconda
-  if($env:Path -NotLike "*$env:ALLUSERSPROFILE\Anaconda2*") {
-    $env:Path = "$env:ALLUSERSPROFILE\Anaconda2;$env:Path"
-    $env:Path = "$env:ALLUSERSPROFILE\Anaconda2\Scripts;$env:Path"
-  }
-  Set-Alias pip2 $env:ALLUSERSPROFILE\Anaconda2\Scripts\pip.exe
-  Set-Alias conda2 $env:ALLUSERSPROFILE\Anaconda2\Scripts\conda.exe
-  Set-Alias python2 $env:ALLUSERSPROFILE\Anaconda2\python.exe
-  Function upgradeConda2 {
-    Invoke-Expression "$env:ALLUSERSPROFILE\Anaconda2\Scripts\conda.exe update -n base conda -y"
-    Invoke-Expression "$env:ALLUSERSPROFILE\Anaconda2\Scripts\conda.exe update --all --yes"
-  }
-  Function upgradePip2 {
-    Invoke-Expression "$env:ALLUSERSPROFILE\Anaconda2\Scripts\pip.exe freeze -l > requirements.txt"
-    (Get-Content requirements.txt).replace('==', '>=') | Set-Content requirements.txt
-    Invoke-Expression "$env:ALLUSERSPROFILE\Anaconda2\Scripts\pip.exe install -r requirements.txt --upgrade"
-    Remove-Item requirements.txt
-    Invoke-Expression "$env:ALLUSERSPROFILE\Anaconda2\Scripts\pip.exe install --upgrade https://github.com/pyca/pyopenssl/archive/master.zip"
-    Invoke-Expression "$env:ALLUSERSPROFILE\Anaconda2\Scripts\pip.exe install --upgrade https://github.com/requests/requests/archive/master.zip"
+  if(Test-Path -Path "$env:ALLUSERSPROFILE\Miniconda2*")  { return "$env:ALLUSERSPROFILE\Miniconda2" }
+  if(Test-Path -Path "$env:ALLUSERSPROFILE\miniconda2*")  { return "$env:ALLUSERSPROFILE\miniconda2" }
+  if(Test-Path -Path "C:\ProgramData\Miniconda2*")        { return "C:\ProgramData\Miniconda2" }
+  if(Test-Path -Path "$env:ALLUSERSPROFILE\Anaconda2*")   { return "$env:ALLUSERSPROFILE\Anaconda2" }
+  if(Test-Path -Path "$env:ALLUSERSPROFILE\anaconda2*")   { return "$env:ALLUSERSPROFILE\anaconda2" }
+  return ""
+}
+
+Function setConda2Alias ()
+{
+  $c2 = getConda2path
+  if ($c2 -ne "") {
+    $env:Path = "$c2;$env:Path"
+    $env:Path = "$c2;$env:Path"
+    Set-Alias pip2 "$c2\Scripts\pip.exe"
+    Set-Alias conda2 "$c2\Scripts\conda.exe"
+    Set-Alias python2 "$c2\python.exe"
+    Function upgradeConda2 {
+      Invoke-Expression "$c2\Scripts\conda.exe update -n base conda -y"
+      Invoke-Expression "$c2\Scripts\conda.exe update --all --yes"
+    }
+    Function upgradePip2 {
+      Invoke-Expression "$c2\Scripts\pip.exe freeze -l > requirements.txt"
+      (Get-Content requirements.txt).replace('==', '>=') | Set-Content requirements.txt
+      Invoke-Expression "$c2\Scripts\pip.exe install -r requirements.txt --upgrade"
+      Remove-Item requirements.txt
+      Invoke-Expression "$c2\Scripts\pip.exe install --upgrade https://github.com/pyca/pyopenssl/archive/master.zip"
+      Invoke-Expression "$c2\Scripts\pip.exe install --upgrade https://github.com/requests/requests/archive/master.zip"
+    }
   }
 }
-if(Test-Path -Path "$env:ALLUSERSPROFILE\Miniconda3*") {
-  # choco install miniconda3
-  if($env:Path -NotLike "*$env:ALLUSERSPROFILE\Miniconda3*") {
-    $env:Path += ";$env:ALLUSERSPROFILE\Miniconda3"
-    $env:Path += ";$env:ALLUSERSPROFILE\Miniconda3\Scripts"
-  }
-  Set-Alias pip3 $env:ALLUSERSPROFILE\Miniconda3\Scripts\pip.exe
-  Set-Alias conda3 $env:ALLUSERSPROFILE\Miniconda3\Scripts\conda.exe
-  Set-Alias python3 $env:ALLUSERSPROFILE\Miniconda3\python.exe
-  Function upgradeConda3 {
-    Invoke-Expression "$env:ALLUSERSPROFILE\Miniconda3\Scripts\conda.exe update -n base conda -y"
-    Invoke-Expression "$env:ALLUSERSPROFILE\Miniconda3\Scripts\conda.exe update --all --yes"
-  }
-  Function upgradePip3 {
-    Invoke-Expression "$env:ALLUSERSPROFILE\Miniconda3\Scripts\pip.exe freeze -l > requirements.txt"
-    (Get-Content requirements.txt).replace('==', '>=') | Set-Content requirements.txt
-    Invoke-Expression "$env:ALLUSERSPROFILE\Miniconda3\Scripts\pip.exe install -r requirements.txt --upgrade"
-    Remove-Item requirements.txt
-    Invoke-Expression "$env:ALLUSERSPROFILE\Miniconda3\Scripts\pip.exe install --upgrade https://github.com/pyca/pyopenssl/archive/master.zip"
-    Invoke-Expression "$env:ALLUSERSPROFILE\Miniconda3\Scripts\pip.exe install --upgrade https://github.com/requests/requests/archive/master.zip"
-  }
-} elseif(Test-Path -Path "$env:ALLUSERSPROFILE\miniconda3*") {
-  # choco install miniconda3
-  if($env:Path -NotLike "*$env:ALLUSERSPROFILE\miniconda3*") {
-    $env:Path += ";$env:ALLUSERSPROFILE\miniconda3"
-    $env:Path += ";$env:ALLUSERSPROFILE\miniconda3\Scripts"
-  }
-  Set-Alias pip3 $env:ALLUSERSPROFILE\miniconda3\Scripts\pip.exe
-  Set-Alias conda3 $env:ALLUSERSPROFILE\miniconda3\Scripts\conda.exe
-  Set-Alias python3 $env:ALLUSERSPROFILE\miniconda3\python.exe
-  Function upgradeConda3 {
-    Invoke-Expression "$env:ALLUSERSPROFILE\miniconda3\Scripts\conda.exe update -n base conda -y"
-    Invoke-Expression "$env:ALLUSERSPROFILE\miniconda3\Scripts\conda.exe update --all --yes"
-  }
-  Function upgradePip3 {
-    Invoke-Expression "$env:ALLUSERSPROFILE\miniconda3\Scripts\pip.exe freeze -l > requirements.txt"
-    (Get-Content requirements.txt).replace('==', '>=') | Set-Content requirements.txt
-    Invoke-Expression "$env:ALLUSERSPROFILE\miniconda3\Scripts\pip.exe install -r requirements.txt --upgrade"
-    Remove-Item requirements.txt
-    Invoke-Expression "$env:ALLUSERSPROFILE\miniconda3\Scripts\pip.exe install --upgrade https://github.com/pyca/pyopenssl/archive/master.zip"
-    Invoke-Expression "$env:ALLUSERSPROFILE\miniconda3\Scripts\pip.exe install --upgrade https://github.com/requests/requests/archive/master.zip"
-  }
-} elseif(Test-Path -Path "$env:ALLUSERSPROFILE\Anaconda3*") {
-  # choco install miniconda3
-  if($env:Path -NotLike "*$env:ALLUSERSPROFILE\Anaconda3*") {
-    $env:Path += ";$env:ALLUSERSPROFILE\Anaconda3"
-    $env:Path += ";$env:ALLUSERSPROFILE\Anaconda3\Scripts"
-  }
-  Set-Alias pip3 $env:ALLUSERSPROFILE\Anaconda3\Scripts\pip.exe
-  Set-Alias conda3 $env:ALLUSERSPROFILE\Anaconda3\Scripts\conda.exe
-  Set-Alias python3 $env:ALLUSERSPROFILE\Anaconda3\python.exe
-  Function upgradeConda3 {
-    Invoke-Expression "$env:ALLUSERSPROFILE\Anaconda3\Scripts\conda.exe update -n base conda -y"
-    Invoke-Expression "$env:ALLUSERSPROFILE\Anaconda3\Scripts\conda.exe update --all --yes"
-  }
-  Function upgradePip3 {
-    Invoke-Expression "$env:ALLUSERSPROFILE\Anaconda3\Scripts\pip.exe freeze -l > requirements.txt"
-    (Get-Content requirements.txt).replace('==', '>=') | Set-Content requirements.txt
-    Invoke-Expression "$env:ALLUSERSPROFILE\Anaconda3\Scripts\pip.exe install -r requirements.txt --upgrade"
-    Remove-Item requirements.txt
-    Invoke-Expression "$env:ALLUSERSPROFILE\Anaconda3\Scripts\pip.exe install --upgrade https://github.com/pyca/pyopenssl/archive/master.zip"
-    Invoke-Expression "$env:ALLUSERSPROFILE\Anaconda3\Scripts\pip.exe install --upgrade https://github.com/requests/requests/archive/master.zip"
+
+Function getConda3path()
+{
+  # choco install miniconda
+  if(Test-Path -Path "$env:ALLUSERSPROFILE\Miniconda3*")  { return "$env:ALLUSERSPROFILE\Miniconda3" }
+  if(Test-Path -Path "$env:ALLUSERSPROFILE\miniconda3*")  { return "$env:ALLUSERSPROFILE\miniconda3" }
+  if(Test-Path -Path "C:\ProgramData\Miniconda3*")        { return "C:\ProgramData\Miniconda3" }
+  if(Test-Path -Path "$env:ALLUSERSPROFILE\Anaconda3*")   { return "$env:ALLUSERSPROFILE\Anaconda3" }
+  if(Test-Path -Path "$env:ALLUSERSPROFILE\anaconda3*")   { return "$env:ALLUSERSPROFILE\anaconda3" }
+  return ""
+}
+
+Function setConda3Alias ()
+{
+  $c3 = getConda3path
+  if ($c3 -ne "") {
+    $env:Path = "$2;$env:Path"
+    $env:Path = "$2;$env:Path"
+    Set-Alias pip2 "$c3\Scripts\pip.exe"
+    Set-Alias conda2 "$c3\Scripts\conda.exe"
+    Set-Alias python2 "$c3\python.exe"
+    Function upgradeConda2 {
+      Invoke-Expression "$c3\Scripts\conda.exe update -n base conda -y"
+      Invoke-Expression "$c3\Scripts\conda.exe update --all --yes"
+    }
+    Function upgradePip2 {
+      Invoke-Expression "$c3\Scripts\pip.exe freeze -l > requirements.txt"
+      (Get-Content requirements.txt).replace('==', '>=') | Set-Content requirements.txt
+      Invoke-Expression "$c3\Scripts\pip.exe install -r requirements.txt --upgrade"
+      Remove-Item requirements.txt
+      Invoke-Expression "$c3\Scripts\pip.exe install --upgrade https://github.com/pyca/pyopenssl/archive/master.zip"
+      Invoke-Expression "$c3\Scripts\pip.exe install --upgrade https://github.com/requests/requests/archive/master.zip"
+    }
   }
 }
+
 if(Test-Path -Path "C:\Program Files\OpenSSH-Win64*") {
   # choco install openssh
   if($env:Path -NotLike "*C:\Program Files\OpenSSH-Win64*") {
