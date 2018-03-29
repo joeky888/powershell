@@ -54,7 +54,7 @@ if(!(Split-Path -parent $path) -or !(Test-Path -pathType Container (Split-Path -
 
 | Command           | Action                                                                                    | Description |
 | ----------------- | ----------------------------------------------------------------------------------------- | ----------- |
-| upgradeProfile    | 升級 [這個檔案](profile.ps1)       | Windows8+ only |
+| upgradeProfile    | 升級 [這個檔案](profile.ps1)                                                              |  |
 
 ## 額外的 Linux 指令
 
