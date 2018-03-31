@@ -345,11 +345,15 @@ if (Test-Path -Path "$env:USERPROFILE\.pythonrc") {
 Function getConda2path()
 {
   # choco install miniconda
-  if(Test-Path -Path "$env:ALLUSERSPROFILE\Miniconda2")  { return "$env:ALLUSERSPROFILE\Miniconda2" }
-  if(Test-Path -Path "$env:ALLUSERSPROFILE\miniconda2")  { return "$env:ALLUSERSPROFILE\miniconda2" }
-  if(Test-Path -Path "C:\ProgramData\Miniconda2")        { return "C:\ProgramData\Miniconda2" }
-  if(Test-Path -Path "$env:ALLUSERSPROFILE\Anaconda2")   { return "$env:ALLUSERSPROFILE\Anaconda2" }
-  if(Test-Path -Path "$env:ALLUSERSPROFILE\anaconda2")   { return "$env:ALLUSERSPROFILE\anaconda2" }
+  if(Test-Path -Path "C:\ProgramData\Miniconda2")         { return "C:\ProgramData\Miniconda2" }
+  if(Test-Path -Path "$env:ALLUSERSPROFILE\Miniconda2")   { return "$env:ALLUSERSPROFILE\Miniconda2" }
+  if(Test-Path -Path "$env:ALLUSERSPROFILE\miniconda2")   { return "$env:ALLUSERSPROFILE\miniconda2" }
+  if(Test-Path -Path "$env:ALLUSERSPROFILE\Anaconda2")    { return "$env:ALLUSERSPROFILE\Anaconda2" }
+  if(Test-Path -Path "$env:ALLUSERSPROFILE\anaconda2")    { return "$env:ALLUSERSPROFILE\anaconda2" }
+  if(Test-Path -Path "$env:LOCALAPPDATA\Continuum\Miniconda2")   { return "$env:LOCALAPPDATA\Continuum\Miniconda2" }
+  if(Test-Path -Path "$env:LOCALAPPDATA\Continuum\miniconda2")   { return "$env:LOCALAPPDATA\Continuum\miniconda2" }
+  if(Test-Path -Path "$env:LOCALAPPDATA\Continuum\Anaconda2")    { return "$env:LOCALAPPDATA\Continuum\Anaconda2" }
+  if(Test-Path -Path "$env:LOCALAPPDATA\Continuum\anaconda2")    { return "$env:LOCALAPPDATA\Continuum\anaconda2" }
   return ""
 }
 
@@ -378,11 +382,15 @@ if ($c2 -ne "") {
 Function getConda3path()
 {
   # choco install miniconda3
-  if(Test-Path -Path "$env:ALLUSERSPROFILE\Miniconda3")  { return "$env:ALLUSERSPROFILE\Miniconda3" }
-  if(Test-Path -Path "$env:ALLUSERSPROFILE\miniconda3")  { return "$env:ALLUSERSPROFILE\miniconda3" }
-  if(Test-Path -Path "C:\ProgramData\Miniconda3")        { return "C:\ProgramData\Miniconda3" }
-  if(Test-Path -Path "$env:ALLUSERSPROFILE\Anaconda3")   { return "$env:ALLUSERSPROFILE\Anaconda3" }
-  if(Test-Path -Path "$env:ALLUSERSPROFILE\anaconda3")   { return "$env:ALLUSERSPROFILE\anaconda3" }
+  if(Test-Path -Path "C:\ProgramData\Miniconda3")         { return "C:\ProgramData\Miniconda3" }
+  if(Test-Path -Path "$env:ALLUSERSPROFILE\Miniconda3")   { return "$env:ALLUSERSPROFILE\Miniconda3" }
+  if(Test-Path -Path "$env:ALLUSERSPROFILE\miniconda3")   { return "$env:ALLUSERSPROFILE\miniconda3" }
+  if(Test-Path -Path "$env:ALLUSERSPROFILE\Anaconda3")    { return "$env:ALLUSERSPROFILE\Anaconda3" }
+  if(Test-Path -Path "$env:ALLUSERSPROFILE\anaconda3")    { return "$env:ALLUSERSPROFILE\anaconda3" }
+  if(Test-Path -Path "$env:LOCALAPPDATA\Continuum\Miniconda3")  { return "$env:LOCALAPPDATA\Continuum\Miniconda3" }
+  if(Test-Path -Path "$env:LOCALAPPDATA\Continuum\miniconda3")  { return "$env:LOCALAPPDATA\Continuum\miniconda3" }
+  if(Test-Path -Path "$env:LOCALAPPDATA\Continuum\Anaconda3")   { return "$env:LOCALAPPDATA\Continuum\Anaconda3" }
+  if(Test-Path -Path "$env:LOCALAPPDATA\Continuum\anaconda3")   { return "$env:LOCALAPPDATA\Continuum\anaconda3" }
   return ""
 }
 
