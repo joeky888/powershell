@@ -242,6 +242,7 @@ Function upgradeYou-get {
   pip3 install --upgrade https://github.com/soimort/you-get/archive/develop.zip
 }
 Function upgradePip {
+  pip install --upgrade pip
   pip freeze -l > requirements.txt
   (Get-Content requirements.txt).replace('==', '>=') | Set-Content requirements.txt
   pip install -r requirements.txt --upgrade
