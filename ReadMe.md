@@ -1,4 +1,4 @@
-![PS](https://i.imgur.com/onDinT2.png)
+![PS](https://i.imgur.com/XvmjtdT.png)
 
 [中文說明](ReadMe-zh.md)
 
