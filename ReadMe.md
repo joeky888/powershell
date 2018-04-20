@@ -14,8 +14,10 @@ Features
 
 The code is under Public-domain licence.
 
-Install for Windows 8+ (Copy all and paste to powershell, then press Enter)
-====
+## Install for Windows 8+
+
+Copy all and paste to powershell, then press Enter
+
 ```sh
 # Install this config, Open powershell (as administrator)
 Set-ExecutionPolicy RemoteSigned -Force
@@ -24,8 +26,10 @@ Invoke-WebRequest https://raw.githubusercontent.com/j16180339887/powershell/mast
 Unblock-File $Profile.CurrentUserAllHosts
 ```
 
-Install for Windows XP and Windows 7 (Copy all and paste to powershell, then press Enter)
-=====
+## Install for Windows XP and Windows 7
+
+Copy all and paste to powershell, then press Enter
+
 ```sh
 # Open powershell (as administrator)
 Set-ExecutionPolicy RemoteSigned -Force
