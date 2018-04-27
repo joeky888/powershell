@@ -231,6 +231,11 @@ Function upgradeModule {
   Update-Module
 }
 
+Function upgradeScoop {
+  scoop update
+  scoop update *
+}
+
 # Command to upgrade all Conda packages
 Function upgradeConda {
   conda update -n base conda -y
