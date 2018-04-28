@@ -97,32 +97,65 @@ if (Get-Command Set-PSReadlineOption -errorAction SilentlyContinue)
   Set-PSReadlineOption -TokenKind Member    -ForegroundColor White
 }
 
-Function Prompt {
-  try {
-   Write-Host  "$([Char]9581)$([Char]9472)" -NoNewline
-  } catch [Exception] {
-    # Older version of powershell doesn't support special characters
-  }
-  Write-Host  " $env:username " -NoNewline -BackgroundColor Red -ForegroundColor White
-  If (([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole(`
-    [Security.Principal.WindowsBuiltInRole] "Administrator")) {
-    Write-Host  "(Admin)" -NoNewline -BackgroundColor Yellow -ForegroundColor Black
-  }
-  Write-Host " " -NoNewline -BackgroundColor Black
-  Write-Host " $env:computername " -NoNewline -BackgroundColor DarkGreen -ForegroundColor White
-  Write-Host " " -NoNewline -BackgroundColor Black
-  # Use full path since it's easier to understand for newbies
+if ($host.name -eq 'ConsoleHost') # Powershell
+{
+  Function Prompt {
+    try {
+     Write-Host  "$([Char]9581)$([Char]9472)" -NoNewline
+    } catch [Exception] {
+      # Older version of powershell doesn't support special characters
+    }
+    Write-Host  " $env:username " -NoNewline -BackgroundColor Red -ForegroundColor White
+    If (([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole(`
+      [Security.Principal.WindowsBuiltInRole] "Administrator")) {
+      Write-Host  "(Admin)" -NoNewline -BackgroundColor Yellow -ForegroundColor Black
+    }
+    Write-Host " " -NoNewline -BackgroundColor Black
+    Write-Host " $env:computername " -NoNewline -BackgroundColor DarkGreen -ForegroundColor White
+    Write-Host " " -NoNewline -BackgroundColor Black
+    # Use full path since it's easier to understand for newbies
 #   Write-Host "$PWD".Replace("$HOME", "~") -ForegroundColor Yellow
-  Write-Host " $PWD " -BackgroundColor Cyan -ForegroundColor Black
-  Write-Host "" -NoNewline -BackgroundColor Black -ForegroundColor White
-  try {
-   Write-Host  "$([Char]9584)$([Char]9472)" -NoNewline
-  } catch [Exception] {
-    # Older version of powershell doesn't support special characters
+    Write-Host " $PWD " -BackgroundColor Cyan -ForegroundColor Black
+    Write-Host "" -NoNewline -BackgroundColor Black -ForegroundColor White
+    try {
+     Write-Host  "$([Char]9584)$([Char]9472)" -NoNewline
+    } catch [Exception] {
+      # Older version of powershell doesn't support special characters
+    }
+    Write-Host "$" -NoNewline
+    Return " "
   }
-  Write-Host "$" -NoNewline
-  Return " "
 }
+else # Powershell ISE
+{
+  Function Prompt {
+    try {
+     Write-Host  "$([Char]9581)$([Char]9472)" -NoNewline
+    } catch [Exception] {
+      # Older version of powershell doesn't support special characters
+    }
+    Write-Host  "$env:username" -NoNewline -ForegroundColor Red
+    If (([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole(`
+      [Security.Principal.WindowsBuiltInRole] "Administrator")) {
+      Write-Host  "(Admin)" -NoNewline -ForegroundColor Yellow
+    }
+    Write-Host "@" -NoNewline
+    Write-Host "$env:computername" -NoNewline -ForegroundColor Green
+    Write-Host " " -NoNewline
+    # Use full path since it's easier to understand for newbies
+#   Write-Host "$PWD".Replace("$HOME", "~") -ForegroundColor Yellow
+    Write-Host "$PWD" -ForegroundColor Cyan
+    try {
+     Write-Host  "$([Char]9584)$([Char]9472)" -NoNewline
+    } catch [Exception] {
+      # Older version of powershell doesn't support special characters
+    }
+    Write-Host "$" -NoNewline
+    Return " "
+  }
+}
+
+
 
 # alias bash/zsh command
 If (Test-Path alias:which)  {Remove-Item alias:which}
