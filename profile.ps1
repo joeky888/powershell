@@ -363,8 +363,11 @@ Function Reset-Networking-Per10m {
   }
 }
 
+Function MtuForStatus {
+  netsh interface ipv4 show subinterfaces
+}
 Function MtuForWifiGaming {
-  netsh interface ipv4 set subinterface Wi-Fi mtu=296  store=persistent
+  netsh interface ipv4 set subinterface Wi-Fi mtu=296  store=active
 }
 Function MtuForWifiNormal {
   netsh interface ipv4 set subinterface Wi-Fi mtu=1500 store=persistent

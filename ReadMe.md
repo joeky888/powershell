@@ -96,6 +96,7 @@ PowerShellGet\Install-Module -Scope CurrentUser posh-docker
 | upgradeProfile    | Upgrade [this file](profile.ps1)                                                          | |
 | upgradeChoco      | Upgrade all installed choco packages                                                      | |
 | upgradeModule     | Upgrade all installed Modules from Powershell Gallery                                     | |
+| upgradeScoop      | Upgrade all installed Scooop packages                                                     | |
 | upgradeConda      | Upgrade all Anaconda/Miniconda packages                                                   | |
 | upgradeConda2     | Upgrade all Miniconda2 packages                                                           | choco install miniconda2 |
 | upgradeConda3     | Upgrade all Miniconda3 packages                                                           | choco install miniconda3 |
@@ -104,7 +105,8 @@ PowerShellGet\Install-Module -Scope CurrentUser posh-docker
 | upgradePip3       | Upgrade all pip3 packages                                                                 | choco install miniconda3 |
 | upgradeNpm        | Upgrade all npm global packages                                                           | choco install nodejs |
 | upgradeVimrc      | Upgrade [vimrc](https://github.com/j16180339887/vimrc) file                               | |
-| MtuForWifiGaming  | Network MTU value for better gaming experience                                            | MTU = 296 |
+| MtuForStatus      | Network MTU values                                                                        | |
+| MtuForWifiGaming  | Network MTU value for better gaming experience (until next reboot)                        | MTU = 296 |
 | MtuForWifiNormal  | Network MTU value reset                                                                   | MTU = 1500 |
 | Reset-Networking  | Reset all network cache                                                                   | Useful when internet is broken |
 | python2           | C:\ProgramData\Miniconda2\python.exe                                                      | choco install miniconda2 |
