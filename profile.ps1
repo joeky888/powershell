@@ -186,7 +186,11 @@ Function grep {
   }
 }
 Function ls {
-  Get-ChildItem -Force $args
+  if ($args.count -gt 0) {
+    Get-ChildItem $($args)
+  } else {
+    Get-ChildItem -Force | Select-Object Mode, LastWriteTime,Name, @{Name="Size";Expression={Format-FileSize($_.Length)}}
+  }
 }
 Function rm {
   $numOfArgs = $args.Length
@@ -227,6 +231,15 @@ Function which {
     # Old version doesn't support -All and -ShowCommandInfo
     Get-Command $cmd
   }
+}
+Function Format-FileSize() {
+    Param ([int]$size)
+    If     ($size -gt 1TB) {[string]::Format("{0:0.00} TB", $size / 1TB)}
+    ElseIf ($size -gt 1GB) {[string]::Format("{0:0.00} GB", $size / 1GB)}
+    ElseIf ($size -gt 1MB) {[string]::Format("{0:0.00} MB", $size / 1MB)}
+    ElseIf ($size -gt 1KB) {[string]::Format("{0:0.00} kB", $size / 1KB)}
+    ElseIf ($size -gt 0)   {[string]::Format("{0:0.00} B", $size)}
+    Else                   {""}
 }
 
 # Choco tab completion
