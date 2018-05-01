@@ -1,4 +1,4 @@
-![PS](https://i.imgur.com/XvmjtdT.png)
+![PS](https://i.imgur.com/onDinT2.png)
 
 中文版的說明比較簡潔，且不會時常更新
 
