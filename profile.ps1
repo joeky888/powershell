@@ -375,7 +375,7 @@ Function Reset-Networking-Per10m {
   }
 }
 
-Function MtuForStatus {
+Function MtuStatus {
   netsh interface ipv4 show subinterfaces
 }
 Function MtuForWifiGaming {
