@@ -293,7 +293,12 @@ Function upgradeVimrc {
 }
 
 Function gvim {
-  $Commandvim = "$env:ALLUSERSPROFILE\chocolatey\bin\gvim.exe"
+  $Commandvim = ""
+  if (Test-Path -Path "$env:ALLUSERSPROFILE\chocolatey\bin\gvim.exe") {
+    $Commandvim = "$env:ALLUSERSPROFILE\chocolatey\bin\gvim.exe"
+  } elseif (Test-Path -Path "$env:USERPROFILE\scoop\shims\gvim.exe") {
+    $Commandvim = "$env:USERPROFILE\scoop\shims\gvim.exe"
+  }
   $Parmsvim = ""
   if ($args.count -gt 0) {
     $Parmsvim = "-p --remote-tab-silent $args"
