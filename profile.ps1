@@ -152,12 +152,25 @@ Function grep {
   }
 }
 Function ls {
-  if ($args.count -gt 0) {
-    Get-ChildItem $($args)
-  } else {
-#     Get-ChildItem -Force | Select-Object Mode, LastWriteTime,Name, @{Name="Size";Expression={Format-FileSize($_.Length)}}
-    Get-ChildItem -Force | Select-Object Mode, Name, @{Name="Size";Expression={Format-FileSize($_.Length)}}
+  $files = Invoke-Expression "Get-ChildItem -Force '$args'"
+
+  ForEach ($file in $files) {
+      Write-Host $file.Mode -NoNewline -ForegroundColor Cyan
+      Write-Host " " -NoNewline
+      if ($file.Mode -match '^d') {
+        Write-Host $file.Name -NoNewline -ForegroundColor Green
+        Write-Host "/" -NoNewline -ForegroundColor Green
+      } else {
+        Write-Host $file.Name -NoNewline -ForegroundColor Gray
+      }
+      Write-Host " " -NoNewline
+      Write-Host $(Format-FileSize($file.Length)) -ForegroundColor Red
   }
+#     Get-ChildItem -Force | Select-Object Mode, LastWriteTime,Name, @{Name="Size";Expression={Format-FileSize($_.Length)}}
+    # $_ is class of system.io.fileinfo, see doc of dotnet
+#     Get-ChildItem -Force |
+#     Format-Table @{Name="Name"; Expression={Color-FileName($_)}; Alignment="Left"},
+#     @{Name="Size"; Expression={Format-FileSize($_.Length)}; Alignment="Right"}
 }
 Function rm {
   $numOfArgs = $args.Length
@@ -200,13 +213,13 @@ Function which {
   }
 }
 Function Format-FileSize() {
-    Param ([int]$size)
-    If     ($size -gt 1TB) {[string]::Format("{0:0.00} TB", $size / 1TB)}
-    ElseIf ($size -gt 1GB) {[string]::Format("{0:0.00} GB", $size / 1GB)}
-    ElseIf ($size -gt 1MB) {[string]::Format("{0:0.00} MB", $size / 1MB)}
-    ElseIf ($size -gt 1KB) {[string]::Format("{0:0.00} kB", $size / 1KB)}
-    ElseIf ($size -gt 0)   {[string]::Format("{0:0.00} B", $size)}
-    Else                   {""}
+  Param ([int64]$size)
+  If     ($size -gt 1TB) {[string]::Format("{0:0.00} TB", $size / 1TB)}
+  ElseIf ($size -gt 1GB) {[string]::Format("{0:0.00} GB", $size / 1GB)}
+  ElseIf ($size -gt 1MB) {[string]::Format("{0:0.00} MB", $size / 1MB)}
+  ElseIf ($size -gt 1KB) {[string]::Format("{0:0.00} kB", $size / 1KB)}
+  ElseIf ($size -gt 0)   {[string]::Format("{0:0.00} B", $size)}
+  Else                   {""}
 }
 
 # Choco tab completion
