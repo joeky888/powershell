@@ -155,7 +155,8 @@ Function ls {
   if ($args.count -gt 0) {
     Get-ChildItem $($args)
   } else {
-    Get-ChildItem -Force | Select-Object Mode, LastWriteTime,Name, @{Name="Size";Expression={Format-FileSize($_.Length)}}
+#     Get-ChildItem -Force | Select-Object Mode, LastWriteTime,Name, @{Name="Size";Expression={Format-FileSize($_.Length)}}
+    Get-ChildItem -Force | Select-Object Mode, Name, @{Name="Size";Expression={Format-FileSize($_.Length)}}
   }
 }
 Function rm {
