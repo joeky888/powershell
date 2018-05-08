@@ -155,16 +155,20 @@ Function ls {
   $files = Invoke-Expression "Get-ChildItem -Force '$args'"
 
   ForEach ($file in $files) {
+      $isFolder = $file.Mode -match '^d'
       Write-Host $file.Mode -NoNewline -ForegroundColor Cyan
       Write-Host " " -NoNewline
-      if ($file.Mode -match '^d') {
+      if ($isFolder) {
         Write-Host $file.Name -NoNewline -ForegroundColor Green
         Write-Host "/" -NoNewline -ForegroundColor Green
       } else {
         Write-Host $file.Name -NoNewline -ForegroundColor Gray
       }
       Write-Host " " -NoNewline
-      Write-Host $(Format-FileSize($file.Length)) -ForegroundColor Red
+      if(!$isFolder) {
+        Write-Host $(Format-FileSize($file.Length)) -NoNewline -ForegroundColor Red
+      }
+      Write-Host ""
   }
 #     Get-ChildItem -Force | Select-Object Mode, LastWriteTime,Name, @{Name="Size";Expression={Format-FileSize($_.Length)}}
     # $_ is class of system.io.fileinfo, see doc of dotnet
