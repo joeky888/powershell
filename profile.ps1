@@ -70,8 +70,8 @@ if (Get-Command Set-PSReadlineKeyHandler -errorAction SilentlyContinue)
     $clipboard = Get-Clipboard -Raw
     if ($clipboard -match '^http') {
       $clipboard = $clipboard -replace "&","``&"
-      $clipboard = $clipboard -replace "(","``("
-      $clipboard = $clipboard -replace ")","``)"
+      $clipboard = $clipboard -replace "\(","``("
+      $clipboard = $clipboard -replace "\)","``)"
       $clipboard = $clipboard -replace "$","``$"
       $clipboard = $clipboard -replace ",","``,"
     }
