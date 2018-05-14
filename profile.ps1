@@ -68,7 +68,13 @@ if (Get-Command Set-PSReadlineKeyHandler -errorAction SilentlyContinue)
   }
   Set-PSReadlineKeyHandler -Chord Ctrl+V -ScriptBlock {
     $clipboard = Get-Clipboard -Raw
-    $clipboard = $clipboard -replace "&","``&"
+    if ($clipboard -match '^http') {
+      $clipboard = $clipboard -replace "&","``&"
+      $clipboard = $clipboard -replace "(","``("
+      $clipboard = $clipboard -replace ")","``)"
+      $clipboard = $clipboard -replace "$","``$"
+      $clipboard = $clipboard -replace ",","``,"
+    }
     [Microsoft.PowerShell.PSConsoleReadLine]::Insert($clipboard)
   }
 }
