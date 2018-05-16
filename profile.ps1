@@ -452,64 +452,19 @@ if ($c3 -ne "") {
   }
 }
 
-if(Test-Path -Path "C:\Program Files\7-Zip") {
-  # 7zip
-  if($env:Path -NotLike "*C:\Program Files\7-Zip*") {
-    $env:Path += ";C:\Program Files\7-Zip"
+Function Set-EnvPath($path) {
+  if((Test-Path -Path "$path") -and ($env:Path -NotLike "*$path*")) {
+      $env:Path += ";$path"
   }
 }
-if(Test-Path -Path "C:\Program Files\OpenSSH-Win64") {
-  # choco install openssh
-  if($env:Path -NotLike "*C:\Program Files\OpenSSH-Win64*") {
-    $env:Path += ";C:\Program Files\OpenSSH-Win64"
-  }
-}
-if(Test-Path -Path "C:\Program Files\Sublime Text 3") {
-  # choco install sublimetext3
-  if($env:Path -NotLike "*C:\Program Files\Sublime Text 3*") {
-    $env:Path += ";C:\Program Files\Sublime Text 3"
-  }
-}
-if(Test-Path -Path "C:\Program Files\Sublime Text 2") {
-  # choco install sublimetext2
-  if($env:Path -NotLike "*C:\Program Files\Sublime Text 2*") {
-    $env:Path += ";C:\Program Files\Sublime Text 2"
-  }
-}
-if(Test-Path -Path "C:\Program Files\Microsoft VS Code") {
-  # VS code insider
-  if($env:Path -NotLike "*C:\Program Files\Microsoft VS Code*") {
-    $env:Path += ";C:\Program Files\Microsoft VS Code"
-  }
-}
-if(Test-Path -Path "C:\Program Files\Microsoft VS Code Insiders") {
-  # VS code insider
-  if($env:Path -NotLike "*C:\Program Files\Microsoft VS Code Insiders*") {
-    $env:Path += ";C:\Program Files\Microsoft VS Code Insiders"
-  }
-}
-if(Test-Path -Path "C:\Program Files\Nmap") {
-  # choco install nmap
-  if($env:Path -NotLike "*C:\Program Files\Nmap*") {
-    $env:Path += ";C:\Program Files\Nmap"
-  }
-}
-if(Test-Path -Path "C:\Program Files (x86)\Nmap") {
-  # choco install nmap
-  if($env:Path -NotLike "*C:\Program Files (x86)\Nmap*") {
-    $env:Path += ";C:\Program Files (x86)\Nmap"
-  }
-}
-if (Test-Path -Path "C:\zulu"){
-  # Download openjdk from Zulu
-  $env:JAVA_HOME="C:\zulu"
-  if($env:Path -NotLike "*C:\zulu\bin*") {
-    $env:Path += ";C:\zulu\bin"
-  }
-}
-if (Test-Path -Path "C:\Program Files\Oracle\VirtualBox"){
-  # choco install virtualbox
-  if($env:Path -NotLike "*C:\Program Files\Oracle\VirtualBox*") {
-    $env:Path += ";C:\Program Files\Oracle\VirtualBox"
-  }
-}
+
+Set-EnvPath("C:\Program Files\7-Zip")
+Set-EnvPath("C:\Program Files\OpenSSH-Win64")
+Set-EnvPath("C:\Program Files\Sublime Text 3")
+Set-EnvPath("C:\Program Files\Sublime Text 2")
+Set-EnvPath("C:\Program Files\Microsoft VS Code")
+Set-EnvPath("C:\Program Files\Microsoft VS Code Insiders")
+Set-EnvPath("C:\Program Files\Nmap")
+Set-EnvPath("C:\Program Files (x86)\Nmap")
+Set-EnvPath("C:\zulu")
+Set-EnvPath("C:\Program Files\Oracle\VirtualBox")
