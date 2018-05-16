@@ -452,6 +452,12 @@ if ($c3 -ne "") {
   }
 }
 
+if(Test-Path -Path "C:\Program Files\7-Zip") {
+  # 7zip
+  if($env:Path -NotLike "*C:\Program Files\7-Zip*") {
+    $env:Path += ";C:\Program Files\7-Zip"
+  }
+}
 if(Test-Path -Path "C:\Program Files\OpenSSH-Win64") {
   # choco install openssh
   if($env:Path -NotLike "*C:\Program Files\OpenSSH-Win64*") {
