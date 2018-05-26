@@ -1,4 +1,4 @@
-![PS](https://i.imgur.com/onDinT2.png)
+![PS](https://i.imgur.com/gjjWnCi.png)
 
 中文版的說明比較簡潔，且不會時常更新
 
@@ -6,6 +6,7 @@
 =====
 * 沒有插件，只有一個檔案需要下載
 * 預設啟動的路徑為桌面
+* 顯示當前 Git 分支
 * 智慧的 tab 補全
 * 支援 Powershell ISE
 * 支援 Powershell 2 以上 (Windows XP+)

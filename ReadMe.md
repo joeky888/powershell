@@ -1,4 +1,4 @@
-![PS](https://i.imgur.com/onDinT2.png)
+![PS](https://i.imgur.com/gjjWnCi.png)
 
 [中文說明](ReadMe-zh.md)
 
@@ -7,6 +7,7 @@ Features
 * No plugins, just one file
 * Fast
 * Default startup directory is Desktop
+* Git current branch
 * Zsh-like Tab-Completion
 * Powershell ISE supported
 * Runs on Powershell >= 2.0 (Windows XP+)
