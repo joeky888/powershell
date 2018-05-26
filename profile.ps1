@@ -104,10 +104,10 @@ if (Get-Command Set-PSReadlineOption -errorAction SilentlyContinue)
 Function Prompt {
   try {
    Write-Host  "$([Char]9581)$([Char]9472)" -NoNewline
-  } catch [Exception] {
-    # Older version of powershell doesn't support special characters
-  }
+  } catch [Exception] { <# Older version of powershell doesn't support special characters #> }
+
   Write-Host  "$env:username" -NoNewline -ForegroundColor Red
+
   If (([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole(`
     [Security.Principal.WindowsBuiltInRole] "Administrator")) {
     Write-Host  "(Admin)" -NoNewline -ForegroundColor Yellow
@@ -116,13 +116,19 @@ Function Prompt {
   Write-Host "$env:computername" -NoNewline -ForegroundColor Green
   Write-Host " " -NoNewline
   # Use full path since it's easier to understand for newbies
-#   Write-Host "$PWD".Replace("$HOME", "~") -ForegroundColor Yellow
-  Write-Host "$PWD" -ForegroundColor Cyan
+  # Write-Host "$PWD".Replace("$HOME", "~") -ForegroundColor Yellow
+  Write-Host "$PWD" -ForegroundColor Cyan -NoNewline
   try {
-   Write-Host  "$([Char]9584)$([Char]9472)" -NoNewline
-  } catch [Exception] {
-    # Older version of powershell doesn't support special characters
-  }
+    if (-not ([string]::IsNullOrEmpty($(git rev-parse --git-dir)))){
+        Write-Host " * $(git rev-parse --abbrev-ref HEAD)" -NoNewline -ForegroundColor Yellow
+    }
+  } catch [Exception] { <# Not in git directory or git is not installed #> }
+
+  Write-Host ""
+
+  try {
+    Write-Host  "$([Char]9584)$([Char]9472)" -NoNewline
+  } catch [Exception] { <# Older version of powershell doesn't support special characters #> }
   Write-Host "$" -NoNewline
   Return " "
 }
