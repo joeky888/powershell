@@ -170,8 +170,7 @@ Function ls {
       Write-Host $file.Mode -NoNewline -ForegroundColor Cyan
       Write-Host " " -NoNewline
       if ($isFolder) {
-        Write-Host $file.Name -NoNewline -ForegroundColor Green
-        Write-Host "/" -NoNewline -ForegroundColor Green
+        Write-Host "$file.Name/" -NoNewline -ForegroundColor Green
       } else {
         Write-Host $file.Name -NoNewline -ForegroundColor Gray
       }
@@ -181,11 +180,6 @@ Function ls {
       }
       Write-Host ""
   }
-#     Get-ChildItem -Force | Select-Object Mode, LastWriteTime,Name, @{Name="Size";Expression={Format-FileSize($_.Length)}}
-    # $_ is class of system.io.fileinfo, see doc of dotnet
-#     Get-ChildItem -Force |
-#     Format-Table @{Name="Name"; Expression={Color-FileName($_)}; Alignment="Left"},
-#     @{Name="Size"; Expression={Format-FileSize($_.Length)}; Alignment="Right"}
 }
 Function rm {
   $numOfArgs = $args.Length
@@ -368,8 +362,7 @@ Function Reset-Networking {
   netsh winsock reset
 }
 Function Reset-Networking-Per10m {
-  while($true)
-  {
+  while($true) {
     Reset-Networking
     Start-Sleep -s 600
   }
@@ -383,13 +376,6 @@ Function MtuForWifiGaming {
 }
 Function MtuForWifiNormal {
   netsh interface ipv4 set subinterface Wi-Fi mtu=1500 store=persistent
-}
-
-if(Test-Path -Path "$env:ALLUSERSPROFILE\chocolatey\bin") {
-  # Just in case
-  if($env:Path -NotLike "*$env:ALLUSERSPROFILE\chocolatey\bin*") {
-    $env:Path += ";$env:ALLUSERSPROFILE\chocolatey\bin"
-  }
 }
 
 if (Test-Path -Path "$env:USERPROFILE\.pythonrc") {
@@ -464,6 +450,7 @@ Function Set-EnvPath($path) {
   }
 }
 
+Set-EnvPath("$env:ALLUSERSPROFILE\chocolatey\bin")
 Set-EnvPath("C:\Program Files\7-Zip")
 Set-EnvPath("C:\Program Files\OpenSSH-Win64")
 Set-EnvPath("C:\Program Files\Sublime Text 3")
