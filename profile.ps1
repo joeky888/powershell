@@ -170,7 +170,8 @@ Function ls {
       Write-Host $file.Mode -NoNewline -ForegroundColor Cyan
       Write-Host " " -NoNewline
       if ($isFolder) {
-        Write-Host "$file.Name/" -NoNewline -ForegroundColor Green
+        Write-Host $file.Name -NoNewline -ForegroundColor Green
+        Write-Host "/" -NoNewline -ForegroundColor Green
       } else {
         Write-Host $file.Name -NoNewline -ForegroundColor Gray
       }
