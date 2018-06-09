@@ -79,7 +79,7 @@ if (Get-Command Set-PSReadlineKeyHandler -errorAction SilentlyContinue)
 }
 
 
-# Set default starting path to USERPROFILE
+# Set default starting path to Desktop
 Set-Location $([Environment]::GetFolderPath("Desktop"))
 
 # Theme
@@ -294,6 +294,9 @@ Function upgradePip {
 }
 Function upgradeNpm {
   npm update -g
+}
+Function upgradeGo {
+  go get -insecure -v -u all
 }
 Function upgradeProfile {
   $url = "https://raw.githubusercontent.com/j16180339887/powershell/master/profile.ps1"
