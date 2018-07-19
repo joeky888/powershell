@@ -139,11 +139,18 @@ If (Test-Path alias:cd)     {Remove-Item alias:cd}
 If (Test-Path alias:grep)   {Remove-Item alias:grep}
 If (Test-Path alias:ls)     {Remove-Item alias:ls}
 If (Test-Path alias:rm)     {Remove-Item alias:rm}
+If (Test-Path alias:cat)    {Remove-Item alias:cat}
 
 if (Get-Command curl.exe -errorAction SilentlyContinue) {
     If (Test-Path alias:curl)  {Remove-Item alias:curl}
 }
 
+Function cat {
+  $numOfArgs = $args.Length
+  for ($i=0; $i -lt $numOfArgs; $i++) {
+    Get-Content -encoding utf8 $($args[$i])
+  }
+}
 Function cd {
   if ($args.count -gt 0) {
     Set-Location $($args)
