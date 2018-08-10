@@ -45,7 +45,7 @@ if(!(Split-Path -parent $path) -or !(Test-Path -pathType Container (Split-Path -
 | Keys      | Action                                                | Description |
 | --------- | ----------------------------------------------------- | ----------- |
 | Ctrl C    | 複製/撤銷 當前指令                                    | |
-| Ctrl V    | 貼上                                                  | 自動跳脫 & 符號 |
+| Ctrl V    | 貼上                                                  | |
 | Ctrl D    | 關閉 Powershell                                       | |
 | Ctrl Z    | Undo                                                  | |
 | Ctrl Y    | Redo                                                  | |

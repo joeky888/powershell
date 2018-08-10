@@ -68,7 +68,7 @@ PowerShellGet\Install-Module -Scope CurrentUser posh-docker
 | Ctrl E    | Move cursor to the end of the line                    | Just like macOS and terminals |
 | Ctrl C    | Copy/Cancel command                                   | |
 | Ctrl X    | Cut                                                   | |
-| Ctrl V    | Paste                                                 | Escape &(ampersand) character |
+| Ctrl V    | Paste                                                 | |
 | Ctrl D    | Exit                                                  | |
 | Ctrl K    | Kill whole line                                       | Just like nano |
 | Ctrl F    | Run current command forever                           | |
@@ -88,7 +88,7 @@ PowerShellGet\Install-Module -Scope CurrentUser posh-docker
 | ↑         | Previous command in history                           | |
 | ↓         | Next command in history                               | |
 | Ctrl Backspace    |  Delete a word backward                       | |
-| Shift+Insert      |  Paste                                        | |
+| Shift+Insert      |  Paste                                        | Paste raw data from clipboard |
 
 ## Extra commands
 
