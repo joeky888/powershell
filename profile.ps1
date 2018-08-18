@@ -77,6 +77,16 @@ if (Get-Command Set-PSReadlineKeyHandler -errorAction SilentlyContinue)
     }
     [Microsoft.PowerShell.PSConsoleReadLine]::Insert($clipboard)
   }
+  Set-PSReadlineKeyHandler -Key Enter -ScriptBlock {
+    $line = $null
+    $cursor = $null
+    [Microsoft.PowerShell.PSConsoleReadLine]::GetBufferState([ref]$line, [ref]$cursor)
+    [Microsoft.PowerShell.PSConsoleReadLine]::RevertLine()
+    $line = $line -replace " \\`n"," ```n"
+    $line = $line -replace " \\`r"," ```r"
+    [Microsoft.PowerShell.PSConsoleReadLine]::Insert($line)
+    [Microsoft.PowerShell.PSConsoleReadLine]::AcceptLine()
+  }
 }
 
 
