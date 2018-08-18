@@ -82,8 +82,8 @@ if (Get-Command Set-PSReadlineKeyHandler -errorAction SilentlyContinue)
     $cursor = $null
     [Microsoft.PowerShell.PSConsoleReadLine]::GetBufferState([ref]$line, [ref]$cursor)
     [Microsoft.PowerShell.PSConsoleReadLine]::RevertLine()
-    $line = $line -replace " \\`n"," ```n"
-    $line = $line -replace " \\`r"," ```r"
+    $line = $line -replace " \\\s*`n"," ```n"
+    $line = $line -replace " \\\s*`r"," ```r"
     [Microsoft.PowerShell.PSConsoleReadLine]::Insert($line)
     [Microsoft.PowerShell.PSConsoleReadLine]::AcceptLine()
   }
