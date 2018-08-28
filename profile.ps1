@@ -317,7 +317,7 @@ Function upgradeGo {
   go get -insecure -v -u all
 }
 Function upgradeProfile {
-  $url = "https://raw.githubusercontent.com/j16180339887/powershell/master/profile.ps1"
+  $url = "https://raw.githubusercontent.com/joeky888/powershell/master/profile.ps1"
   $path = $Profile.CurrentUserAllHosts
 
   if(!(Split-Path -parent $path) -or !(Test-Path -pathType Container (Split-Path -parent $path))) {
@@ -327,7 +327,7 @@ Function upgradeProfile {
   (New-Object System.Net.WebClient).DownloadFile($url, $path)
 }
 Function upgradeVimrc {
-  $url = "https://raw.githubusercontent.com/j16180339887/vimrc/master/.vimrc"
+  $url = "https://raw.githubusercontent.com/joeky888/vimrc/master/.vimrc"
   $path = "$env:USERPROFILE\.vimrc"
 
   if(!(Split-Path -parent $path) -or !(Test-Path -pathType Container (Split-Path -parent $path))) {
