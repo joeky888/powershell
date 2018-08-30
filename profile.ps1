@@ -489,7 +489,7 @@ Set-EnvPath("C:\Program Files\Nmap")
 Set-EnvPath("C:\Program Files (x86)\Nmap")
 Set-EnvPath("C:\zulu")
 Set-EnvPath("C:\Program Files\Oracle\VirtualBox")
-Set-EnvPath("$env:USERPROFILE\\scoop\\\shims")
+Set-EnvPath("$env:USERPROFILE\scoop\shims")
 Set-EnvPath("$env:LOCALAPPDATA\Android\sdk\platform-tools")
 
 # Move Windows path to end
