@@ -140,7 +140,9 @@ Function Prompt {
   try {
     Write-Host  "$([Char]9584)$([Char]9472)" -NoNewline
   } catch [Exception] { <# Older version of powershell doesn't support special characters #> }
-  Write-Host "$" -NoNewline
+  Write-Host ">" -NoNewline -ForegroundColor Red
+  Write-Host ">" -NoNewline -ForegroundColor Yellow
+  Write-Host ">" -NoNewline -ForegroundColor Green
   Return " "
 }
 
@@ -472,7 +474,7 @@ if ($c3 -ne "") {
 
 Function Set-EnvPath($path) {
   if((Test-Path -Path "$path") -and ($env:Path -NotLike "*$path*")) {
-      $env:Path += ";$path"
+      $env:Path = "$path;$env:Path"
   }
 }
 
@@ -489,3 +491,15 @@ Set-EnvPath("C:\zulu")
 Set-EnvPath("C:\Program Files\Oracle\VirtualBox")
 Set-EnvPath("$env:USERPROFILE\\scoop\\\shims")
 Set-EnvPath("$env:LOCALAPPDATA\Android\sdk\platform-tools")
+
+# Move Windows path to end
+$winpath=""
+$nonwinpath=""
+ForEach ($path in ${env:PATH}.Split(';')) {
+  if($path -match '.*windows.*') {
+    $winpath = $winpath + $path + ";"
+  } else {
+    $nonwinpath = $nonwinpath + $path + ";"
+  }
+}
+$env:PATH = $nonwinpath + $winpath
