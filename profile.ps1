@@ -295,7 +295,7 @@ Function upgradeScoop {
 # Command to upgrade all Conda packages
 Function upgradeConda {
   conda update -n base conda -y
-  conda update --all --yes
+  conda update --no-channel-priority --all --yes
 }
 Function upgradeYoutube-dl {
   pip3 install --upgrade https://github.com/rg3/youtube-dl/archive/master.zip
@@ -437,7 +437,7 @@ if ($c2 -ne "") {
   Set-Alias python2 "$c2\python.exe"
   Function upgradeConda2 {
     Invoke-Expression "$c2\Scripts\conda.exe update -n base conda -y"
-    Invoke-Expression "$c2\Scripts\conda.exe update --all --yes"
+    Invoke-Expression "$c2\Scripts\conda.exe update --no-channel-priority --all --yes"
   }
   Function upgradePip2 {
     Invoke-Expression "$c2\Scripts\pip.exe install --upgrade pip"
@@ -459,7 +459,7 @@ if ($c3 -ne "") {
   Set-Alias python3 "$c3\python.exe"
   Function upgradeConda3 {
     Invoke-Expression "$c3\Scripts\conda.exe update -n base conda -y"
-    Invoke-Expression "$c3\Scripts\conda.exe update --all --yes"
+    Invoke-Expression "$c3\Scripts\conda.exe update --no-channel-priority --all --yes"
   }
   Function upgradePip3 {
     Invoke-Expression "$c3\Scripts\pip.exe install --upgrade pip"
