@@ -290,6 +290,7 @@ Function upgradeModule {
 Function upgradeScoop {
   scoop update
   scoop update *
+  scoop cleanup *
 }
 
 # Command to upgrade all Conda packages
