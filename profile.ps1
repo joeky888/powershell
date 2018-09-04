@@ -190,10 +190,19 @@ Function ls {
       Write-Host $file.Mode -NoNewline -ForegroundColor Cyan
       Write-Host " " -NoNewline
       if ($isFolder) {
-        Write-Host $file.Name -NoNewline -ForegroundColor Green
+        try {
+          Write-Host $file.Name -NoNewline -ForegroundColor Green
+        } catch [Exception] {
+          Write-Host "XXXXXXXXXXXX" -NoNewline -ForegroundColor Green
+        }
         Write-Host "/" -NoNewline -ForegroundColor Green
+
       } else {
-        Write-Host $file.Name -NoNewline -ForegroundColor Gray
+        try {
+          Write-Host $file.Name -NoNewline -ForegroundColor Gray
+        } catch [Exception] {
+          Write-Host "XXXXXXXXXXXX" -NoNewline -ForegroundColor Gray
+        }
       }
       Write-Host " " -NoNewline
       if(!$isFolder) {
