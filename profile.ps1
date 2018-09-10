@@ -434,6 +434,8 @@ Function getCondaPath($i)
   if(Test-Path -Path "$env:LOCALAPPDATA\Continuum\miniconda$i")   { return "$env:LOCALAPPDATA\Continuum\miniconda$i" }
   if(Test-Path -Path "$env:LOCALAPPDATA\Continuum\Anaconda$i")    { return "$env:LOCALAPPDATA\Continuum\Anaconda$i" }
   if(Test-Path -Path "$env:LOCALAPPDATA\Continuum\anaconda$i")    { return "$env:LOCALAPPDATA\Continuum\anaconda$i" }
+  if(Test-Path -Path "$env:USERPROFILE\scoop\apps\miniconda$i\current")   { return "$env:USERPROFILE\scoop\apps\miniconda$i\current" }
+  if(Test-Path -Path "$env:USERPROFILE\scoop\apps\anaconda$i\current")    { return "$env:USERPROFILE\scoop\apps\anaconda$i\current" }
   return ""
 }
 
