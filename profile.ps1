@@ -182,7 +182,13 @@ Function grep {
     Get-ChildItem -Recurse -Force | Where-Object { $_.fullname -NotLike "*.git\*" } | Select-String $args | Select Path, LineNumber, Line | Format-List
   }
 }
+$env:joekyls = $true
 Function ls {
+  if (-not $env:joekyls) {
+    Get-ChildItem -Force
+    return
+  }
+
   $files = Invoke-Expression "Get-ChildItem -Force '$args'"
 
   ForEach ($file in $files) {
@@ -194,6 +200,7 @@ Function ls {
           Write-Host $file.Name -NoNewline -ForegroundColor Green
         } catch [Exception] {
           Write-Host "XXXXXXXXXXXX" -NoNewline -ForegroundColor Green
+          $env:joekyls = $false
         }
         Write-Host "/" -NoNewline -ForegroundColor Green
 
@@ -202,6 +209,7 @@ Function ls {
           Write-Host $file.Name -NoNewline -ForegroundColor Gray
         } catch [Exception] {
           Write-Host "XXXXXXXXXXXX" -NoNewline -ForegroundColor Gray
+          $env:joekyls = $false
         }
       }
       Write-Host " " -NoNewline
