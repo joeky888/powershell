@@ -45,6 +45,10 @@ if(!(Split-Path -parent $path) -or !(Test-Path -pathType Container (Split-Path -
 (New-Object System.Net.WebClient).DownloadFile($url, $path)
 ```
 
+## Install theme
+
+See https://github.com/joeky888/MonoKombat.cmd
+
 ## Install chocolatey and chocolatey packages (Recommend)
 
 ```sh

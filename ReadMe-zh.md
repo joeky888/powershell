@@ -42,6 +42,10 @@ if(!(Split-Path -parent $path) -or !(Test-Path -pathType Container (Split-Path -
 (New-Object System.Net.WebClient).DownloadFile($url, $path)
 ```
 
+## 安裝主題
+
+見 https://github.com/joeky888/MonoKombat.cmd
+
 | Keys      | Action                                                | Description |
 | --------- | ----------------------------------------------------- | ----------- |
 | Ctrl C    | 複製/撤銷 當前指令                                    | |
