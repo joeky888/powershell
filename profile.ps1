@@ -511,6 +511,7 @@ Set-EnvPath("C:\zulu")
 Set-EnvPath("C:\Program Files\Oracle\VirtualBox")
 Set-EnvPath("$env:USERPROFILE\scoop\shims")
 Set-EnvPath("$env:LOCALAPPDATA\Android\sdk\platform-tools")
+Set-EnvPath("$env:USERPROFILE\go\bin")
 
 # Move Windows path to end
 $winpath=""
