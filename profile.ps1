@@ -269,6 +269,15 @@ Function Format-FileSize() {
   Else                   {""}
 }
 
+Function chmod777() {
+  $f = $args
+  $numOfArgs = $f.Length
+  for ($i=0; $i -lt $numOfArgs; $i++) {
+    # Remove trailing "\" of the folder name
+    icacls.exe $($f[$i] -replace "\\$") /grant Users:F
+  }
+}
+
 # Choco tab completion
 $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
 if (Test-Path($ChocolateyProfile)) {

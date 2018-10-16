@@ -130,6 +130,7 @@ PowerShellGet\Install-Module -Scope CurrentUser posh-docker
 | grep              | Search a string in current folder or stdout pipeline                                      | `grep TODO` or `echo hi \| grep h`  |
 | touch             | Create an empty file                                                                      | `touch 1.txt`  |
 | uname             | System Information                                                                        | `uname`        |
+| chmod777          | Like chmod 777                                                                            | `chmod777` file.txt        |
 
 ## Extra Environment variables
 
