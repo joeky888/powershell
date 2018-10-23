@@ -73,6 +73,7 @@ if (Get-Command Set-PSReadlineKeyHandler -errorAction SilentlyContinue)
 #       $clipboard = $clipboard -replace "\(","``("
 #       $clipboard = $clipboard -replace "\)","``)"
 #       $clipboard = $clipboard -replace ",","``,"
+        $clipboard = $clipboard.Trim()
         $clipboard = "'${clipboard}'"
     }
     [Microsoft.PowerShell.PSConsoleReadLine]::Insert($clipboard)
