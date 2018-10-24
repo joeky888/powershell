@@ -53,7 +53,6 @@ See https://github.com/joeky888/MonoKombat.cmd
 
 ```sh
 # Open powershell (as administrator)
-Set-ExecutionPolicy Bypass -Scope Process
 Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 choco install 7zip vim-tux.portable git poshgit aria2 miniconda miniconda3 ffmpeg youtube-dl -y
 ```
