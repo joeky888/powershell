@@ -174,7 +174,7 @@ Function cd {
   }
 }
 Function find {
-  Get-ChildItem -Recurse -Force -Filter "*$args*" | Where-Object { $_.fullname -NotLike "*.git\*" }
+  (Get-ChildItem -Recurse -Force -Filter "*$args*" | Where-Object { $_.fullname -NotLike "*.git\*" }).fullname
 }
 Function grep {
   $pipeline = $input | Out-String -stream
