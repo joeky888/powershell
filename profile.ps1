@@ -338,6 +338,9 @@ Function upgradeNpm {
 Function upgradeGo {
   go get -insecure -v -u all
 }
+Function upgradeAnnie {
+  go get -insecure -v -u github.com/iawia002/annie
+}
 Function upgradeProfile {
   $url = "https://raw.githubusercontent.com/joeky888/powershell/master/profile.ps1"
   $path = $Profile.CurrentUserAllHosts
