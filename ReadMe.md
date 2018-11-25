@@ -119,6 +119,8 @@ PowerShellGet\Install-Module -Scope CurrentUser posh-docker
 | conda3            | C:\ProgramData\Miniconda3\Scripts\conda.exe                                               | choco install miniconda3 |
 | pip2              | C:\ProgramData\Miniconda2\Scripts\pip.exe                                                 | choco install miniconda2 |
 | pip3              | C:\ProgramData\Miniconda3\Scripts\pip.exe                                                 | choco install miniconda3 |
+| Find-RegKey       | Find a key in regedit recursively                                                         | Find-RegKey "some key" |
+| Find-RegValue     | Find a value in regedit recursively                                                       | Find-RegKey "some value" |
 
 ## Extra Linux commands
 

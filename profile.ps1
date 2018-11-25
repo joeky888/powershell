@@ -270,6 +270,22 @@ Function Format-FileSize() {
   ElseIf ($size -gt 0)   {[string]::Format("{0:0.00} B", $size)}
   Else                   {""}
 }
+Function Find-RegKey() {
+  $key = $args
+  Get-ChildItem -path Registry::HKEY_CLASSES_ROOT -Recurse -ErrorAction SilentlyContinue | where { $_.Name -like "*$($key)*" }
+  Get-ChildItem -path Registry::HKEY_CURRENT_USER -Recurse -ErrorAction SilentlyContinue | where { $_.Name -like "*$($key)*" }
+  Get-ChildItem -path Registry::HKEY_LOCAL_MACHINE -Recurse -ErrorAction SilentlyContinue | where { $_.Name -like "*$($key)*" }
+  Get-ChildItem -path Registry::HKEY_USERS -Recurse -ErrorAction SilentlyContinue | where { $_.Name -like "*$($key)*" }
+  Get-ChildItem -path Registry::HKEY_CURRENT_CONFIG -Recurse -ErrorAction SilentlyContinue | where { $_.Name -like "*$($key)*" }
+}
+Function Find-RegValue() {
+  $value = $args
+  Get-ChildItem -path Registry::HKEY_CLASSES_ROOT -Recurse -ErrorAction SilentlyContinue | where { $_.Property -like "*$($value)*" }
+  Get-ChildItem -path Registry::HKEY_CURRENT_USER -Recurse -ErrorAction SilentlyContinue | where { $_.Property -like "*$($value)*" }
+  Get-ChildItem -path Registry::HKEY_LOCAL_MACHINE -Recurse -ErrorAction SilentlyContinue | where { $_.Property -like "*$($value)*" }
+  Get-ChildItem -path Registry::HKEY_USERS -Recurse -ErrorAction SilentlyContinue | where { $_.Property -like "*$($value)*" }
+  Get-ChildItem -path Registry::HKEY_CURRENT_CONFIG -Recurse -ErrorAction SilentlyContinue | where { $_.Property -like "*$($value)*" }
+}
 
 # Choco tab completion
 $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
