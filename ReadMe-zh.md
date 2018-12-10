@@ -86,4 +86,4 @@ if(!(Split-Path -parent $path) -or !(Test-Path -pathType Container (Split-Path -
 ### 另外
 
 * 支援度最好的字體是 [Sarasa-Gothic](https://github.com/be5invis/Sarasa-Gothic/releases) (原本是叫 [Iosevka](https://github.com/be5invis/Iosevka/releases)), 由微軟員工設計的. 詳見 [這篇問答](https://www.zhihu.com/question/19637242/answer/41116173)
-
+* 如果不管裝了什麼字體都還是一樣亂碼的話，到控制台將語言非萬國碼 (Non-Unicode) 設定成中文的國家即可
