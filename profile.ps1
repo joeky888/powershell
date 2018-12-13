@@ -450,21 +450,18 @@ if (Test-Path -Path "$env:USERPROFILE\.pythonrc") {
 Function getCondaPath($i)
 {
   # choco install miniconda
-  if(Test-Path -Path "C:\ProgramData\Miniconda$i")         { return "C:\ProgramData\Miniconda$i" }
-  if(Test-Path -Path "$env:ALLUSERSPROFILE\Miniconda$i")   { return "$env:ALLUSERSPROFILE\Miniconda$i" }
-  if(Test-Path -Path "$env:ALLUSERSPROFILE\miniconda$i")   { return "$env:ALLUSERSPROFILE\miniconda$i" }
-  if(Test-Path -Path "$env:ALLUSERSPROFILE\Anaconda$i")    { return "$env:ALLUSERSPROFILE\Anaconda$i" }
-  if(Test-Path -Path "$env:ALLUSERSPROFILE\anaconda$i")    { return "$env:ALLUSERSPROFILE\anaconda$i" }
-  if(Test-Path -Path "$env:USERPROFILE\Miniconda$i")       { return "$env:ALLUSERSPROFILE\Miniconda$i" }
-  if(Test-Path -Path "$env:USERPROFILE\miniconda$i")       { return "$env:ALLUSERSPROFILE\miniconda$i" }
-  if(Test-Path -Path "$env:USERPROFILE\Anaconda$i")        { return "$env:ALLUSERSPROFILE\Anaconda$i" }
-  if(Test-Path -Path "$env:USERPROFILE\anaconda$i")        { return "$env:ALLUSERSPROFILE\anaconda$i" }
-  if(Test-Path -Path "$env:LOCALAPPDATA\Continuum\Miniconda$i")   { return "$env:LOCALAPPDATA\Continuum\Miniconda$i" }
-  if(Test-Path -Path "$env:LOCALAPPDATA\Continuum\miniconda$i")   { return "$env:LOCALAPPDATA\Continuum\miniconda$i" }
-  if(Test-Path -Path "$env:LOCALAPPDATA\Continuum\Anaconda$i")    { return "$env:LOCALAPPDATA\Continuum\Anaconda$i" }
-  if(Test-Path -Path "$env:LOCALAPPDATA\Continuum\anaconda$i")    { return "$env:LOCALAPPDATA\Continuum\anaconda$i" }
-  if(Test-Path -Path "$env:USERPROFILE\scoop\apps\miniconda$i\current")   { return "$env:USERPROFILE\scoop\apps\miniconda$i\current" }
-  if(Test-Path -Path "$env:USERPROFILE\scoop\apps\anaconda$i\current")    { return "$env:USERPROFILE\scoop\apps\anaconda$i\current" }
+  $PossiblePrefix = @("C:\ProgramData", "$env:ALLUSERSPROFILE", "$env:USERPROFILE", "$env:LOCALAPPDATA\Continuum", "$env:USERPROFILE\scoop\apps")
+  $PossiblePath = @("Miniconda$i", "miniconda$i", "Anaconda$i", "anaconda$i")
+  $PossiblePostfix = @("", "\current")
+  foreach ($a in $PossiblePrefix) {
+    foreach ($b in $PossiblePath) {
+      foreach ($c in $PossiblePostfix) {
+        if(Test-Path -Path "$a\$b$c\python.exe") {
+          return "$a\$b$c"
+        }
+      }
+    }
+  }
   return ""
 }
 
