@@ -69,7 +69,7 @@ if (Get-Command Set-PSReadlineKeyHandler -errorAction SilentlyContinue)
   Set-PSReadlineKeyHandler -Chord Ctrl+V -ScriptBlock {
     $clipboard = Get-Clipboard -Raw
     if ($clipboard -match '^\s*(http|ftp|magnet)' -or `
-        $clipboard -match '^\s*[a-zA-Z]\:' ) {
+        (Test-Path $clipboard.Trim()) ) {
 #       $clipboard = $clipboard -replace "&","``&"
 #       $clipboard = $clipboard -replace "\(","``("
 #       $clipboard = $clipboard -replace "\)","``)"
