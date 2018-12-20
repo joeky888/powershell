@@ -226,6 +226,8 @@ Function ls {
       Write-Host ""
   }
 }
+Set-Alias l ls
+Set-Alias ll ls
 Function rm {
   $numOfArgs = $args.Length
   for ($i=0; $i -lt $numOfArgs; $i++) {
