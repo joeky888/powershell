@@ -178,9 +178,14 @@ Function find {
 }
 Function grep {
   $pipeline = $input | Out-String -stream
-  if ($pipeline.length -gt 0) {
+  $numOfArgs = $args.Length
+  if ($pipeline.length -gt 0) { # grep from stdin
     $pipeline | Out-String -stream | Select-String $($args[0]) | Select Path, LineNumber, Line | Format-List
-  } else {
+  } elseif (($numOfArgs -gt 1) -and (Test-Path $($args[1]) -PathType Leaf)) { # grep a file
+    for ($i=1; $i -lt $numOfArgs; $i++) {
+      Select-String -Pattern $($args[0]) -Path $($args[$i]) | Select Path, LineNumber, Line | Format-List
+    }
+  } else { # grep a folder
     Get-ChildItem -Recurse -Force | Where-Object { $_.fullname -NotLike "*.git\*" } | Select-String $($args[0]) | Select Path, LineNumber, Line | Format-List
   }
 }

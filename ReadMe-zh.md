@@ -71,7 +71,7 @@ if(!(Split-Path -parent $path) -or !(Test-Path -pathType Container (Split-Path -
 | ----------------- | ----------------------------------------------------------------------------------------- | -------------                     |
 | which             | 查看指令來源                                                                              | `which python`                    |
 | find              | 在當前資料夾搜尋檔案                                                                      | `find bun.htm`                    |
-| grep              | 在當前資料夾搜尋字串 / 在 stdout 管線搜尋字串                                             | `grep TODO` 或 `echo hi \| grep h` |
+| grep              | 在當前資料夾搜尋字串 / 在 stdout 管線搜尋字串                                             | `grep TODO` 或 `grep TODO ./file1 ./file2` 或 `echo hi \| grep h` |
 | touch             | 建立一個空檔案                                                                            | `touch 1.txt`                     |
 | uname             | 系統資訊                                                                                  | `uname`                           |
 
