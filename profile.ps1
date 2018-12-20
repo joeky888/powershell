@@ -179,9 +179,9 @@ Function find {
 Function grep {
   $pipeline = $input | Out-String -stream
   if ($pipeline.length -gt 0) {
-    $pipeline | Out-String -stream | Select-String $args | Select Path, LineNumber, Line | Format-List
+    $pipeline | Out-String -stream | Select-String $($args[0]) | Select Path, LineNumber, Line | Format-List
   } else {
-    Get-ChildItem -Recurse -Force | Where-Object { $_.fullname -NotLike "*.git\*" } | Select-String $args | Select Path, LineNumber, Line | Format-List
+    Get-ChildItem -Recurse -Force | Where-Object { $_.fullname -NotLike "*.git\*" } | Select-String $($args[0]) | Select Path, LineNumber, Line | Format-List
   }
 }
 $env:joekyls = $true
