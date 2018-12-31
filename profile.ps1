@@ -268,6 +268,10 @@ Function which {
     Get-Command $cmd
   }
 }
+Function ..() { Set-Location .. }
+Function ...() { Set-Location ..\.. }
+Function ....() { Set-Location ..\..\.. }
+Function .....() { Set-Location ..\..\..\.. }
 Function Format-FileSize() {
   Param ([int64]$size)
   If     ($size -gt 1TB) {[string]::Format("{0:0.00} TB", $size / 1TB)}
