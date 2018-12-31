@@ -333,6 +333,7 @@ Function upgradeScoop {
   scoop update
   scoop update *
   scoop cleanup *
+  scoop cache rm *
 }
 
 # Command to upgrade all Conda packages
