@@ -409,15 +409,6 @@ $env:DOWNLOADARGS="--continue=true --file-allocation=none --check-certificate=fa
 Function aria2c {
   Invoke-Expression "aria2c.exe $env:DOWNLOADARGS '$args'"
 }
-Function aria2c-asus-proxy-kungfu {
-  Invoke-Expression "aria2c.exe $env:DOWNLOADARGS --all-proxy=kungfu:howkungfu@10.78.20.186:3128 --all-proxy-user=kungfu --all-proxy-passwd=howkungfu '$args'"
-}
-Function aria2c-asus-proxy-zscaler {
-  Invoke-Expression "aria2c.exe $env:DOWNLOADARGS --all-proxy=gateway.zscaler.net:80 '$args'"
-}
-Function aria2c-asus-cert {
-  Invoke-Expression "aria2c.exe --check-certificate=true --ca-certificate=$env:USERPROFILE\\Documents\\asus.com.crt -c -s16 -k1M -x16 '$args'"
-}
 Function youtube-dl {
   youtube-dl.exe -o "%(title)s.%(ext)s" -f "bestvideo[height<=1080][fps<=30]+bestaudio/best" --write-sub --all-subs --embed-subs --ignore-errors --external-downloader aria2c --external-downloader-args $env:DOWNLOADARGS $args
 }
