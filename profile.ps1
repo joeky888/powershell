@@ -428,10 +428,10 @@ Function mpv-720 {
   mpv.exe --ytdl-format="bestvideo[height<=720][fps<=30]+bestaudio/best" $args
 }
 Function streamlink-mpv-1080 {
-  streamlink.exe -p mpv --default-stream 1080p $args
+  streamlink.exe --verbose-player -p mpv --default-stream 1080p $args
 }
 Function streamlink-mpv-720 {
-  streamlink.exe -p mpv --default-stream 720p $args
+  streamlink.exe --verbose-player -p mpv --default-stream 720p $args
 }
 
 Function Reset-Networking {
