@@ -225,6 +225,10 @@ Function ls {
       }
       Write-Host ""
   }
+
+  if ($files.Count -gt 1) {
+    Write-Host $files.Count "items in total"
+  }
 }
 Set-Alias l ls
 Set-Alias ll ls
