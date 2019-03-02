@@ -131,6 +131,7 @@ PowerShellGet\Install-Module -Scope CurrentUser posh-docker
 | grep              | Search a string in current folder or given file names or stdout pipeline                  | `grep TODO` or `grep TODO ./file1 ./file2` or `echo hi \| grep h`  |
 | touch             | Create an empty file                                                                      | `touch 1.txt`  |
 | uname             | System Information                                                                        | `uname`        |
+| pkill             | Kill a process                                                                            | `pkill notepad` |
 
 ## Extra Environment variables
 
