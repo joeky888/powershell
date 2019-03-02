@@ -400,6 +400,8 @@ Function gvim {
     $Commandvim = "$env:ALLUSERSPROFILE\chocolatey\bin\gvim.exe"
   } elseif (Test-Path -Path "$env:USERPROFILE\scoop\shims\gvim.exe") {
     $Commandvim = "$env:USERPROFILE\scoop\shims\gvim.exe"
+  } elseif (Test-Path -Path "$env:USERPROFILE\scoop\shims\gvim.exe") {
+    $Commandvim = "$env:USERPROFILE\scoop\shims\gvim.exe"
   }
   $Parmsvim = ""
   if ($args.count -gt 0) {
@@ -537,16 +539,16 @@ Function Set-EnvPath($path) {
 }
 
 Set-EnvPath("$env:ALLUSERSPROFILE\chocolatey\bin")
-Set-EnvPath("C:\Program Files\7-Zip")
-Set-EnvPath("C:\Program Files\OpenSSH-Win64")
-Set-EnvPath("C:\Program Files\Sublime Text 3")
-Set-EnvPath("C:\Program Files\Sublime Text 2")
-Set-EnvPath("C:\Program Files\Microsoft VS Code")
-Set-EnvPath("C:\Program Files\Microsoft VS Code Insiders")
-Set-EnvPath("C:\Program Files\Nmap")
-Set-EnvPath("C:\Program Files (x86)\Nmap")
+Set-EnvPath("$env:ProgramFiles\7-Zip")
+Set-EnvPath("$env:ProgramFiles\OpenSSH-Win64")
+Set-EnvPath("$env:ProgramFiles\Sublime Text 3")
+Set-EnvPath("$env:ProgramFiles\Sublime Text 2")
+Set-EnvPath("$env:ProgramFiles\Microsoft VS Code")
+Set-EnvPath("$env:ProgramFiles\Microsoft VS Code Insiders")
+Set-EnvPath("$env:ProgramFiles\Nmap")
+Set-EnvPath("$env:ProgramFiles (x86)\Nmap")
 Set-EnvPath("C:\zulu")
-Set-EnvPath("C:\Program Files\Oracle\VirtualBox")
+Set-EnvPath("$env:ProgramFiles\Oracle\VirtualBox")
 Set-EnvPath("$env:USERPROFILE\scoop\shims")
 Set-EnvPath("$env:LOCALAPPDATA\Android\sdk\platform-tools")
 Set-EnvPath("$env:USERPROFILE\go\bin")
