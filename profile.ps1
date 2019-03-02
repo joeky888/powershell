@@ -273,7 +273,9 @@ Function which {
   }
 }
 Function pkill {
-  Get-Process | Where-Object { $_.Name -eq "*$args*" } | Select-Object -First 1 | Stop-Process
+  $cmd = $args
+  Get-Process | Where-Object { $_.Name -like "*$cmd*" } | Select-Object -First 1
+  Get-Process | Where-Object { $_.Name -like "*$cmd*" } | Select-Object -First 1 | Stop-Process
 }
 Function ..() { Set-Location .. }
 Function ...() { Set-Location ..\.. }
