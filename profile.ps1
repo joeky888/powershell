@@ -445,10 +445,10 @@ Function youtube-dl-mp3 {
 set-alias mp3 youtube-dl-mp3
 
 Function mpv-1080 {
-  mpv.exe --ytdl-format="bestvideo[height<=1080][fps<=30]+bestaudio/best" --cache=600000 $args
+  mpv.exe --ytdl-format="bestvideo[height<=1080][fps<=30]+bestaudio/best" --cache=1048576 $args
 }
 Function mpv-720 {
-  mpv.exe --ytdl-format="bestvideo[height<=720][fps<=30]+bestaudio/best" --cache=300000 $args
+  mpv.exe --ytdl-format="bestvideo[height<=720][fps<=30]+bestaudio/best" --cache=600000 $args
 }
 Function streamlink-mpv-1080 {
   streamlink.exe --verbose-player -p mpv --default-stream 1080p $args
