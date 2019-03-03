@@ -76,6 +76,8 @@ if(!(Split-Path -parent $path) -or !(Test-Path -pathType Container (Split-Path -
 | uname             | 系統資訊                                                                                  | `uname`                           |
 | top               | CPU 用量排序的程式表                                                                      | `top`                             |
 | pkill             | 停止一個程式                                                                              | `pkill notepad`                   |
+| restart           | 重新開機                                                                                  | `restart`                         |
+| poweroff          | 關機                                                                                      | `poweroff`                        |
 
 ## 額外的環境變數
 

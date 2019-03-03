@@ -133,6 +133,8 @@ PowerShellGet\Install-Module -Scope CurrentUser posh-docker
 | uname             | System Information                                                                        | `uname`        |
 | top               | Process table sorted by CPU usage                                                         | `top`           |
 | pkill             | Kill a process                                                                            | `pkill notepad` |
+| restart           | Restart OS                                                                                | `restart` |
+| poweroff          | Shutdown OS                                                                               | `poweroff` |
 
 ## Extra Environment variables
 

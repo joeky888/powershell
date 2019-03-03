@@ -302,6 +302,12 @@ Function Format-FileSize() {
   ElseIf ($size -gt 0)   {[string]::Format("{0:0.00} B", $size)}
   Else                   {""}
 }
+Function restart {
+  Restart-Computer -Force
+}
+Function poweroff {
+  Stop-Computer -Force
+}
 Function Find-RegKey() {
   $key = $args
   Get-ChildItem -path Registry::HKEY_CLASSES_ROOT -Recurse -ErrorAction SilentlyContinue | where { $_.Name -like "*$($key)*" }
