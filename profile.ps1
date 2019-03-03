@@ -278,7 +278,15 @@ Function pkill {
   Get-Process | Where-Object { $_.Name -like "*$cmd*" } | Select-Object -First 1 | Stop-Process
 }
 Function top {
-  While(1) {Get-Process | Sort-Object -des cpu | Select-Object -First 15 | Format-Table -a; Start-Sleep 1; Clear-Host}
+#   While(1) {Get-Process | Sort-Object -des cpu | Select-Object -First 15 | Format-Table -a; Start-Sleep 1; Clear-Host}
+  $saveY = [console]::CursorTop
+  $saveX = [console]::CursorLeft
+
+  while ($true) {
+    Get-Process | Sort-Object -Descending CPU | Select-Object -First 25;
+    Start-Sleep -Seconds 2;
+    [console]::setcursorposition($saveX,$saveY+3)
+  }
 }
 Function ..() { Set-Location .. }
 Function ...() { Set-Location ..\.. }
