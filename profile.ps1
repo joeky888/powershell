@@ -288,6 +288,7 @@ Function top {
     [console]::setcursorposition($saveX,$saveY+3)
   }
 }
+Set-Alias htop top
 Function ..() { Set-Location .. }
 Function ...() { Set-Location ..\.. }
 Function ....() { Set-Location ..\..\.. }
