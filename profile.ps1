@@ -277,6 +277,9 @@ Function pkill {
   Get-Process | Where-Object { $_.Name -like "*$cmd*" } | Select-Object -First 1
   Get-Process | Where-Object { $_.Name -like "*$cmd*" } | Select-Object -First 1 | Stop-Process
 }
+Function top {
+  While(1) {Get-Process | Sort-Object -des cpu | Select-Object -First 15 | Format-Table -a; Start-Sleep 1; Clear-Host}
+}
 Function ..() { Set-Location .. }
 Function ...() { Set-Location ..\.. }
 Function ....() { Set-Location ..\..\.. }

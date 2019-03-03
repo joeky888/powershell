@@ -74,6 +74,7 @@ if(!(Split-Path -parent $path) -or !(Test-Path -pathType Container (Split-Path -
 | grep              | 在當前資料夾搜尋字串 / 在 stdout 管線搜尋字串                                             | `grep TODO` 或 `grep TODO ./file1 ./file2` 或 `echo hi \| grep h` |
 | touch             | 建立一個空檔案                                                                            | `touch 1.txt`                     |
 | uname             | 系統資訊                                                                                  | `uname`                           |
+| top               | CPU 用量排序的程式表                                                                      | `top`                             |
 | pkill             | 停止一個程式                                                                              | `pkill notepad`                   |
 
 ## 額外的環境變數
