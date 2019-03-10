@@ -302,6 +302,23 @@ Function Format-FileSize() {
   ElseIf ($size -gt 0)   {[string]::Format("{0:0.00} B", $size)}
   Else                   {""}
 }
+Function download {
+  if ($args.count -lt 2) {
+    Write-Output "donload <URL> <PATH>"
+    return
+  }
+
+  $url = $args[0]
+  $path = $args[1]
+
+  if(!(Split-Path -parent $path) -or !(Test-Path -pathType Container (Split-Path -parent $path))) {
+    $targetFile = Join-Path $pwd (Split-Path -leaf $path)
+  }
+
+  Set-ExecutionPolicy Bypass -Scope Process -Force
+  (New-Object System.Net.WebClient).DownloadFile($url, $path)
+
+}
 Function restart {
   Restart-Computer -Force
 }
