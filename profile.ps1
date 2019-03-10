@@ -309,14 +309,14 @@ Function download {
   }
 
   $url = $args[0]
-  $path = $args[1]
+  $path = "$(Get-Item -Path '.\').FullName\$args[1]"
 
   if(!(Split-Path -parent $path) -or !(Test-Path -pathType Container (Split-Path -parent $path))) {
     $targetFile = Join-Path $pwd (Split-Path -leaf $path)
   }
 
   Set-ExecutionPolicy Bypass -Scope Process -Force
-  Write-Output "Saveing " $url " to " $path
+  Write-Output "Saving $url to $path"
   (New-Object System.Net.WebClient).DownloadFile($url, $path)
 
 }
