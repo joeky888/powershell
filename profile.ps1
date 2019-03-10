@@ -316,6 +316,7 @@ Function download {
   }
 
   Set-ExecutionPolicy Bypass -Scope Process -Force
+  Write-Output "Saveing " $url " to " $path
   (New-Object System.Net.WebClient).DownloadFile($url, $path)
 
 }
