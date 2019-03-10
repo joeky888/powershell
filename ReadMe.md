@@ -126,6 +126,7 @@ PowerShellGet\Install-Module -Scope CurrentUser posh-docker
 
 | Command           | Action                                                                                    | Example       |
 | ----------------- | ----------------------------------------------------------------------------------------- | ------------- |
+| download          | Download a file to a given path                                                           | `download https://a.io/a.txt b.txt` |
 | which             | Which command is this                                                                     | `which python` |
 | find              | Find a file in current folder, you don't have to input the full name                      | `find bun.htm` |
 | grep              | Search a string in current folder or given file names or stdout pipeline                  | `grep TODO` or `grep TODO ./file1 ./file2` or `echo hi \| grep h`  |

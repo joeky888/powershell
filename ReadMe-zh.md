@@ -69,6 +69,7 @@ if(!(Split-Path -parent $path) -or !(Test-Path -pathType Container (Split-Path -
 
 | Command           | Action                                                                                    | Example       |
 | ----------------- | ----------------------------------------------------------------------------------------- | -------------                     |
+| download          | 下載檔案到指定路徑                                                                        | `download https://a.io/a.txt b.txt` |
 | which             | 查看指令來源                                                                              | `which python`                    |
 | find              | 在當前資料夾搜尋檔案                                                                      | `find bun.htm`                    |
 | grep              | 在當前資料夾搜尋字串 / 在 stdout 管線搜尋字串                                             | `grep TODO` 或 `grep TODO ./file1 ./file2` 或 `echo hi \| grep h` |
