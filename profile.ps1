@@ -101,17 +101,36 @@ $Host.UI.RawUI.ForegroundColor = "Gray"
 
 if (Get-Command Set-PSReadlineOption -errorAction SilentlyContinue)
 {
-  Set-PSReadlineOption -TokenKind None      -ForegroundColor Red
-  Set-PSReadlineOption -TokenKind Comment   -ForegroundColor Gray
-  Set-PSReadlineOption -TokenKind Keyword   -ForegroundColor White
-  Set-PSReadlineOption -TokenKind String    -ForegroundColor Yellow
-  Set-PSReadlineOption -TokenKind Operator  -ForegroundColor White
-  Set-PSReadlineOption -TokenKind Variable  -ForegroundColor White
-  Set-PSReadlineOption -TokenKind Command   -ForegroundColor Green
-  Set-PSReadlineOption -TokenKind Parameter -ForegroundColor White
-  Set-PSReadlineOption -TokenKind Type      -ForegroundColor White
-  Set-PSReadlineOption -TokenKind Number    -ForegroundColor Cyan
-  Set-PSReadlineOption -TokenKind Member    -ForegroundColor White
+  try {
+    Set-PSReadlineOption -TokenKind None      -ForegroundColor Red
+    Set-PSReadlineOption -TokenKind Comment   -ForegroundColor Gray
+    Set-PSReadlineOption -TokenKind Keyword   -ForegroundColor White
+    Set-PSReadlineOption -TokenKind String    -ForegroundColor Yellow
+    Set-PSReadlineOption -TokenKind Operator  -ForegroundColor White
+    Set-PSReadlineOption -TokenKind Variable  -ForegroundColor White
+    Set-PSReadlineOption -TokenKind Command   -ForegroundColor Green
+    Set-PSReadlineOption -TokenKind Parameter -ForegroundColor White
+    Set-PSReadlineOption -TokenKind Type      -ForegroundColor White
+    Set-PSReadlineOption -TokenKind Number    -ForegroundColor Cyan
+    Set-PSReadlineOption -TokenKind Member    -ForegroundColor White
+  } catch [Exception] {
+    # PSReadline 2.0
+    Set-PSReadlineOption -Colors @{
+      "None"      = [ConsoleColor]::Red
+      "Comment"   = [ConsoleColor]::Gray
+      "Keyword"   = [ConsoleColor]::White
+      "String"    = [ConsoleColor]::Yellow
+      "Operator"  = [ConsoleColor]::White
+      "Variable"  = [ConsoleColor]::White
+      "Command"   = [ConsoleColor]::Green
+      "Parameter" = [ConsoleColor]::White
+      "Type"      = [ConsoleColor]::White
+      "Number"    = [ConsoleColor]::Cyan
+      "Member"    = [ConsoleColor]::White
+    }
+  }
+
+
 }
 
 Function Prompt {
