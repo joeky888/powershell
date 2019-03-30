@@ -12,9 +12,6 @@ try {
   # UTF8
   [Console]::InputEncoding = [Text.UTF8Encoding]::UTF8
   [Console]::OutputEncoding = [Text.UTF8Encoding]::UTF8
-
-  # Increase history in console buffer
-  [Console]::BufferHeight = 20000
 } catch [Exception] {
   # Older version of powershell does't support [Console]
   chcp 65001
@@ -129,8 +126,6 @@ if (Get-Command Set-PSReadlineOption -errorAction SilentlyContinue)
       "Member"    = [ConsoleColor]::White
     }
   }
-
-
 }
 
 Function Prompt {
