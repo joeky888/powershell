@@ -254,10 +254,11 @@ Set-Alias ll ls
 Function rm {
   $numOfArgs = $args.Length
   for ($i=0; $i -lt $numOfArgs; $i++) {
-    if (Test-Path -Path $($args[$i]) -PathType Leaf) {
-      Remove-Item -Force $($args[$i])
-    } else {
+    if (([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole(`
+          [Security.Principal.WindowsBuiltInRole] "Administrator")) {
       Remove-Item -Recurse -Force $($args[$i])
+    } else {
+      Remove-Item -Recurse $($args[$i])
     }
   }
 }
