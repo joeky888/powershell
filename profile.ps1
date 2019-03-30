@@ -411,6 +411,9 @@ Function upgradeYoutube-dl {
 Function upgradeYou-get {
   pip3 install --upgrade https://github.com/soimort/you-get/archive/develop.zip
 }
+Function upgradeStreamlink {
+  pip3 install --upgrade https://github.com/streamlink/streamlink/archive/master.zip
+}
 Function upgradePip {
   pip install --upgrade pip
   pip freeze -l > requirements.txt
