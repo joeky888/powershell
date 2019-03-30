@@ -254,7 +254,11 @@ Set-Alias ll ls
 Function rm {
   $numOfArgs = $args.Length
   for ($i=0; $i -lt $numOfArgs; $i++) {
-    Remove-Item -Recurse -Force $($args[$i])
+    if (Test-Path -Path $($args[$i]) -PathType Leaf) {
+      Remove-Item -Force $($args[$i])
+    } else {
+      Remove-Item -Recurse -Force $($args[$i])
+    }
   }
 }
 Function touch {
