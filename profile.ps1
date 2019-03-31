@@ -37,6 +37,7 @@ if (Get-Command Set-PSReadlineKeyHandler -errorAction SilentlyContinue)
   Set-PSReadlineKeyHandler -Chord Ctrl+RightArrow -Function ForwardWord
   Set-PSReadlineKeyHandler -Chord Ctrl+LeftArrow  -Function BackwardWord
   Set-PSReadlineKeyHandler -Chord Ctrl+X -Function Cut
+  Set-PSReadlineKeyHandler -Chord Ctrl+C -Function CopyOrCancelLine
   # Set-PSReadlineKeyHandler -Chord Ctrl+V -Function Paste
   Set-PSReadlineKeyHandler -Chord Ctrl+G -Function SelectAll
   Set-PSReadlineKeyHandler -Chord Ctrl+K -Function DeleteLine
@@ -126,40 +127,6 @@ if (Get-Command Set-PSReadlineOption -errorAction SilentlyContinue)
       "Member"    = [ConsoleColor]::White
     }
   }
-}
-
-Function Prompt {
-  try {
-   Write-Host  "$([Char]9581)$([Char]9472)" -NoNewline
-  } catch [Exception] { <# Older version of powershell doesn't support special characters #> }
-
-  Write-Host  "$env:username" -NoNewline -ForegroundColor Red
-
-  If (([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole(`
-    [Security.Principal.WindowsBuiltInRole] "Administrator")) {
-    Write-Host  "(Admin)" -NoNewline -ForegroundColor Yellow
-  }
-  Write-Host "@" -NoNewline
-  Write-Host "$env:computername" -NoNewline -ForegroundColor Green
-  Write-Host " " -NoNewline
-  # Use full path since it's easier to understand for newbies
-  # Write-Host "$PWD".Replace("$HOME", "~") -ForegroundColor Yellow
-  Write-Host "$PWD" -ForegroundColor Cyan -NoNewline
-  try {
-    if (-not ([string]::IsNullOrEmpty($(git rev-parse --git-dir)))){
-        Write-Host " * $(git rev-parse --abbrev-ref HEAD)" -NoNewline -ForegroundColor Yellow
-    }
-  } catch [Exception] { <# Not in git directory or git is not installed #> }
-
-  Write-Host ""
-
-  try {
-    Write-Host  "$([Char]9584)$([Char]9472)" -NoNewline
-  } catch [Exception] { <# Older version of powershell doesn't support special characters #> }
-  Write-Host ">" -NoNewline -ForegroundColor Red
-  Write-Host ">" -NoNewline -ForegroundColor Yellow
-  Write-Host ">" -NoNewline -ForegroundColor Green
-  Return " "
 }
 
 # alias bash/zsh command
@@ -375,9 +342,55 @@ try {
   $env:ChocolateyToolsLocation = $env:ALLUSERSPROFILE
 }
 
+Function Prompt {
+  try {
+   Write-Host  "$([Char]9581)$([Char]9472)" -NoNewline
+  } catch [Exception] { <# Older version of powershell doesn't support special characters #> }
+
+  Write-Host  "$env:username" -NoNewline -ForegroundColor Red
+
+  If (([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole(`
+    [Security.Principal.WindowsBuiltInRole] "Administrator")) {
+    Write-Host  "(Admin)" -NoNewline -ForegroundColor Yellow
+  }
+  Write-Host "@" -NoNewline
+  Write-Host "$env:computername" -NoNewline -ForegroundColor Green
+  Write-Host " " -NoNewline
+  # Use full path since it's easier to understand for newbies
+  # Write-Host "$PWD".Replace("$HOME", "~") -ForegroundColor Yellow
+  Write-Host "$PWD" -ForegroundColor Cyan -NoNewline
+  try {
+    if (-not ([string]::IsNullOrEmpty($(git rev-parse --git-dir)))){
+        Write-Host " * $(git rev-parse --abbrev-ref HEAD)" -NoNewline -ForegroundColor Yellow
+    }
+  } catch [Exception] { <# Not in git directory or git is not installed #> }
+
+  Write-Host ""
+
+  try {
+    Write-Host  "$([Char]9584)$([Char]9472)" -NoNewline
+  } catch [Exception] { <# Older version of powershell doesn't support special characters #> }
+  Write-Host ">" -NoNewline -ForegroundColor Red
+  Write-Host ">" -NoNewline -ForegroundColor Yellow
+  Write-Host ">" -NoNewline -ForegroundColor Green
+  Return " "
+}
+
 # Import modules from Powershell Gallery
 if (Get-Module -ListAvailable -Name posh-git) {
   Import-Module posh-git
+  if (Get-Module -ListAvailable -Name oh-my-posh) {
+    Import-Module oh-my-posh
+    Set-Theme Paradox
+    $ThemeSettings.Colors.SessionInfoBackgroundColor = "DarkGreen"
+    $ThemeSettings.Colors.SessionInfoForegroundColor = "Black"
+#     $ThemeSettings.Colors.PromptForegroundColor = "Black"
+    $ThemeSettings.Colors.PromptBackgroundColor = "DarkBlue"
+    $ThemeSettings.Colors.GitForegroundColor = "Black"
+    $ThemeSettings.Colors.GitLocalChangesColor = "Yellow"
+    $ThemeSettings.Colors.GitNoLocalChangesAndAheadColor = "Red"
+    $ThemeSettings.Colors.AdminIconForegroundColor = "Yellow"
+  }
 }
 if (Get-Module -ListAvailable -Name posh-docker) {
   Import-Module posh-docker
