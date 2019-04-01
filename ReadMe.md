@@ -62,6 +62,7 @@ choco install 7zip vim-tux.portable git poshgit aria2 miniconda miniconda3 ffmpe
 ```sh
 # Open powershell (as administrator)
 PowerShellGet\Install-Module -Scope CurrentUser posh-git
+PowerShellGet\Install-Module -Scope CurrentUser oh-my-posh
 PowerShellGet\Install-Module -Scope CurrentUser posh-docker
 ```
 
