@@ -302,7 +302,7 @@ Function download {
   (New-Object System.Net.WebClient).DownloadFile($url, $path)
 
 }
-Function restart {
+Function reboot {
   Restart-Computer -Force
 }
 Function poweroff {

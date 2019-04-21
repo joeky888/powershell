@@ -125,18 +125,18 @@ PowerShellGet\Install-Module -Scope CurrentUser posh-docker
 
 ## Extra Linux commands
 
-| Command           | Action                                                                                    | Example       |
-| ----------------- | ----------------------------------------------------------------------------------------- | ------------- |
+| Command           | Action                                                                                    | Example         |
+| ----------------- | ----------------------------------------------------------------------------------------- | --------------- |
 | download          | Download a file to a given path                                                           | `download https://a.io/a.txt b.txt` |
-| which             | Which command is this                                                                     | `which python` |
-| find              | Find a file in current folder, you don't have to input the full name                      | `find bun.htm` |
+| which             | Which command is this                                                                     | `which python`  |
+| find              | Find a file in current folder, you don't have to input the full name                      | `find bun.htm`  |
 | grep              | Search a string in current folder or given file names or stdout pipeline                  | `grep TODO` or `grep TODO ./file1 ./file2` or `echo hi \| grep h`  |
-| touch             | Create an empty file                                                                      | `touch 1.txt`  |
-| uname             | System Information                                                                        | `uname`        |
+| touch             | Create an empty file                                                                      | `touch 1.txt`   |
+| uname             | System Information                                                                        | `uname`         |
 | top               | Process table sorted by CPU usage                                                         | `top`           |
 | pkill             | Kill a process                                                                            | `pkill notepad` |
-| restart           | Restart OS                                                                                | `restart` |
-| poweroff          | Shutdown OS                                                                               | `poweroff` |
+| reboot            | Restart OS                                                                                | `reboot`        |
+| poweroff          | Shutdown OS                                                                               | `poweroff`      |
 
 ## Extra Environment variables
 
