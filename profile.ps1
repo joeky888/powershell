@@ -36,35 +36,35 @@ if (Get-Command Set-PSReadlineKeyHandler -errorAction SilentlyContinue)
   Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
   Set-PSReadlineKeyHandler -Chord Ctrl+RightArrow -Function ForwardWord
   Set-PSReadlineKeyHandler -Chord Ctrl+LeftArrow  -Function BackwardWord
-  Set-PSReadlineKeyHandler -Chord Ctrl+X -Function Cut
-  Set-PSReadlineKeyHandler -Chord Ctrl+C -Function CopyOrCancelLine
+  Set-PSReadlineKeyHandler -Chord Ctrl+X,Ctrl+x -Function Cut
+  Set-PSReadlineKeyHandler -Chord Ctrl+C,Ctrl+c -Function CopyOrCancelLine
   # Set-PSReadlineKeyHandler -Chord Ctrl+V -Function Paste
-  Set-PSReadlineKeyHandler -Chord Ctrl+G -Function SelectAll
-  Set-PSReadlineKeyHandler -Chord Ctrl+K -Function DeleteLine
-  Set-PSReadlineKeyHandler -Chord Ctrl+Z -Function Undo
-  Set-PSReadlineKeyHandler -Chord Ctrl+Y -Function Redo
+  Set-PSReadlineKeyHandler -Chord Ctrl+G,Ctrl+g -Function SelectAll
+  Set-PSReadlineKeyHandler -Chord Ctrl+K,Ctrl+k -Function DeleteLine
+  Set-PSReadlineKeyHandler -Chord Ctrl+Z,Ctrl+z -Function Undo
+  Set-PSReadlineKeyHandler -Chord Ctrl+Y,Ctrl+y -Function Redo
   Set-PSReadlineKeyHandler -Chord Ctrl+Backspace -Function BackwardKillWord
   Set-PSReadlineKeyHandler -Chord Shift+Insert -Function Paste
-  Set-PSReadlineKeyHandler -Chord Ctrl+O -ScriptBlock {
+  Set-PSReadlineKeyHandler -Chord Ctrl+O,Ctrl+o -ScriptBlock {
     explorer.exe .
   }
-  Set-PSReadlineKeyHandler -Chord Ctrl+T -ScriptBlock {
+  Set-PSReadlineKeyHandler -Chord Ctrl+T,Ctrl+t -ScriptBlock {
     # To do
     Invoke-Item $env:USERPROFILE'\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Windows PowerShell\Windows PowerShell.lnk'
   }
-  Set-PSReadlineKeyHandler -Chord Ctrl+L -ScriptBlock {
+  Set-PSReadlineKeyHandler -Chord Ctrl+L,Ctrl+l -ScriptBlock {
     [Microsoft.PowerShell.PSConsoleReadLine]::RevertLine()
     [Microsoft.PowerShell.PSConsoleReadLine]::Insert("clear")
     [Microsoft.PowerShell.PSConsoleReadLine]::AcceptLine()
   }
-  Set-PSReadlineKeyHandler -Chord Ctrl+F -ScriptBlock {
+  Set-PSReadlineKeyHandler -Chord Ctrl+F,Ctrl+f -ScriptBlock {
     $line = $null
     $cursor = $null
     [Microsoft.PowerShell.PSConsoleReadLine]::GetBufferState([ref]$line, [ref]$cursor)
     [Microsoft.PowerShell.PSConsoleReadLine]::RevertLine()
     [Microsoft.PowerShell.PSConsoleReadLine]::Insert( "while(1){ " + $line + " ; if(`$?){break} }")
   }
-  Set-PSReadlineKeyHandler -Chord Ctrl+V -ScriptBlock {
+  Set-PSReadlineKeyHandler -Chord Ctrl+V,Ctrl+v -ScriptBlock {
     $clipboard = Get-Clipboard -Raw
     if ($clipboard -match '^\s*(http|ftp|magnet)' -or `
         (Test-Path $clipboard.Trim()) ) {
@@ -88,7 +88,6 @@ if (Get-Command Set-PSReadlineKeyHandler -errorAction SilentlyContinue)
     [Microsoft.PowerShell.PSConsoleReadLine]::AcceptLine()
   }
 }
-
 
 # Set default starting path to Desktop
 Set-Location $([Environment]::GetFolderPath("Desktop"))
