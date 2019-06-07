@@ -488,14 +488,17 @@ Function aria2c {
 Function aria2c-bt-qBittorrent {
   Invoke-Expression "aria2c.exe $env:DOWNLOADARGS $env:TORRENTARGS --user-agent='qBittorrent/4.1.1' --peer-id-prefix='-qB4110-' '$args'"
 }
+Function youtube-dl {
+  youtube-dl.exe -o "%(title)s.%(ext)s" --write-sub --all-subs --embed-subs --ignore-errors --external-downloader aria2c --external-downloader-args "$env:DOWNLOADARGS" $args
+}
 Function youtube-dl-1080 {
-  youtube-dl.exe -o "%(title)s.%(ext)s" -f "bestvideo[height<=1080][fps<=30]+bestaudio/best" --write-sub --all-subs --embed-subs --ignore-errors --external-downloader aria2c --external-downloader-args $env:DOWNLOADARGS $args
+  youtube-dl.exe -o "%(title)s.%(ext)s" -f "bestvideo[height<=1080][fps<=30]+bestaudio/best" --write-sub --all-subs --embed-subs --ignore-errors --external-downloader aria2c --external-downloader-args "$env:DOWNLOADARGS" $args
 }
 Function youtube-dl-720 {
-  youtube-dl.exe -o "%(title)s.%(ext)s" -f "bestvideo[height<=720][fps<=30]+bestaudio/best" --write-sub --all-subs --embed-subs --ignore-errors --external-downloader aria2c --external-downloader-args $env:DOWNLOADARGS $args
+  youtube-dl.exe -o "%(title)s.%(ext)s" -f "bestvideo[height<=720][fps<=30]+bestaudio/best" --write-sub --all-subs --embed-subs --ignore-errors --external-downloader aria2c --external-downloader-args "$env:DOWNLOADARGS" $args
 }
 Function youtube-dl-mp3 {
-  youtube-dl.exe -o "%(title)s.%(ext)s" --extract-audio --audio-format mp3 --write-sub --all-subs --embed-subs --ignore-errors --external-downloader aria2c --external-downloader-args $env:DOWNLOADARGS $args
+  youtube-dl.exe -o "%(title)s.%(ext)s" --extract-audio --audio-format mp3 --write-sub --all-subs --embed-subs --ignore-errors --external-downloader aria2c --external-downloader-args "$env:DOWNLOADARGS" $args
 }
 set-alias mp3 youtube-dl-mp3
 
