@@ -8,6 +8,9 @@ $env:PYTHONHTTPSVERIFY = 0
 # Increase history size
 $global:MaximumHistoryCount = 10000
 
+# Clear TERM variable
+$env:TERM = ""
+
 try {
   # UTF8
   [Console]::InputEncoding = [Text.UTF8Encoding]::UTF8
