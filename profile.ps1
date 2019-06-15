@@ -483,6 +483,7 @@ Function gvim {
   & "$Commandvim" $Parmsvim
 }
 
+$env:DLARGUMENTS="-o '%(title)s.%(ext)s' --write-sub --all-subs --embed-subs --hls-prefer-native --ignore-errors --external-downloader aria2c --external-downloader-args '$env:DOWNLOADARGS'"
 $env:DOWNLOADARGS="--continue=true --timeout=12 --connect-timeout=12 --file-allocation=none --content-disposition-default-utf8=true --check-certificate=false --max-tries=2 --max-concurrent-downloads=150 --max-connection-per-server=16 --split=16 --min-split-size=1M --parameterized-uri=true"
 $env:TORRENTARGS="--enable-dht=true --bt-enable-lpd=true --bt-max-peers=0 --bt-request-peer-speed-limit=100M --seed-ratio=0 --bt-detach-seed-only=true --seed-time=0 --enable-peer-exchange=true --bt-tracker=udp://tracker.coppersurfer.tk:6969/announce,http://tracker.internetwarriors.net:1337/announce,udp://tracker.opentrackr.org:1337/announce"
 Function aria2c {
@@ -492,16 +493,16 @@ Function aria2c-bt-qBittorrent {
   Invoke-Expression "aria2c.exe $env:DOWNLOADARGS $env:TORRENTARGS --user-agent='qBittorrent/4.1.1' --peer-id-prefix='-qB4110-' '$args'"
 }
 Function youtube-dl {
-  youtube-dl.exe -o "%(title)s.%(ext)s" --write-sub --all-subs --embed-subs --ignore-errors --external-downloader aria2c --external-downloader-args "$env:DOWNLOADARGS" $args
+  youtube-dl.exe $env:DLARGUMENTS $args
 }
 Function youtube-dl-1080 {
-  youtube-dl.exe -o "%(title)s.%(ext)s" -f "bestvideo[height<=1080][fps<=30]+bestaudio/best" --write-sub --all-subs --embed-subs --ignore-errors --external-downloader aria2c --external-downloader-args "$env:DOWNLOADARGS" $args
+  youtube-dl.exe $env:DLARGUMENTS -f "bestvideo[height<=1080][fps<=30]+bestaudio/best" $args
 }
 Function youtube-dl-720 {
-  youtube-dl.exe -o "%(title)s.%(ext)s" -f "bestvideo[height<=720][fps<=30]+bestaudio/best" --write-sub --all-subs --embed-subs --ignore-errors --external-downloader aria2c --external-downloader-args "$env:DOWNLOADARGS" $args
+  youtube-dl.exe $env:DLARGUMENTS -f "bestvideo[height<=720][fps<=30]+bestaudio/best" $args
 }
 Function youtube-dl-mp3 {
-  youtube-dl.exe -o "%(title)s.%(ext)s" --extract-audio --audio-format mp3 --write-sub --all-subs --embed-subs --ignore-errors --external-downloader aria2c --external-downloader-args "$env:DOWNLOADARGS" $args
+  youtube-dl.exe $env:DLARGUMENTS --extract-audio --audio-format mp3 $args
 }
 set-alias mp3 youtube-dl-mp3
 
