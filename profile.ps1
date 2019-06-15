@@ -490,19 +490,19 @@ Function aria2c {
   Invoke-Expression "aria2c.exe $env:DOWNLOADARGS '$args'"
 }
 Function aria2c-bt-qBittorrent {
-  Invoke-Expression "aria2c.exe $env:DOWNLOADARGS $env:TORRENTARGS --user-agent='qBittorrent/4.1.1' --peer-id-prefix='-qB4110-' '$args'"
+  Invoke-Expression "aria2c.exe $env:DOWNLOADARGS $env:TORRENTARGS --user-agent='qBittorrent/4.1.1' --peer-id-prefix='-qB4110-' $args"
 }
 Function youtube-dl {
-  youtube-dl.exe $env:DLARGUMENTS $args
+  Invoke-Expression "youtube-dl.exe $env:DLARGUMENTS $args"
 }
 Function youtube-dl-1080 {
-  youtube-dl.exe $env:DLARGUMENTS -f "bestvideo[height<=1080][fps<=30]+bestaudio/best" $args
+   Invoke-Expression "youtube-dl.exe $env:DLARGUMENTS -f 'bestvideo[height<=1080][fps<=30]+bestaudio/best' $args"
 }
 Function youtube-dl-720 {
-  youtube-dl.exe $env:DLARGUMENTS -f "bestvideo[height<=720][fps<=30]+bestaudio/best" $args
+   Invoke-Expression "youtube-dl.exe $env:DLARGUMENTS -f 'bestvideo[height<=720][fps<=30]+bestaudio/best' $args"
 }
 Function youtube-dl-mp3 {
-  youtube-dl.exe $env:DLARGUMENTS --extract-audio --audio-format mp3 $args
+   Invoke-Expression "youtube-dl.exe $env:DLARGUMENTS --extract-audio --audio-format mp3 $args"
 }
 set-alias mp3 youtube-dl-mp3
 
