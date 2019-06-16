@@ -179,7 +179,7 @@ Function ls {
     return
   }
 
-  $files = Invoke-Expression "Get-ChildItem -Force '$args'"
+  $files = Invoke-Expression "Get-ChildItem -Force $args"
 
   ForEach ($file in $files) {
       $isFolder = $file.Mode -match '^d'
@@ -487,7 +487,7 @@ $env:DOWNLOADARGS="--continue=true --timeout=12 --connect-timeout=12 --file-allo
 $env:DLARGUMENTS="-o '%(title)s.%(ext)s' --write-sub --all-subs --embed-subs --hls-prefer-native --ignore-errors --external-downloader aria2c --external-downloader-args '$env:DOWNLOADARGS'"
 $env:TORRENTARGS="--enable-dht=true --bt-enable-lpd=true --bt-max-peers=0 --bt-request-peer-speed-limit=100M --seed-ratio=0 --bt-detach-seed-only=true --seed-time=0 --enable-peer-exchange=true --bt-tracker=udp://tracker.coppersurfer.tk:6969/announce,http://tracker.internetwarriors.net:1337/announce,udp://tracker.opentrackr.org:1337/announce"
 Function aria2c {
-  Invoke-Expression "aria2c.exe $env:DOWNLOADARGS '$args'"
+  Invoke-Expression "aria2c.exe $env:DOWNLOADARGS $args"
 }
 Function aria2c-bt-qBittorrent {
   Invoke-Expression "aria2c.exe $env:DOWNLOADARGS $env:TORRENTARGS --user-agent='qBittorrent/4.1.1' --peer-id-prefix='-qB4110-' $args"
