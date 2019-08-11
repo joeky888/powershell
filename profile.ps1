@@ -437,9 +437,6 @@ Function upgradePip {
   pip install --upgrade https://github.com/pyca/pyopenssl/archive/master.zip
   pip install --upgrade https://github.com/requests/requests/archive/master.zip
 }
-Function upgradeNpm {
-  npm update -g
-}
 Function upgradeGo {
   go get -insecure -v -u all
 }
@@ -572,9 +569,9 @@ Function getCondaPath($i)
 
 $c2 = getCondaPath(2)
 if ($c2 -ne "") {
-  $env:Path = "$c2;$env:Path"
-  $env:Path = "$c2\Scripts;$env:Path"
-  $env:Path = "$c2\Library\bin;$env:Path"
+  $env:PATH = "$c2;$env:PATH"
+  $env:PATH = "$c2\Scripts;$env:PATH"
+  $env:PATH = "$c2\Library\bin;$env:PATH"
   Set-Alias pip2 "$c2\Scripts\pip.exe"
   Set-Alias conda2 "$c2\Scripts\conda.exe"
   Set-Alias python2 "$c2\python.exe"
@@ -594,9 +591,9 @@ if ($c2 -ne "") {
 
 $c3 = getCondaPath(3)
 if ($c3 -ne "") {
-  $env:Path = "$c3;$env:Path"
-  $env:Path = "$c3\Scripts;$env:Path"
-  $env:Path = "$c3\Library\bin;$env:Path"
+  $env:PATH = "$c3;$env:PATH"
+  $env:PATH = "$c3\Scripts;$env:PATH"
+  $env:PATH = "$c3\Library\bin;$env:PATH"
   Set-Alias pip3 "$c3\Scripts\pip.exe"
   Set-Alias conda3 "$c3\Scripts\conda.exe"
   Set-Alias python3 "$c3\python.exe"
@@ -614,9 +611,17 @@ if ($c3 -ne "") {
   }
 }
 
+$NPM_PACKAGES="$env:USERPROFILE/.npm-packages"
+$env:PATH=$NPM_PACKAGES/bin;$PATH
+$env:NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
+Function upgradeNpm {
+  npm install -g npm@latest
+  npm update -g
+}
+
 Function Set-EnvPath($path) {
-  if((Test-Path -Path "$path") -and ($env:Path -NotLike "*$path*")) {
-      $env:Path = "$path;$env:Path"
+  if((Test-Path -Path "$path") -and ($env:PATH -NotLike "*$path*")) {
+      $env:PATH = "$path;$env:PATH"
   }
 }
 
