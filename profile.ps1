@@ -611,9 +611,9 @@ if ($c3 -ne "") {
   }
 }
 
-$NPM_PACKAGES="$env:USERPROFILE/.npm-packages"
-$env:PATH=$NPM_PACKAGES/bin;$PATH
-$env:NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
+$NPM_PACKAGES="$env:USERPROFILE\.npm-packages"
+$env:PATH="$NPM_PACKAGES\bin;$env:PATH"
+$env:NODE_PATH="$NPM_PACKAGES\lib\node_modules:$NODE_PATH"
 Function upgradeNpm {
   npm install -g npm@latest
   npm update -g
