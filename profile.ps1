@@ -611,7 +611,7 @@ if ($c3 -ne "") {
   }
 }
 
-if((Test-Path -Path "$env:USERPROFILE\.npmrc") {
+if(Test-Path -Path "$env:USERPROFILE\.npmrc") {
   $NPM_PACKAGES="$env:USERPROFILE\.npm-packages"
   $env:PATH="$NPM_PACKAGES;$NPM_PACKAGES\bin;$env:PATH"
   $env:NODE_PATH="$NPM_PACKAGES\lib\node_modules:$NODE_PATH"
