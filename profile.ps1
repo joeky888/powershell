@@ -439,6 +439,7 @@ Function upgradePip {
 }
 Function upgradeGo {
   go get -insecure -v -u all
+  go clean -cache
 }
 Function upgradeAnnie {
   go get -insecure -v -u github.com/iawia002/annie
@@ -577,6 +578,7 @@ if ($c2 -ne "") {
   Set-Alias python2 "$c2\python.exe"
   Function upgradeConda2 {
     Invoke-Expression "$c2\Scripts\conda.exe update --no-channel-priority --all --yes"
+    Invoke-Expression "$c2\Scripts\conda.exe clean --yes --all"
   }
   Function upgradePip2 {
     Invoke-Expression "$c2\Scripts\pip.exe install --upgrade pip"
@@ -599,6 +601,7 @@ if ($c3 -ne "") {
   Set-Alias python3 "$c3\python.exe"
   Function upgradeConda3 {
     Invoke-Expression "$c3\Scripts\conda.exe update --no-channel-priority --all --yes"
+    Invoke-Expression "$c3\Scripts\conda.exe clean --yes --all"
   }
   Function upgradePip3 {
     Invoke-Expression "$c3\Scripts\pip.exe install --upgrade pip"
