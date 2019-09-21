@@ -442,7 +442,9 @@ Function upgradeGo {
   go clean -cache
 }
 Function upgradeAnnie {
+  $env:GO111MODULE = 'on'
   go get -insecure -v -u github.com/iawia002/annie
+  $env:GO111MODULE = ''
 }
 Function upgradeProfile {
   $url = "https://raw.githubusercontent.com/joeky888/powershell/master/profile.ps1"
