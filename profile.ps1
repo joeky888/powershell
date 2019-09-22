@@ -443,7 +443,7 @@ Function upgradeGo {
 }
 Function upgradeAnnie {
   $env:GO111MODULE = 'on'
-  go get -insecure -v -u github.com/iawia002/annie
+  go get -insecure -v github.com/iawia002/annie
   $env:GO111MODULE = ''
 }
 Function upgradeProfile {
