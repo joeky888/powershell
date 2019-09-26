@@ -438,7 +438,10 @@ Function upgradePip {
   pip install --upgrade https://github.com/requests/requests/archive/master.zip
 }
 Function upgradeGo {
-  go get -insecure -v -u all
+  $oldenv = $env:GO111MODULE
+  $env:GO111MODULE = 'on'
+  go get -insecure -v all
+  $env:GO111MODULE = $oldenv
   go clean -cache
 }
 Function upgradeAnnie {
