@@ -440,7 +440,7 @@ Function upgradePip {
 Function upgradeGo {
   $oldenv = $env:GO111MODULE
   $env:GO111MODULE = 'on'
-  go get -insecure -v all
+  go get -insecure -v -u all
   $env:GO111MODULE = $oldenv
   go clean -cache
 }
