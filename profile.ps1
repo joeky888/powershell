@@ -71,10 +71,6 @@ if (Get-Command Set-PSReadlineKeyHandler -errorAction SilentlyContinue)
     $clipboard = Get-Clipboard -Raw
     if ($clipboard -match '^\s*(http|ftp|magnet)' -or `
         (Test-Path $clipboard.Trim()) ) {
-#       $clipboard = $clipboard -replace "&","``&"
-#       $clipboard = $clipboard -replace "\(","``("
-#       $clipboard = $clipboard -replace "\)","``)"
-#       $clipboard = $clipboard -replace ",","``,"
         $clipboard = $clipboard.Trim()
         $clipboard = "'${clipboard}'"
     }
