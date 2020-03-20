@@ -1,7 +1,5 @@
 ![PS](https://i.imgur.com/gjjWnCi.png)
 
-[中文說明](ReadMe-zh.md)
-
 Features
 =====
 * No plugins, just one file
