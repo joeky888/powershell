@@ -273,6 +273,10 @@ Function top {
   }
 }
 Set-Alias htop top
+Function curl-status() {
+  curl.exe -o $TMP\curl.tmp -L -s -w "Content Type: %{content_type}\nStatus Code: %{response_code}\nNumber of Redirects: %{num_redirects}\nSize: %{size_download}Bytes\nSpeed of Download: %{speed_download}Bytes/s\nServer IP: %{remote_ip}:%{remote_port}\nServer Final URL: %{url_effective}\n\nDNS Resolve: %{time_namelookup}s\nClient -> Server: %{time_connect}s\nServer Response: %{time_starttransfer}s\nTotal time: %{time_total}s\n" $args
+}
+
 Function ..() { Set-Location .. }
 Function ...() { Set-Location ..\.. }
 Function ....() { Set-Location ..\..\.. }
