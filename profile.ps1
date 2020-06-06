@@ -486,7 +486,7 @@ Function gvim {
   & "$Commandvim" $Parmsvim
 }
 
-$env:DOWNLOADARGS="--continue=true --timeout=12 --connect-timeout=12 --file-allocation=none --content-disposition-default-utf8=true --check-certificate=false --max-tries=2 --max-concurrent-downloads=150 --max-connection-per-server=16 --split=16 --min-split-size=1M --parameterized-uri=true"
+$env:DOWNLOADARGS="--continue=true --timeout=12 --connect-timeout=12 --file-allocation=none --content-disposition-default-utf8=true --check-certificate=false --max-tries=2 --max-concurrent-downloads=150 --max-connection-per-server=16 --split=16 --min-split-size=1M --parameterized-uri=false"
 $env:DLARGUMENTS="-o '%(title)s.%(ext)s' --write-sub --all-subs --embed-subs --hls-prefer-native --ignore-errors --external-downloader aria2c --external-downloader-args '$env:DOWNLOADARGS'"
 $env:TORRENTARGS="--enable-dht=true --bt-enable-lpd=true --bt-max-peers=0 --bt-request-peer-speed-limit=100M --seed-ratio=0 --bt-detach-seed-only=true --seed-time=0 --enable-peer-exchange=true --bt-tracker=udp://tracker.coppersurfer.tk:6969/announce,http://tracker.internetwarriors.net:1337/announce,udp://tracker.opentrackr.org:1337/announce"
 Function aria2c {
