@@ -420,7 +420,7 @@ Function upgradeConda {
   conda update --no-channel-priority --all --yes
 }
 Function upgradeYoutube-dl {
-  pip3 install --upgrade https://github.com/ytdl-org/youtube-dl/archive/master.zip
+  pip3 install --upgrade https://github.com/l1ving/youtube-dl/archive/master.zip
 }
 Function upgradeYou-get {
   pip3 install --upgrade https://github.com/soimort/you-get/archive/develop.zip
