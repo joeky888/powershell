@@ -51,10 +51,6 @@ if (Get-Command Set-PSReadlineKeyHandler -errorAction SilentlyContinue)
   Set-PSReadlineKeyHandler -Chord Ctrl+O,Ctrl+o -ScriptBlock {
     explorer.exe .
   }
-  Set-PSReadlineKeyHandler -Chord Ctrl+T,Ctrl+t -ScriptBlock {
-    # To do
-    Invoke-Item $env:USERPROFILE'\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Windows PowerShell\Windows PowerShell.lnk'
-  }
   Set-PSReadlineKeyHandler -Chord Ctrl+L,Ctrl+l -ScriptBlock {
     [Microsoft.PowerShell.PSConsoleReadLine]::RevertLine()
     [Microsoft.PowerShell.PSConsoleReadLine]::Insert("clear")
