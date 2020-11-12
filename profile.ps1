@@ -415,6 +415,9 @@ Function upgradeScoop {
 Function upgradeConda {
   conda update --no-channel-priority --all --yes
 }
+Function upgradeYt-dlc {
+  pip3 install --upgrade https://github.com/blackjack4494/yt-dlc/archive/master.zip
+}
 Function upgradeYoutube-dl {
   pip3 install --upgrade https://github.com/l1ving/youtube-dl/archive/master.zip
 }
@@ -504,6 +507,18 @@ Function youtube-dl-mp3 {
    Invoke-Expression "youtube-dl.exe $env:DLARGUMENTS --extract-audio --audio-format mp3 `"$args`""
 }
 set-alias mp3 youtube-dl-mp3
+Function youtube-dlc {
+  Invoke-Expression "youtube-dlc.exe $env:DLARGUMENTS `"$args`""
+}
+Function youtube-dlc-1080 {
+   Invoke-Expression "youtube-dlc.exe $env:DLARGUMENTS -f 'bestvideo[height<=1080][fps<=30]+bestaudio/best' `"$args`""
+}
+Function youtube-dlc-720 {
+   Invoke-Expression "youtube-dlc.exe $env:DLARGUMENTS -f 'bestvideo[height<=720][fps<=30]+bestaudio/best' `"$args`""
+}
+Function youtube-dlc-mp3 {
+   Invoke-Expression "youtube-dlc.exe $env:DLARGUMENTS --extract-audio --audio-format mp3 `"$args`""
+}
 
 Function mpv-1080 {
   mpv.com --ytdl-format="bestvideo[height<=1080][fps<=30]+bestaudio/best" --cache=yes --cache-dir=$env:TEMP --cache-on-disk=yes --ytdl-raw-options="no-check-certificate=,yes-playlist=,hls-prefer-native=,ignore-errors=" "$args"
