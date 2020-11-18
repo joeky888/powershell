@@ -419,7 +419,7 @@ Function upgradeYt-dlc {
   pip3 install --upgrade https://github.com/blackjack4494/yt-dlc/archive/master.zip
 }
 Function upgradeYoutube-dl {
-  pip3 install --upgrade https://github.com/l1ving/youtube-dl/archive/master.zip
+  pip3 install --upgrade https://github.com/ytdl-org/youtube-dl/archive/master.zip
 }
 Function upgradeYou-get {
   pip3 install --upgrade https://github.com/soimort/you-get/archive/develop.zip
