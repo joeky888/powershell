@@ -506,10 +506,10 @@ Function youtube-dl-mp3 {
 set-alias mp3 youtube-dl-mp3
 
 Function mpv-1080 {
-  mpv.com --script-opts="ytdl_hook-ytdl_path=youtube-dl" --ytdl-format="bestvideo[height<=1080][fps<=30]+bestaudio/best" --cache=yes --cache-dir=$env:TEMP --cache-on-disk=yes --ytdl-raw-options="no-check-certificate=,yes-playlist=,hls-prefer-native=,ignore-errors=,write-auto-sub=" "$args"
+  mpv.com --script-opts="ytdl_hook-ytdl_path=youtube-dl" --ytdl-format="bestvideo[height<=1080][fps<=30]+bestaudio/best" --cache=yes --cache-dir=$env:TEMP --cache-on-disk=yes --ytdl-raw-options="no-check-certificate=,yes-playlist=,hls-prefer-native=,ignore-errors=,write-auto-sub=,write-sub=,sub-lang=en" "$args"
 }
 Function mpv-720 {
-  mpv.com --script-opts="ytdl_hook-ytdl_path=youtube-dl" --ytdl-format="bestvideo[height<=720][fps<=30]+bestaudio/best" --cache=yes --cache-dir=$env:TEMP --cache-on-disk=yes --ytdl-raw-options="no-check-certificate=,yes-playlist=,hls-prefer-native=,ignore-errors=,write-auto-sub=" "$args"
+  mpv.com --script-opts="ytdl_hook-ytdl_path=youtube-dl" --ytdl-format="bestvideo[height<=720][fps<=30]+bestaudio/best" --cache=yes --cache-dir=$env:TEMP --cache-on-disk=yes --ytdl-raw-options="no-check-certificate=,yes-playlist=,hls-prefer-native=,ignore-errors=,write-auto-sub=,write-sub=,sub-lang=en" "$args"
 }
 Function streamlink-mpv-1080 {
   streamlink.exe --verbose-player --player 'mpv.com --cache=yes' --default-stream 1080p "$args"
