@@ -483,7 +483,7 @@ Function gvim {
 }
 
 $env:DOWNLOADARGS="--continue=true --timeout=12 --connect-timeout=12 --file-allocation=none --content-disposition-default-utf8=true --check-certificate=false --max-tries=2 --max-concurrent-downloads=150 --max-connection-per-server=16 --split=16 --min-split-size=1M --parameterized-uri=false"
-$env:DLARGUMENTS="-o '%(title)s.%(ext)s' --write-sub --write-auto-sub --all-subs --embed-subs --hls-prefer-native --ignore-errors --external-downloader aria2c --external-downloader-args '$env:DOWNLOADARGS'"
+$env:DLARGUMENTS="-o '%(title)s.%(ext)s' --write-sub --all-subs --embed-subs --hls-prefer-native --ignore-errors --external-downloader aria2c --external-downloader-args '$env:DOWNLOADARGS'"
 $env:TORRENTARGS="--enable-dht=true --bt-enable-lpd=true --bt-max-peers=0 --bt-request-peer-speed-limit=100M --seed-ratio=0 --bt-detach-seed-only=true --seed-time=0 --enable-peer-exchange=true --bt-tracker=udp://tracker.coppersurfer.tk:6969/announce,http://tracker.internetwarriors.net:1337/announce,udp://tracker.opentrackr.org:1337/announce"
 Function aria2c {
   Invoke-Expression "aria2c.exe $env:DOWNLOADARGS `"$args`""
@@ -506,10 +506,10 @@ Function youtube-dl-mp3 {
 set-alias mp3 youtube-dl-mp3
 
 Function mpv-1080 {
-  mpv.com --script-opts="ytdl_hook-ytdl_path=youtube-dl" --ytdl-format="bestvideo[height<=1080][fps<=30]+bestaudio/best" --cache=yes --cache-dir=$env:TEMP --cache-on-disk=yes --ytdl-raw-options="no-check-certificate=,yes-playlist=,hls-prefer-native=,ignore-errors=" "$args"
+  mpv.com --script-opts="ytdl_hook-ytdl_path=youtube-dl" --ytdl-format="bestvideo[height<=1080][fps<=30]+bestaudio/best" --cache=yes --cache-dir=$env:TEMP --cache-on-disk=yes --ytdl-raw-options="no-check-certificate=,yes-playlist=,hls-prefer-native=,ignore-errors=,write-auto-sub=" "$args"
 }
 Function mpv-720 {
-  mpv.com --script-opts="ytdl_hook-ytdl_path=youtube-dl" --ytdl-format="bestvideo[height<=720][fps<=30]+bestaudio/best" --cache=yes --cache-dir=$env:TEMP --cache-on-disk=yes --ytdl-raw-options="no-check-certificate=,yes-playlist=,hls-prefer-native=,ignore-errors=" "$args"
+  mpv.com --script-opts="ytdl_hook-ytdl_path=youtube-dl" --ytdl-format="bestvideo[height<=720][fps<=30]+bestaudio/best" --cache=yes --cache-dir=$env:TEMP --cache-on-disk=yes --ytdl-raw-options="no-check-certificate=,yes-playlist=,hls-prefer-native=,ignore-errors=,write-auto-sub=" "$args"
 }
 Function streamlink-mpv-1080 {
   streamlink.exe --verbose-player --player 'mpv.com --cache=yes' --default-stream 1080p "$args"
