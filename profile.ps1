@@ -35,8 +35,16 @@ if (Get-Command Set-PSReadlineKeyHandler -errorAction SilentlyContinue)
   Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 
   # Key mappings
-  Set-PSReadlineKeyHandler -Key UpArrow   -Function HistorySearchBackward
-  Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
+  # Set-PSReadlineKeyHandler -Key UpArrow   -Function HistorySearchBackward
+  # Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
+  Set-PSReadlineKeyHandler -Key UpArrow -ScriptBlock {
+    [Microsoft.PowerShell.PSConsoleReadLine]::HistorySearchBackward()
+    [Microsoft.PowerShell.PSConsoleReadLine]::EndOfLine()
+  }
+  Set-PSReadlineKeyHandler -Key DownArrow -ScriptBlock {
+    [Microsoft.PowerShell.PSConsoleReadLine]::HistorySearchForward()
+    [Microsoft.PowerShell.PSConsoleReadLine]::EndOfLine()
+  }
   Set-PSReadlineKeyHandler -Chord Ctrl+RightArrow -Function ForwardWord
   Set-PSReadlineKeyHandler -Chord Ctrl+LeftArrow  -Function BackwardWord
   Set-PSReadlineKeyHandler -Chord Ctrl+X,Ctrl+x -Function Cut
