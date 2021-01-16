@@ -50,7 +50,7 @@ if (Get-Command Set-PSReadlineKeyHandler -errorAction SilentlyContinue)
   Set-PSReadlineKeyHandler -Chord Ctrl+X,Ctrl+x -Function Cut
   Set-PSReadlineKeyHandler -Chord Ctrl+C,Ctrl+c -Function CopyOrCancelLine
   # Set-PSReadlineKeyHandler -Chord Ctrl+V -Function Paste
-  Set-PSReadlineKeyHandler -Chord Ctrl+G,Ctrl+g -Function SelectAll
+  # Set-PSReadlineKeyHandler -Chord Ctrl+G,Ctrl+g -Function SelectAll
   Set-PSReadlineKeyHandler -Chord Ctrl+K,Ctrl+k -Function DeleteLine
   Set-PSReadlineKeyHandler -Chord Ctrl+Z,Ctrl+z -Function Undo
   Set-PSReadlineKeyHandler -Chord Ctrl+Y,Ctrl+y -Function Redo
@@ -70,6 +70,10 @@ if (Get-Command Set-PSReadlineKeyHandler -errorAction SilentlyContinue)
     [Microsoft.PowerShell.PSConsoleReadLine]::GetBufferState([ref]$line, [ref]$cursor)
     [Microsoft.PowerShell.PSConsoleReadLine]::RevertLine()
     [Microsoft.PowerShell.PSConsoleReadLine]::Insert( "while(1){ " + $line + " ; if(`$?){break} }")
+  }
+  Set-PSReadlineKeyHandler -Chord Ctrl+G,Ctrl+g -ScriptBlock {
+    [Microsoft.PowerShell.PSConsoleReadLine]::RevertLine()
+    [Microsoft.PowerShell.PSConsoleReadLine]::Insert( "Get-ChildItem -File -Recurse *.rar | Foreach { echo `$_.fullname }")
   }
   Set-PSReadlineKeyHandler -Chord Ctrl+V,Ctrl+v -ScriptBlock {
     $clipboard = Get-Clipboard -Raw
