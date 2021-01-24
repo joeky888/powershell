@@ -437,13 +437,13 @@ Function upgradeStreamlink {
   pip3 install --upgrade --force-reinstall --no-cache-dir https://github.com/streamlink/streamlink/archive/master.zip
 }
 Function upgradePip {
-  pip install --upgrade pip
+  pip3 install --upgrade pip
   pip freeze -l > requirements.txt
   (Get-Content requirements.txt).replace('==', '>=') | Set-Content requirements.txt
-  pip install -r requirements.txt --upgrade
+  pip3 install -r requirements.txt --upgrade
   Remove-Item requirements.txt
-  pip install --upgrade https://github.com/pyca/pyopenssl/archive/master.zip
-  pip install --upgrade https://github.com/requests/requests/archive/master.zip
+  pip3 install --upgrade https://github.com/pyca/pyopenssl/archive/master.zip
+  pip3 install --upgrade https://github.com/requests/requests/archive/master.zip
 }
 Function upgradeGo {
   $oldenv = $env:GO111MODULE
