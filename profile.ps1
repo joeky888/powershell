@@ -408,7 +408,8 @@ if (Get-Module -ListAvailable -Name posh-docker) {
 
 # Command to upgrade all chocolatey packages
 Function upgradeChoco {
-  choco upgrade all -y --pre
+  choco upgrade all -y
+  Remove-Item -Recurse -ErrorAction SilentlyContinue $env:USERPROFILE\AppData\Local\Temp\*
 }
 
 # Command to upgrade all powershell modules
