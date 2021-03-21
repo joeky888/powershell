@@ -79,8 +79,7 @@ if (Get-Command Set-PSReadlineKeyHandler -errorAction SilentlyContinue)
     $clipboard = $(Get-Clipboard -Raw).Trim()
     if ($clipboard -match '^(http|ftp|magnet)' -or `
         (Test-Path $clipboard) ) {
-        # $clipboard = $clipboard.Trim() -replace "&","``&"
-        $clipboard = "'${clipboard}'"
+        $clipboard = "'" + [uri]::UnescapeDataString(${clipboard})+ "'"
     }
     [Microsoft.PowerShell.PSConsoleReadLine]::Insert($clipboard)
   }
