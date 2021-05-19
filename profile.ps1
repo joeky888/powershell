@@ -445,18 +445,8 @@ Function upgradePip {
   pip3 install --upgrade https://github.com/pyca/pyopenssl/archive/master.zip
   pip3 install --upgrade https://github.com/requests/requests/archive/master.zip
 }
-Function upgradeGo {
-  $oldenv = $env:GO111MODULE
-  $env:GO111MODULE = ''
-  go get -insecure -v -u all
-  $env:GO111MODULE = $oldenv
-  go clean -cache
-}
 Function upgradeAnnie {
-  $oldenv = $env:GO111MODULE
-  $env:GO111MODULE = 'on'
-  go get -insecure -v github.com/iawia002/annie
-  $env:GO111MODULE = $oldenv
+  go get -v github.com/iawia002/annie
 }
 Function upgradeProfile {
   $url = "https://raw.githubusercontent.com/joeky888/powershell/master/profile.ps1"
