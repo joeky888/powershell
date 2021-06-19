@@ -175,6 +175,18 @@ Function grep {
     Get-ChildItem -Recurse -Force | Where-Object { $_.fullname -NotLike "*.git\*" } | Select-String $($args[0]) | Select Path, LineNumber, Line | Format-List
   }
 }
+
+Function fd {
+  $VCS_FOLDERS = ".bzr,CVS,.git,.hg,.svn"
+  $VCS_FOLDERS_MORE = "$VCS_FOLDERS,vendor,node_modules,ohmyzsh,dist,bin"
+  Invoke-Expression "fd.exe --hidden --glob --exclude=`"{$VCS_FOLDERS_MORE}`" `"$args`""
+}
+Function rg {
+  $VCS_FOLDERS = ".bzr,CVS,.git,.hg,.svn"
+  $VCS_FOLDERS_MORE = "$VCS_FOLDERS,vendor,node_modules,ohmyzsh,dist,bin"
+  Invoke-Expression "rg.exe --hidden --glob `"!{$VCS_FOLDERS_MORE}`" `"$args`""
+}
+
 $env:joekyls = $true
 Function ls {
   if (-not $env:joekyls) {
