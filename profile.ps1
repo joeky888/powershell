@@ -533,6 +533,9 @@ Function mpv-720 {
 Function mpv-1080-auto-sub {
   mpv.com --osd-font="Microsoft YaHei" --script-opts="ytdl_hook-ytdl_path=youtube-dl" --ytdl-format="bestvideo[height<=1080][ext=mp4,vcodec!=AV1]+bestaudio/best" --cache=yes --cache-dir=$env:TEMP --cache-on-disk=yes --ytdl-raw-options="no-check-certificate=,yes-playlist=,hls-prefer-native=,ignore-errors=,write-auto-sub=,write-sub=,sub-lang=en" "$args"
 }
+Function streamlink-mpv-best {
+  streamlink.exe --verbose-player --player 'mpv.com --osd-font="Microsoft YaHei" --cache=yes' --title '{title}' --default-stream best "$args"
+}
 Function streamlink-mpv-1080 {
   streamlink.exe --verbose-player --player 'mpv.com --osd-font="Microsoft YaHei" --cache=yes' --title '{title}' --default-stream 1080p "$args"
 }
