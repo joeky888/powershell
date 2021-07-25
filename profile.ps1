@@ -502,10 +502,10 @@ Function youtube-dl {
   Invoke-Expression "youtube-dl.exe $env:DLARGUMENTS `"$args`""
 }
 Function youtube-dl-1080 {
-   Invoke-Expression "youtube-dl.exe $env:DLARGUMENTS -f 'bestvideo[height<=1080][ext=mp4,vcodec!=AV1]+bestaudio/best' `"$args`""
+   Invoke-Expression "youtube-dl.exe $env:DLARGUMENTS -f 'bestvideo[height<=1080][ext=mp4]+bestaudio/best' `"$args`""
 }
 Function youtube-dl-720 {
-   Invoke-Expression "youtube-dl.exe $env:DLARGUMENTS -f 'bestvideo[height<=720][fps<=30][ext=mp4,vcodec!=AV1]+bestaudio/best' `"$args`""
+   Invoke-Expression "youtube-dl.exe $env:DLARGUMENTS -f 'bestvideo[height<=720][fps<=30][ext=mp4]+bestaudio/best' `"$args`""
 }
 Function youtube-dl-mp3 {
    Invoke-Expression "youtube-dl.exe $env:DLARGUMENTS --extract-audio --audio-format mp3 `"$args`""
@@ -513,13 +513,13 @@ Function youtube-dl-mp3 {
 set-alias mp3 youtube-dl-mp3
 
 Function mpv-1080 {
-  mpv.com --osd-font="Microsoft YaHei" --ytdl-format="bestvideo[height<=1080][ext=mp4,vcodec!=AV1]+bestaudio/best" --cache=yes --cache-dir=$env:TEMP --cache-on-disk=yes --ytdl-raw-options="no-check-certificate=,yes-playlist=,hls-prefer-native=,ignore-errors=" "$args"
+  mpv.com --osd-font="Microsoft YaHei" --ytdl-format="bestvideo[height<=1080][ext=mp4]+bestaudio/best" --cache=yes --cache-dir=$env:TEMP --cache-on-disk=yes --ytdl-raw-options="no-check-certificate=,yes-playlist=,hls-prefer-native=,ignore-errors=" "$args"
 }
 Function mpv-720 {
-  mpv.com --osd-font="Microsoft YaHei" --ytdl-format="bestvideo[height<=720][fps<=30][ext=mp4,vcodec!=AV1]+bestaudio/best" --cache=yes --cache-dir=$env:TEMP --cache-on-disk=yes --ytdl-raw-options="no-check-certificate=,yes-playlist=,hls-prefer-native=,ignore-errors=" "$args"
+  mpv.com --osd-font="Microsoft YaHei" --ytdl-format="bestvideo[height<=720][fps<=30][ext=mp4]+bestaudio/best" --cache=yes --cache-dir=$env:TEMP --cache-on-disk=yes --ytdl-raw-options="no-check-certificate=,yes-playlist=,hls-prefer-native=,ignore-errors=" "$args"
 }
 Function mpv-1080-auto-sub {
-  mpv.com --osd-font="Microsoft YaHei" --ytdl-format="bestvideo[height<=1080][ext=mp4,vcodec!=AV1]+bestaudio/best" --cache=yes --cache-dir=$env:TEMP --cache-on-disk=yes --ytdl-raw-options="no-check-certificate=,yes-playlist=,hls-prefer-native=,ignore-errors=,write-auto-sub=,write-sub=,sub-lang=en" "$args"
+  mpv.com --osd-font="Microsoft YaHei" --ytdl-format="bestvideo[height<=1080][ext=mp4]+bestaudio/best" --cache=yes --cache-dir=$env:TEMP --cache-on-disk=yes --ytdl-raw-options="no-check-certificate=,yes-playlist=,hls-prefer-native=,ignore-errors=,write-auto-sub=,write-sub=,sub-lang=en" "$args"
 }
 Function streamlink-mpv-best {
   streamlink.exe --verbose-player --player 'mpv.com --osd-font="Microsoft YaHei" --cache=yes' --title '{title}' --default-stream best "$args"
