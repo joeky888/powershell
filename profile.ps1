@@ -492,7 +492,7 @@ Function upgradeVimrc {
 $env:DOWNLOADARGS="--continue=true --timeout=12 --connect-timeout=12 --file-allocation=none --content-disposition-default-utf8=true --check-certificate=false --max-tries=2 --max-concurrent-downloads=150 --max-connection-per-server=16 --split=16 --min-split-size=1M --parameterized-uri=false"
 $env:DLARGUMENTS="-o '%(title)s.%(ext)s' --write-sub --all-subs --embed-subs --hls-prefer-native --ignore-errors --external-downloader aria2c --external-downloader-args '$env:DOWNLOADARGS'"
 $env:TORRENTARGS="--enable-dht=true --bt-enable-lpd=true --bt-max-peers=0 --bt-request-peer-speed-limit=100M --seed-ratio=0 --bt-detach-seed-only=true --seed-time=0 --enable-peer-exchange=true --bt-tracker=$($(curl -s https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_all.txt) -notmatch '^\s*$' -join ',')"
-$env:PLAYER_ARGUMENTS="--osd-font='MicrosoftYaHei' --cache=yes --cache-dir=`"$ENV:Temp`" --cache-on-disk=yes --ytdl-raw-options=`"no-check-certificate=,yes-playlist=,ignore-errors=`""
+$env:PLAYER_ARGUMENTS="--osd-font='Microsoft YaHei' --cache=yes --cache-dir='$ENV:Temp' --cache-on-disk=yes --ytdl-raw-options='no-check-certificate=,yes-playlist=,ignore-errors='"
 Function aria2c {
   Invoke-Expression "aria2c.exe $env:DOWNLOADARGS `"$args`""
 }
@@ -523,13 +523,13 @@ Function mpv-1080-auto-sub {
   Invoke-Expression "mpv.com --ytdl-format=`"bestvideo[height<=1080][ext=mp4]+bestaudio/best`" $env:PLAYER_ARGUMENTS --ytdl-raw-options=`"no-check-certificate=,yes-playlist=,hls-prefer-native=,ignore-errors=,write-auto-sub=,write-sub=,sub-lang=en`" `"$args`""
 }
 Function streamlink-mpv-best {
-  streamlink.exe --verbose-player --player 'mpv.com' --player-arg "$env:PLAYER_ARGUMENTS" --title '{title}' --default-stream best "$args"
+  streamlink.exe --loglevel debug --verbose-player --player 'mpv.com' --player-arg "`"`"$env:PLAYER_ARGUMENTS`"`"" --title '{title}' --default-stream best "$args"
 }
 Function streamlink-mpv-1080 {
-  streamlink.exe --verbose-player --player 'mpv.com' --player-arg "$env:PLAYER_ARGUMENTS" --title '{title}' --default-stream 1080p "$args"
+  streamlink.exe --loglevel debug --verbose-player --player 'mpv.com' --player-arg "`"`"$env:PLAYER_ARGUMENTS`"`"" --title '{title}' --default-stream 1080p "$args"
 }
 Function streamlink-mpv-720 {
-  streamlink.exe --verbose-player --player 'mpv.com' --player-arg "$env:PLAYER_ARGUMENTS" --title '{title}' --default-stream 720p "$args"
+  streamlink.exe --loglevel debug --verbose-player --player 'mpv.com' --player-arg "`"`"$env:PLAYER_ARGUMENTS`"`"" --title '{title}' --default-stream 720p "$args"
 }
 
 Function Reset-Networking {
