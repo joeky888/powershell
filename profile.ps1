@@ -298,7 +298,7 @@ Function top {
 }
 Set-Alias htop top
 Function curl-status() {
-  curl.exe -o $TMP\curl.tmp -L -s -w "Content Type: %{content_type}\nStatus Code: %{response_code}\nNumber of Redirects: %{num_redirects}\nSize: %{size_download}Bytes\nSpeed of Download: %{speed_download}Bytes/s\nServer IP: %{remote_ip}:%{remote_port}\nServer Final URL: %{url_effective}\n\nDNS Resolve: %{time_namelookup}s\nClient -> Server: %{time_connect}s\nServer Response: %{time_starttransfer}s\nTotal time: %{time_total}s\n" $args
+  curl.exe -o $ENV:Temp\curl.tmp -L -s -w "Content Type: %{content_type}\nStatus Code: %{response_code}\nNumber of Redirects: %{num_redirects}\nSize: %{size_download}Bytes\nSpeed of Download: %{speed_download}Bytes/s\nServer IP: %{remote_ip}:%{remote_port}\nServer Final URL: %{url_effective}\n\nDNS Resolve: %{time_namelookup}s\nClient -> Server: %{time_connect}s\nServer Response: %{time_starttransfer}s\nTotal time: %{time_total}s\n" $args
 }
 
 Function ..() { Set-Location .. }
@@ -492,6 +492,7 @@ Function upgradeVimrc {
 $env:DOWNLOADARGS="--continue=true --timeout=12 --connect-timeout=12 --file-allocation=none --content-disposition-default-utf8=true --check-certificate=false --max-tries=2 --max-concurrent-downloads=150 --max-connection-per-server=16 --split=16 --min-split-size=1M --parameterized-uri=false"
 $env:DLARGUMENTS="-o '%(title)s.%(ext)s' --write-sub --all-subs --embed-subs --hls-prefer-native --ignore-errors --external-downloader aria2c --external-downloader-args '$env:DOWNLOADARGS'"
 $env:TORRENTARGS="--enable-dht=true --bt-enable-lpd=true --bt-max-peers=0 --bt-request-peer-speed-limit=100M --seed-ratio=0 --bt-detach-seed-only=true --seed-time=0 --enable-peer-exchange=true --bt-tracker=$($(curl -s https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_all.txt) -notmatch '^\s*$' -join ',')"
+$env:PLAYER_ARGUMENTS="--osd-font=`"Microsoft YaHei`" --cache=yes --cache-dir=`"$ENV:Temp`" --cache-on-disk=yes --ytdl-raw-options=`"no-check-certificate=,yes-playlist=,ignore-errors=`""
 Function aria2c {
   Invoke-Expression "aria2c.exe $env:DOWNLOADARGS `"$args`""
 }
@@ -502,33 +503,33 @@ Function youtube-dl {
   Invoke-Expression "youtube-dl.exe $env:DLARGUMENTS `"$args`""
 }
 Function youtube-dl-1080 {
-   Invoke-Expression "youtube-dl.exe $env:DLARGUMENTS -f 'bestvideo[height<=1080][ext=mp4]+bestaudio/best' `"$args`""
+  Invoke-Expression "youtube-dl.exe $env:DLARGUMENTS -f 'bestvideo[height<=1080][ext=mp4]+bestaudio/best' `"$args`""
 }
 Function youtube-dl-720 {
-   Invoke-Expression "youtube-dl.exe $env:DLARGUMENTS -f 'bestvideo[height<=720][fps<=30][ext=mp4]+bestaudio/best' `"$args`""
+  Invoke-Expression "youtube-dl.exe $env:DLARGUMENTS -f 'bestvideo[height<=720][fps<=30][ext=mp4]+bestaudio/best' `"$args`""
 }
 Function youtube-dl-mp3 {
-   Invoke-Expression "youtube-dl.exe $env:DLARGUMENTS --extract-audio --audio-format mp3 `"$args`""
+  Invoke-Expression "youtube-dl.exe $env:DLARGUMENTS --extract-audio --audio-format mp3 `"$args`""
 }
 set-alias mp3 youtube-dl-mp3
 
 Function mpv-1080 {
-  mpv.com --osd-font="Microsoft YaHei" --ytdl-format="bestvideo[height<=1080][ext=mp4]+bestaudio/best" --cache=yes --cache-dir=$env:TEMP --cache-on-disk=yes --ytdl-raw-options="no-check-certificate=,yes-playlist=,hls-prefer-native=,ignore-errors=" "$args"
+  Invoke-Expression "mpv.com --ytdl-format=`"bestvideo[height<=1080][ext=mp4]+bestaudio/best`" $env:PLAYER_ARGUMENTS --ytdl-raw-options=`"no-check-certificate=,yes-playlist=,hls-prefer-native=,ignore-errors=`" `"$args`""
 }
 Function mpv-720 {
-  mpv.com --osd-font="Microsoft YaHei" --ytdl-format="bestvideo[height<=720][fps<=30][ext=mp4]+bestaudio/best" --cache=yes --cache-dir=$env:TEMP --cache-on-disk=yes --ytdl-raw-options="no-check-certificate=,yes-playlist=,hls-prefer-native=,ignore-errors=" "$args"
+  Invoke-Expression "mpv.com --ytdl-format=`"bestvideo[height<=720][fps<=30][ext=mp4]+bestaudio/best`" $env:PLAYER_ARGUMENTS --ytdl-raw-options=`"no-check-certificate=,yes-playlist=,hls-prefer-native=,ignore-errors=`" `"$args`""
 }
 Function mpv-1080-auto-sub {
-  mpv.com --osd-font="Microsoft YaHei" --ytdl-format="bestvideo[height<=1080][ext=mp4]+bestaudio/best" --cache=yes --cache-dir=$env:TEMP --cache-on-disk=yes --ytdl-raw-options="no-check-certificate=,yes-playlist=,hls-prefer-native=,ignore-errors=,write-auto-sub=,write-sub=,sub-lang=en" "$args"
+  Invoke-Expression "mpv.com --ytdl-format=`"bestvideo[height<=1080][ext=mp4]+bestaudio/best`" $env:PLAYER_ARGUMENTS --ytdl-raw-options=`"no-check-certificate=,yes-playlist=,hls-prefer-native=,ignore-errors=,write-auto-sub=,write-sub=,sub-lang=en`" `"$args`""
 }
 Function streamlink-mpv-best {
-  streamlink.exe --verbose-player --player 'mpv.com' --player-arg '--osd-font="Microsoft YaHei" --cache=yes' --title '{title}' --default-stream best "$args"
+  streamlink.exe --verbose-player --player 'mpv.com' --player-arg "$env:PLAYER_ARGUMENTS" --title '{title}' --default-stream best "$args"
 }
 Function streamlink-mpv-1080 {
-  streamlink.exe --verbose-player --player 'mpv.com' --player-arg '--osd-font="Microsoft YaHei" --cache=yes' --title '{title}' --default-stream 1080p "$args"
+  streamlink.exe --verbose-player --player 'mpv.com' --player-arg "$env:PLAYER_ARGUMENTS" --title '{title}' --default-stream 1080p "$args"
 }
 Function streamlink-mpv-720 {
-  streamlink.exe --verbose-player --player 'mpv.com' --player-arg '--osd-font="Microsoft YaHei" --cache=yes' --title '{title}' --default-stream 720p "$args"
+  streamlink.exe --verbose-player --player 'mpv.com' --player-arg "$env:PLAYER_ARGUMENTS" --title '{title}' --default-stream 720p "$args"
 }
 
 Function Reset-Networking {
