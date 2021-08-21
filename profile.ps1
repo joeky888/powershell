@@ -522,6 +522,12 @@ Function mpv-720 {
 Function mpv-1080-auto-sub {
   Invoke-Expression "mpv.com --ytdl-format=`"bestvideo[height<=1080][ext=mp4]+bestaudio/best`" $env:PLAYER_ARGUMENTS --ytdl-raw-options=`"no-check-certificate=,yes-playlist=,hls-prefer-native=,ignore-errors=,write-auto-sub=,write-sub=,sub-lang=en`" `"$args`""
 }
+Function mpv-4by3 {
+  Invoke-Expression "mpv.com --video-aspect-override=4:3 $env:PLAYER_ARGUMENTS --ytdl-raw-options=`"no-check-certificate=,yes-playlist=,hls-prefer-native=,ignore-errors=,write-auto-sub=,write-sub=,sub-lang=en`" `"$args`""
+}
+Function mpv-16by9 {
+  Invoke-Expression "mpv.com --video-aspect-override=16:9 $env:PLAYER_ARGUMENTS --ytdl-raw-options=`"no-check-certificate=,yes-playlist=,hls-prefer-native=,ignore-errors=,write-auto-sub=,write-sub=,sub-lang=en`" `"$args`""
+}
 Function streamlink-mpv-best {
   streamlink.exe --loglevel debug --verbose-player --player 'mpv.com' --player-arg "`"`"$env:PLAYER_ARGUMENTS`"`"" --title '{title}' --default-stream best "$args"
 }
