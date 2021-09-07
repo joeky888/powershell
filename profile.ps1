@@ -490,7 +490,7 @@ Function upgradeVimrc {
 }
 
 $env:DOWNLOADARGS="--continue=true --timeout=12 --connect-timeout=12 --file-allocation=none --content-disposition-default-utf8=true --check-certificate=false --max-tries=2 --max-concurrent-downloads=150 --max-connection-per-server=16 --split=16 --min-split-size=1M --parameterized-uri=false"
-$env:DLARGUMENTS="-o '%(title)s.%(ext)s' --write-sub --all-subs --embed-subs --concurrent-fragments 8 --hls-prefer-native --ignore-errors --external-downloader aria2c --external-downloader-args '$env:DOWNLOADARGS'"
+$env:DLARGUMENTS="-o '%(title)s.%(ext)s' --write-sub --all-subs --embed-subs --concurrent-fragments 8 --hls-prefer-native --ignore-errors --downloader aria2c --downloader-args 'aria2c:$env:DOWNLOADARGS'"
 $env:TORRENTARGS="--enable-dht=true --bt-enable-lpd=true --bt-max-peers=0 --bt-request-peer-speed-limit=100M --seed-ratio=0 --bt-detach-seed-only=true --seed-time=0 --enable-peer-exchange=true --bt-tracker=$($(curl -s https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_all.txt) -notmatch '^\s*$' -join ',')"
 $env:PLAYER_ARGUMENTS="--osd-font='Microsoft YaHei' --cache=yes --cache-dir='$ENV:Temp' --cache-on-disk=yes --ytdl-raw-options='no-check-certificate=,yes-playlist=,ignore-errors='"
 Function aria2c {
@@ -500,16 +500,16 @@ Function aria2c-bt-qBittorrent {
   Invoke-Expression "aria2c.exe $env:DOWNLOADARGS $env:TORRENTARGS --user-agent='qBittorrent/4.1.1' --peer-id-prefix='-qB4110-' `"$args`""
 }
 Function youtube-dl {
-  Invoke-Expression "youtube-dl.exe $env:DLARGUMENTS `"$args`""
+  Invoke-Expression "yt-dlp.exe $env:DLARGUMENTS `"$args`""
 }
 Function youtube-dl-1080 {
-  Invoke-Expression "youtube-dl.exe $env:DLARGUMENTS -f 'bestvideo[height<=1080][ext=mp4]+bestaudio/best' `"$args`""
+  Invoke-Expression "yt-dlp.exe $env:DLARGUMENTS -f 'bestvideo[height<=1080][ext=mp4]+bestaudio/best' `"$args`""
 }
 Function youtube-dl-720 {
-  Invoke-Expression "youtube-dl.exe $env:DLARGUMENTS -f 'bestvideo[height<=720][fps<=30][ext=mp4]+bestaudio/best' `"$args`""
+  Invoke-Expression "yt-dlp.exe $env:DLARGUMENTS -f 'bestvideo[height<=720][fps<=30][ext=mp4]+bestaudio/best' `"$args`""
 }
 Function youtube-dl-mp3 {
-  Invoke-Expression "youtube-dl.exe $env:DLARGUMENTS --extract-audio --audio-format mp3 `"$args`""
+  Invoke-Expression "yt-dlp.exe $env:DLARGUMENTS --extract-audio --audio-format mp3 `"$args`""
 }
 set-alias mp3 youtube-dl-mp3
 
