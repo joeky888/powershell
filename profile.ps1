@@ -457,7 +457,7 @@ Function upgradeStreamlink {
   pip3 install --upgrade --force-reinstall --no-cache-dir https://github.com/streamlink/streamlink/archive/master.zip
 }
 Function upgradePip {
-  pip3 install --upgrade pip
+  pip3 install --upgrade pip setuptools
   pip freeze -l > requirements.txt
   (Get-Content requirements.txt).replace('==', '>=') | Set-Content requirements.txt
   pip3 install -r requirements.txt --upgrade
@@ -603,7 +603,7 @@ if ($c2 -ne "") {
     Invoke-Expression "$c2\Scripts\conda.exe clean --yes --all"
   }
   Function upgradePip2 {
-    Invoke-Expression "$c2\Scripts\pip.exe install --upgrade pip"
+    Invoke-Expression "$c2\Scripts\pip.exe install --upgrade pip setuptools"
     Invoke-Expression "$c2\Scripts\pip.exe freeze -l > requirements.txt"
     (Get-Content requirements.txt).replace('==', '>=') | Set-Content requirements.txt
     Invoke-Expression "$c2\Scripts\pip.exe install -r requirements.txt --upgrade"
@@ -626,7 +626,7 @@ if ($c3 -ne "") {
     Invoke-Expression "$c3\Scripts\conda.exe clean --yes --all"
   }
   Function upgradePip3 {
-    Invoke-Expression "$c3\Scripts\pip.exe install --upgrade pip"
+    Invoke-Expression "$c3\Scripts\pip.exe install --upgrade pip setuptools"
     Invoke-Expression "$c3\Scripts\pip.exe freeze -l > requirements.txt"
     (Get-Content requirements.txt).replace('==', '>=') | Set-Content requirements.txt
     Invoke-Expression "$c3\Scripts\pip.exe install -r requirements.txt --upgrade"
