@@ -499,19 +499,19 @@ Function aria2c {
 Function aria2c-bt-qBittorrent {
   Invoke-Expression "aria2c.exe $env:DOWNLOADARGS $env:TORRENTARGS --user-agent='qBittorrent/4.1.1' --peer-id-prefix='-qB4110-' `"$args`""
 }
-Function youtube-dl {
+Function yt-dlp {
   Invoke-Expression "yt-dlp.exe $env:DLARGUMENTS `"$args`""
 }
-Function youtube-dl-1080 {
+Function yt-dlp-1080 {
   Invoke-Expression "yt-dlp.exe $env:DLARGUMENTS -f 'bestvideo[height<=1080][ext=mp4]+bestaudio/best' `"$args`""
 }
-Function youtube-dl-720 {
+Function yt-dlp-720 {
   Invoke-Expression "yt-dlp.exe $env:DLARGUMENTS -f 'bestvideo[height<=720][fps<=30][ext=mp4]+bestaudio/best' `"$args`""
 }
-Function youtube-dl-mp3 {
+Function yt-dlp-mp3 {
   Invoke-Expression "yt-dlp.exe $env:DLARGUMENTS --extract-audio --audio-format mp3 `"$args`""
 }
-set-alias mp3 youtube-dl-mp3
+set-alias mp3 yt-dlp-mp3
 
 Function mpv-1080 {
   Invoke-Expression "mpv.com --ytdl-format=`"bestvideo[height<=1080][ext=mp4]+bestaudio/best`" $env:PLAYER_ARGUMENTS --ytdl-raw-options=`"no-check-certificate=,yes-playlist=,hls-prefer-native=,ignore-errors=`" `"$args`""
