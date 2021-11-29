@@ -407,15 +407,7 @@ if (Get-Module -ListAvailable -Name posh-git) {
   Import-Module posh-git
   if (Get-Module -ListAvailable -Name oh-my-posh) {
     Import-Module oh-my-posh
-    Set-Theme Paradox
-    $ThemeSettings.Colors.SessionInfoBackgroundColor = "DarkGreen"
-    $ThemeSettings.Colors.SessionInfoForegroundColor = "Black"
-    # $ThemeSettings.Colors.PromptForegroundColor = "Black"
-    $ThemeSettings.Colors.PromptBackgroundColor = "DarkBlue"
-    $ThemeSettings.Colors.GitForegroundColor = "Black"
-    $ThemeSettings.Colors.GitLocalChangesColor = "Yellow"
-    $ThemeSettings.Colors.GitNoLocalChangesAndAheadColor = "Red"
-    $ThemeSettings.Colors.AdminIconForegroundColor = "Yellow"
+    Set-PoshPrompt -Theme Paradox
   }
 }
 if (Get-Module -ListAvailable -Name posh-docker) {
