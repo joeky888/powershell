@@ -11,6 +11,9 @@ $global:MaximumHistoryCount = 10000
 # Clear TERM variable
 $env:TERM = ""
 
+# Pipe non-ASCII content with utf8 encoding, this is a fix for ripgrep
+$OutputEncoding = [System.Text.UTF8Encoding]::new()
+
 try {
   # UTF8
   [Console]::InputEncoding = [Text.UTF8Encoding]::UTF8
