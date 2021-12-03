@@ -457,8 +457,8 @@ Function upgradePip {
   (Get-Content requirements.txt).replace('==', '>=') | Set-Content requirements.txt
   pip3 install -r requirements.txt --upgrade
   Remove-Item requirements.txt
-  pip3 install --upgrade https://github.com/pyca/pyopenssl/archive/master.zip
-  pip3 install --upgrade https://github.com/requests/requests/archive/master.zip
+  pip3 install --upgrade https://github.com/pyca/pyopenssl/archive/main.zip
+  pip3 install --upgrade https://github.com/requests/requests/archive/main.zip
 }
 Function upgradeAnnie {
   go get -v github.com/iawia002/annie
@@ -600,8 +600,8 @@ if ($c2 -ne "") {
     (Get-Content requirements.txt).replace('==', '>=') | Set-Content requirements.txt
     Invoke-Expression "$c2\Scripts\pip.exe install -r requirements.txt --upgrade"
     Remove-Item requirements.txt
-    Invoke-Expression "$c2\Scripts\pip.exe install --upgrade https://github.com/pyca/pyopenssl/archive/master.zip"
-    Invoke-Expression "$c2\Scripts\pip.exe install --upgrade https://github.com/requests/requests/archive/master.zip"
+    Invoke-Expression "$c2\Scripts\pip.exe install --upgrade https://github.com/pyca/pyopenssl/archive/main.zip"
+    Invoke-Expression "$c2\Scripts\pip.exe install --upgrade https://github.com/requests/requests/archive/main.zip"
   }
 }
 
@@ -623,8 +623,8 @@ if ($c3 -ne "") {
     (Get-Content requirements.txt).replace('==', '>=') | Set-Content requirements.txt
     Invoke-Expression "$c3\Scripts\pip.exe install -r requirements.txt --upgrade"
     Remove-Item requirements.txt
-    Invoke-Expression "$c3\Scripts\pip.exe install --upgrade https://github.com/pyca/pyopenssl/archive/master.zip"
-    Invoke-Expression "$c3\Scripts\pip.exe install --upgrade https://github.com/requests/requests/archive/master.zip"
+    Invoke-Expression "$c3\Scripts\pip.exe install --upgrade https://github.com/pyca/pyopenssl/archive/main.zip"
+    Invoke-Expression "$c3\Scripts\pip.exe install --upgrade https://github.com/requests/requests/archive/main.zip"
   }
 }
 
