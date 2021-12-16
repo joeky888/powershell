@@ -299,6 +299,20 @@ Function top {
     [console]::setcursorposition($saveX,$saveY+3)
   }
 }
+
+Function base64-encode {
+  [System.Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($args))
+}
+Function base64-decode {
+  [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($args))
+}
+Function url-encode {
+  [uri]::EscapeUriString($args)
+}
+Function url-decode {
+  [uri]::UnescapeDataString($args)
+}
+
 Set-Alias htop top
 Function curl-status() {
   curl.exe -o $ENV:Temp\curl.tmp -L -s -w "Content Type: %{content_type}\nStatus Code: %{response_code}\nNumber of Redirects: %{num_redirects}\nSize: %{size_download}Bytes\nSpeed of Download: %{speed_download}Bytes/s\nServer IP: %{remote_ip}:%{remote_port}\nServer Final URL: %{url_effective}\n\nDNS Resolve: %{time_namelookup}s\nClient -> Server: %{time_connect}s\nServer Response: %{time_starttransfer}s\nTotal time: %{time_total}s\n" $args
