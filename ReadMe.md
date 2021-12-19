@@ -64,33 +64,33 @@ PowerShellGet\Install-Module -Scope CurrentUser oh-my-posh
 PowerShellGet\Install-Module -Scope CurrentUser posh-docker
 ```
 
-| Keys           | Action                                   | Description                                       |
-| -------------- | ---------------------------------------- | ------------------------------------------------- |
-| Ctrl A         | Move cursor to the beginning of the line | Just like macOS and terminals                     |
-| Ctrl E         | Move cursor to the end of the line       | Just like macOS and terminals                     |
-| Ctrl C         | Copy/Cancel command                      |                                                   |
-| Ctrl X         | Cut                                      |                                                   |
-| Ctrl V         | Paste with url decoding                  | Use Ctrl-Shift-V if it is not a intended behavior |
-| Ctrl D         | Exit                                     |                                                   |
-| Ctrl K         | Kill whole line                          | Just like nano                                    |
-| Ctrl F         | Run current command forever              |                                                   |
-| Ctrl R         | Search the history backward              | Just like bash                                    |
-| Ctrl G         | Select all                               |                                                   |
-| Ctrl T         | New Window                               | Open new tab in Powershell ISE                    |
-| Ctrl Z         | Undo                                     |                                                   |
-| Ctrl Y         | Redo                                     |                                                   |
-| Ctrl S         | Search the history forward               | Just like Emacs                                   |
-| Ctrl W         | Close tab                                | Powershell ISE only                               |
-| Ctrl L         | Clear                                    |                                                   |
-| Ctrl O         | Open file explorer here                  |                                                   |
-| Ctrl →         | Next word                                |                                                   |
-| Ctrl ←         | Previous word                            |                                                   |
-| Shift →        | Select one character right               |                                                   |
-| Shift ←        | Select one character left                |                                                   |
-| ↑              | Previous command in history              |                                                   |
-| ↓              | Next command in history                  |                                                   |
-| Ctrl Backspace | Delete a word backward                   |                                                   |
-| Shift+Insert   | Paste                                    | Paste raw data from clipboard                     |
+| Keys           | Action                                   | Description                                        |
+| -------------- | ---------------------------------------- | -------------------------------------------------- |
+| Ctrl A         | Move cursor to the beginning of the line | Just like macOS and terminals                      |
+| Ctrl E         | Move cursor to the end of the line       | Just like macOS and terminals                      |
+| Ctrl C         | Copy/Cancel command                      |                                                    |
+| Ctrl X         | Cut                                      |                                                    |
+| Ctrl V         | Paste with url decoding                  | Use Ctrl-Shift-V if it is not an intended behavior |
+| Ctrl D         | Exit                                     |                                                    |
+| Ctrl K         | Kill whole line                          | Just like nano                                     |
+| Ctrl F         | Run current command forever              |                                                    |
+| Ctrl R         | Search the history backward              | Just like bash                                     |
+| Ctrl G         | Select all                               |                                                    |
+| Ctrl T         | New Window                               | Open new tab in Powershell ISE                     |
+| Ctrl Z         | Undo                                     |                                                    |
+| Ctrl Y         | Redo                                     |                                                    |
+| Ctrl S         | Search the history forward               | Just like Emacs                                    |
+| Ctrl W         | Close tab                                | Powershell ISE only                                |
+| Ctrl L         | Clear                                    |                                                    |
+| Ctrl O         | Open file explorer here                  |                                                    |
+| Ctrl →         | Next word                                |                                                    |
+| Ctrl ←         | Previous word                            |                                                    |
+| Shift →        | Select one character right               |                                                    |
+| Shift ←        | Select one character left                |                                                    |
+| ↑              | Previous command in history              |                                                    |
+| ↓              | Next command in history                  |                                                    |
+| Ctrl Backspace | Delete a word backward                   |                                                    |
+| Shift+Insert   | Paste                                    | Paste raw data from clipboard                      |
 
 ## Extra commands
 
