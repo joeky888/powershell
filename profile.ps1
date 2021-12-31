@@ -499,6 +499,7 @@ $env:DOWNLOADARGS="--continue=true --timeout=12 --connect-timeout=12 --file-allo
 $env:DLARGUMENTS="-o '%(title)s.%(ext)s' --write-sub --all-subs --embed-subs --concurrent-fragments 8 --hls-prefer-native --ignore-errors --downloader aria2c --downloader-args 'aria2c:$env:DOWNLOADARGS'"
 $env:TORRENTARGS="--enable-dht=true --bt-enable-lpd=true --bt-max-peers=0 --bt-request-peer-speed-limit=100M --seed-ratio=0 --bt-detach-seed-only=true --seed-time=0 --enable-peer-exchange=true --bt-tracker=$($(curl -s https://raw.githubusercontent.com/XIU2/TrackersListCollection/master/all.txt) -notmatch '^\s*$' -join ',')"
 $env:PLAYER_ARGUMENTS='--osd-font="Microsoft YaHei" --cache=yes --cache-dir=$ENV:Temp --cache-on-disk=yes --ytdl-raw-options=no-check-certificate=,yes-playlist=,hls-prefer-native=,ignore-errors=,write-auto-sub=,write-sub=,sub-lang="(en|zh).*"'
+$env:STREAM_PLAYER_ARGUMENTS='--cache=yes --cache-dir=$ENV:Temp --cache-on-disk=yes'
 Function aria2c {
   Invoke-Expression "aria2c.exe $env:DOWNLOADARGS `"$args`""
 }
@@ -531,13 +532,13 @@ Function mpv-16by9 {
   Invoke-Expression "mpv.com --video-aspect-override=16:9 $env:PLAYER_ARGUMENTS `"$args`""
 }
 Function streamlink-mpv-best {
-  streamlink.exe --loglevel debug --verbose-player --player 'mpv.com' --player-arg "`"`"$env:PLAYER_ARGUMENTS`"`"" --title '{title}' --default-stream best "$args"
+  streamlink.exe --loglevel debug --verbose-player --player 'mpv.com' --player-arg "$env:STREAM_PLAYER_ARGUMENTS" --title '{title}' --default-stream best "$args"
 }
 Function streamlink-mpv-1080 {
-  streamlink.exe --loglevel debug --verbose-player --player 'mpv.com' --player-arg "`"`"$env:PLAYER_ARGUMENTS`"`"" --title '{title}' --default-stream 1080p "$args"
+  streamlink.exe --loglevel debug --verbose-player --player 'mpv.com' --player-arg "$env:STREAM_PLAYER_ARGUMENTS" --title '{title}' --default-stream 1080p "$args"
 }
 Function streamlink-mpv-720 {
-  streamlink.exe --loglevel debug --verbose-player --player 'mpv.com' --player-arg "`"`"$env:PLAYER_ARGUMENTS`"`"" --title '{title}' --default-stream 720p "$args"
+  streamlink.exe --loglevel debug --verbose-player --player 'mpv.com' --player-arg "$env:STREAM_PLAYER_ARGUMENTS" --title '{title}' --default-stream 720p "$args"
 }
 
 Function Reset-Networking {
