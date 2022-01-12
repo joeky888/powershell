@@ -453,9 +453,6 @@ Function upgradeScoop {
 Function upgradeConda {
   conda update --no-channel-priority --all --yes
 }
-Function upgradeYoutube-dl {
-  pip3 install --upgrade --force-reinstall --no-cache-dir https://github.com/ytdl-org/youtube-dl/archive/master.zip
-}
 Function upgradeYt-dlp {
   pip3 install --upgrade --force-reinstall --no-cache-dir https://github.com/yt-dlp/yt-dlp/archive/master.zip
 }
