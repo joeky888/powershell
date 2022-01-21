@@ -236,7 +236,7 @@ Function ls {
     Write-Host $files.Count "items in total"
   }
 }
-Set-Alias calc Invoke-Expression
+Set-Alias calc2 Invoke-Expression
 Set-Alias l ls
 Set-Alias ll ls
 Function rm {
