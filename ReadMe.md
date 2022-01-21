@@ -47,15 +47,22 @@ if(!(Split-Path -parent $path) -or !(Test-Path -pathType Container (Split-Path -
 
 See https://github.com/joeky888/MonoKombat.cmd
 
-## Install chocolatey and chocolatey packages (Recommend)
+## Install chocolatey and chocolatey packages (Recommended)
 
 ```sh
 # Open powershell (as administrator)
 Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-choco install 7zip vim-tux.portable git poshgit aria2 miniconda miniconda3 ffmpeg youtube-dl -y
+choco install 7zip git miniconda miniconda3 -y
 ```
 
-## Install Powershell modules from Powershell Gallery, for tab-completion (Recommend)
+## Install scoop (Recommended)
+
+```sh
+Set-ExecutionPolicy Bypass -Scope Process -Force; iwr -useb get.scoop.sh | iex
+scoop install neovim wezterm ripgrep fd
+```
+
+## Install Powershell modules (Recommended)
 
 ```sh
 # Open powershell (as administrator)
