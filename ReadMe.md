@@ -130,7 +130,7 @@ PowerShellGet\Install-Module -Scope CurrentUser posh-docker
 | base64-encode | base64 encode a given string                                             | `base64-encode "hi"`                                              |
 | base64-decode | base64 decode a given string                                             | `base64-decode "aGk="`                                            |
 | download      | Download a file to a given path                                          | `download https://a.io/a.txt b.txt`                               |
-| calc          | Math calculator                                                          | `calc "[Math]::Pow(3,2)+1"`                                       |
+| calc          | Math calculator                                                          | `calc "[math]::pow(3,2)+1"`                                       |
 | which         | Which command is this                                                    | `which python`                                                    |
 | find          | Find a file in current folder, you don't have to input the full name     | `find bun.htm`                                                    |
 | grep          | Search a string in current folder or given file names or stdout pipeline | `grep TODO` or `grep TODO ./file1 ./file2` or `echo hi \| grep h` |
