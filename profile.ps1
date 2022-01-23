@@ -169,13 +169,13 @@ Function grep {
   $pipeline = $input | Out-String -stream
   $numOfArgs = $args.Length
   if ($pipeline.length -gt 0) { # grep from stdin
-    $pipeline | Out-String -stream | Select-String $($args[0]) | Select Path, LineNumber, Line | Format-List
+    $pipeline | Out-String -stream | Select-String $($args[0]) | Select-Object Path, LineNumber, Line | Format-List
   } elseif (($numOfArgs -gt 1) -and (Test-Path $($args[1]) -PathType Leaf)) { # grep a file
     for ($i=1; $i -lt $numOfArgs; $i++) {
-      Select-String -Pattern $($args[0]) -Path $($args[$i]) | Select Path, LineNumber, Line | Format-List
+      Select-String -Pattern $($args[0]) -Path $($args[$i]) | Select-Object Path, LineNumber, Line | Format-List
     }
   } else { # grep a folder
-    Get-ChildItem -Recurse -Force | Where-Object { $_.fullname -NotLike "*.git\*" } | Select-String $($args[0]) | Select Path, LineNumber, Line | Format-List
+    Get-ChildItem -Recurse -Force | Where-Object { $_.fullname -NotLike "*.git\*" } | Select-String $($args[0]) | Select-Object Path, LineNumber, Line | Format-List
   }
 }
 
@@ -253,7 +253,7 @@ Function rm {
 Function touch {
   $numOfArgs = $args.Length
   for ($i=0; $i -lt $numOfArgs; $i++) {
-    echo $null >> $($args[$i])
+    Write-Output $null >> $($args[$i])
   }
 }
 Function uname {
@@ -354,19 +354,19 @@ Function poweroff {
 }
 Function Find-RegKey() {
   $key = $args
-  Get-ChildItem -path Registry::HKEY_CLASSES_ROOT -Recurse -ErrorAction SilentlyContinue | where { $_.Name -like "*$($key)*" }
-  Get-ChildItem -path Registry::HKEY_CURRENT_USER -Recurse -ErrorAction SilentlyContinue | where { $_.Name -like "*$($key)*" }
-  Get-ChildItem -path Registry::HKEY_LOCAL_MACHINE -Recurse -ErrorAction SilentlyContinue | where { $_.Name -like "*$($key)*" }
-  Get-ChildItem -path Registry::HKEY_USERS -Recurse -ErrorAction SilentlyContinue | where { $_.Name -like "*$($key)*" }
-  Get-ChildItem -path Registry::HKEY_CURRENT_CONFIG -Recurse -ErrorAction SilentlyContinue | where { $_.Name -like "*$($key)*" }
+  Get-ChildItem -path Registry::HKEY_CLASSES_ROOT -Recurse -ErrorAction SilentlyContinue | Where-Object { $_.Name -like "*$($key)*" }
+  Get-ChildItem -path Registry::HKEY_CURRENT_USER -Recurse -ErrorAction SilentlyContinue | Where-Object { $_.Name -like "*$($key)*" }
+  Get-ChildItem -path Registry::HKEY_LOCAL_MACHINE -Recurse -ErrorAction SilentlyContinue | Where-Object { $_.Name -like "*$($key)*" }
+  Get-ChildItem -path Registry::HKEY_USERS -Recurse -ErrorAction SilentlyContinue | Where-Object { $_.Name -like "*$($key)*" }
+  Get-ChildItem -path Registry::HKEY_CURRENT_CONFIG -Recurse -ErrorAction SilentlyContinue | Where-Object { $_.Name -like "*$($key)*" }
 }
 Function Find-RegValue() {
   $value = $args
-  Get-ChildItem -path Registry::HKEY_CLASSES_ROOT -Recurse -ErrorAction SilentlyContinue | where { $_.Property -like "*$($value)*" }
-  Get-ChildItem -path Registry::HKEY_CURRENT_USER -Recurse -ErrorAction SilentlyContinue | where { $_.Property -like "*$($value)*" }
-  Get-ChildItem -path Registry::HKEY_LOCAL_MACHINE -Recurse -ErrorAction SilentlyContinue | where { $_.Property -like "*$($value)*" }
-  Get-ChildItem -path Registry::HKEY_USERS -Recurse -ErrorAction SilentlyContinue | where { $_.Property -like "*$($value)*" }
-  Get-ChildItem -path Registry::HKEY_CURRENT_CONFIG -Recurse -ErrorAction SilentlyContinue | where { $_.Property -like "*$($value)*" }
+  Get-ChildItem -path Registry::HKEY_CLASSES_ROOT -Recurse -ErrorAction SilentlyContinue | Where-Object { $_.Property -like "*$($value)*" }
+  Get-ChildItem -path Registry::HKEY_CURRENT_USER -Recurse -ErrorAction SilentlyContinue | Where-Object { $_.Property -like "*$($value)*" }
+  Get-ChildItem -path Registry::HKEY_LOCAL_MACHINE -Recurse -ErrorAction SilentlyContinue | Where-Object { $_.Property -like "*$($value)*" }
+  Get-ChildItem -path Registry::HKEY_USERS -Recurse -ErrorAction SilentlyContinue | Where-Object { $_.Property -like "*$($value)*" }
+  Get-ChildItem -path Registry::HKEY_CURRENT_CONFIG -Recurse -ErrorAction SilentlyContinue | Where-Object { $_.Property -like "*$($value)*" }
 }
 
 # Choco tab completion
@@ -476,19 +476,11 @@ Function upgradeProfile {
   $url = "https://raw.githubusercontent.com/joeky888/powershell/master/profile.ps1"
   $path = $Profile.CurrentUserAllHosts
 
-  if(!(Split-Path -parent $path) -or !(Test-Path -pathType Container (Split-Path -parent $path))) {
-    $targetFile = Join-Path $pwd (Split-Path -leaf $path)
-  }
-
   (New-Object System.Net.WebClient).DownloadFile($url, $path)
 }
 Function upgradeVimrc {
   $url = "https://raw.githubusercontent.com/joeky888/vimrc/master/.vimrc"
   $path = "$env:USERPROFILE\.vimrc"
-
-  if(!(Split-Path -parent $path) -or !(Test-Path -pathType Container (Split-Path -parent $path))) {
-    $targetFile = Join-Path $pwd (Split-Path -leaf $path)
-  }
 
   (New-Object System.Net.WebClient).DownloadFile($url, $path)
 }
