@@ -179,6 +179,12 @@ Function grep {
   }
 }
 
+if (Get-Command robocopy -errorAction SilentlyContinue)
+{
+  If (Test-Path alias:cp)    {Remove-Item alias:cp}
+  Set-Alias cp robocopy
+}
+
 Function fd {
   $VCS_FOLDERS = ".bzr,CVS,.git,.hg,.svn"
   $VCS_FOLDERS_MORE = "$VCS_FOLDERS,vendor,node_modules,ohmyzsh,dist,bin"
