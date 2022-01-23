@@ -540,27 +540,6 @@ Function streamlink-mpv-720 {
   streamlink.exe --loglevel debug --verbose-player --player 'mpv.com' --player-arg "$env:STREAM_PLAYER_ARGUMENTS" --title '{title}' --default-stream 720p "$args"
 }
 
-Function Reset-Networking {
-  ipconfig /release
-  ipconfig /renew
-  arp -d *
-  nbtstat -R
-  nbtstat -RR
-  ipconfig /flushdns
-  ipconfig /registerdns
-  netsh winsock reset
-}
-
-Function MtuStatus {
-  netsh interface ipv4 show subinterfaces
-}
-Function MtuForWifiGaming {
-  netsh interface ipv4 set subinterface Wi-Fi mtu=296  store=active
-}
-Function MtuForWifiNormal {
-  netsh interface ipv4 set subinterface Wi-Fi mtu=1500 store=persistent
-}
-
 if (Test-Path -Path "$env:USERPROFILE\.pythonrc") {
   $env:PYTHONSTARTUP = "$env:USERPROFILE\.pythonrc"
 } elseif (Test-Path -Path "$env:USERPROFILE\.pythonrc.py") {
