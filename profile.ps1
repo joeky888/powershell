@@ -632,8 +632,6 @@ Function Set-EnvPath($path) {
 Set-EnvPath("$env:ALLUSERSPROFILE\chocolatey\bin")
 Set-EnvPath("$env:ProgramFiles\7-Zip")
 Set-EnvPath("$env:ProgramFiles\OpenSSH-Win64")
-Set-EnvPath("$env:ProgramFiles\Sublime Text 3")
-Set-EnvPath("$env:ProgramFiles\Sublime Text 2")
 Set-EnvPath("$env:ProgramFiles\Microsoft VS Code")
 Set-EnvPath("$env:ProgramFiles\Microsoft VS Code Insiders")
 Set-EnvPath("$env:ProgramFiles\VSCodium\bin")
