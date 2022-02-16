@@ -519,10 +519,10 @@ Function mpv-1080-proxy {
   Invoke-Expression "mpv.com --stream-lavf-o-append=http_proxy=proxy.uku.im:443,https_proxy=proxy.uku.im:443 --ytdl-format=`"bestvideo[height<=1080][vcodec^=avc]+bestaudio/best`" $env:PLAYER_ARGUMENTS `"$args`""
 }
 Function mpv-720 {
-  Invoke-Expression "mpv.com --ytdl-format=`"bestvideo[height<=720][fps<=30][vcodec^=avc]+bestaudio/best`" $env:PLAYER_ARGUMENTS --ytdl-raw-options=`"no-check-certificate=,yes-playlist=,hls-prefer-native=,ignore-errors=`" `"$args`""
+  Invoke-Expression "mpv.com --ytdl-format=`"bestvideo[height<=720][fps<=30][vcodec^=avc]+bestaudio/best`" $env:PLAYER_ARGUMENTS `"$args`""
 }
 Function mpv-480 {
-  Invoke-Expression "mpv.com --ytdl-format=`"bestvideo[height<=480][fps<=30][vcodec^=avc]+bestaudio/best`" $env:PLAYER_ARGUMENTS --ytdl-raw-options=`"no-check-certificate=,yes-playlist=,hls-prefer-native=,ignore-errors=`" `"$args`""
+  Invoke-Expression "mpv.com --ytdl-format=`"bestvideo[height<=480][fps<=30][vcodec^=avc]+bestaudio/best`" $env:PLAYER_ARGUMENTS `"$args`""
 }
 Function mpv-4by3 {
   Invoke-Expression "mpv.com --video-aspect-override=4:3 $env:PLAYER_ARGUMENTS `"$args`""
