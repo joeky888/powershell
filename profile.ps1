@@ -639,8 +639,6 @@ Set-EnvPath("$env:ProgramFiles\Microsoft VS Code Insiders")
 Set-EnvPath("$env:ProgramFiles\VSCodium\bin")
 Set-EnvPath("$env:ProgramFiles\Nmap")
 Set-EnvPath("$env:ProgramFiles (x86)\Nmap")
-Set-EnvPath("C:\zulu")
-Set-EnvPath("$env:ProgramFiles\Oracle\VirtualBox")
 Set-EnvPath("$env:USERPROFILE\scoop\shims")
 Set-EnvPath("$env:USERPROFILE\scoop\apps\mpv\current")
 Set-EnvPath("$env:USERPROFILE\scoop\apps\mpv-git\current")
@@ -648,7 +646,6 @@ Set-EnvPath("$env:USERPROFILE\scoop\apps\vscode\current\bin")
 Set-EnvPath("$env:LOCALAPPDATA\Android\sdk\platform-tools")
 Set-EnvPath("$env:USERPROFILE\go\bin")
 Set-EnvPath("$env:ProgramFiles\Docker\Docker\Resources\bin")
-Set-EnvPath("$env:ProgramFiles\Git\usr\bin")
 
 # Move Windows path to end
 $winpath=""
