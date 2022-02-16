@@ -124,10 +124,13 @@ PowerShellGet\Install-Module -Scope CurrentUser posh-docker
 | Find-RegKey    | Find a key in regedit recursively                       | Find-RegKey "some key"   |
 | Find-RegValue  | Find a value in regedit recursively                     | Find-RegKey "some value" |
 
-## Extra commands
+## Extra aliases
 
 | Command       | Action                                                                   | Example                                                           |
 | ------------- | ------------------------------------------------------------------------ | ----------------------------------------------------------------- |
+| ..            | cd ..                                                                    |                                                                   |
+| ...           | cd ..\..                                                                 |                                                                   |
+| ....          | cd ..\..\..                                                              |                                                                   |
 | url-encode    | Encode a given url                                                       | `url-encode "wikipedia.org/wiki/鬼車_(ライブラリ)"`               |
 | url-decode    | Decode a given url                                                       | `url-decode "wikipedia.org/wiki/%E9%AC%BC%E8%BB%8A"`              |
 | base64-encode | base64 encode a given string                                             | `base64-encode "hi"`                                              |
