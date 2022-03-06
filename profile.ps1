@@ -515,9 +515,6 @@ Function yt-dlp-720 {
 Function mpv-1080 {
   Invoke-Expression "mpv.com --ytdl-format=`"bestvideo[height<=1080][vcodec^=avc]+bestaudio/best`" $env:PLAYER_ARGUMENTS `"$args`""
 }
-Function mpv-1080-proxy {
-  Invoke-Expression "mpv.com --stream-lavf-o-append=http_proxy=proxy.uku.im:443,https_proxy=proxy.uku.im:443 --ytdl-format=`"bestvideo[height<=1080][vcodec^=avc]+bestaudio/best`" $env:PLAYER_ARGUMENTS `"$args`""
-}
 Function mpv-720 {
   Invoke-Expression "mpv.com --ytdl-format=`"bestvideo[height<=720][fps<=30][vcodec^=avc]+bestaudio/best`" $env:PLAYER_ARGUMENTS `"$args`""
 }
