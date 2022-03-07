@@ -162,3 +162,4 @@ PowerShellGet\Install-Module -Scope CurrentUser posh-docker
 
 ### TODO
 * Compatible with upcoming Powershell 6
+* Compatible with WindowsFX(LinuxFX)
