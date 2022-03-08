@@ -153,6 +153,7 @@ PowerShellGet\Install-Module -Scope CurrentUser posh-docker
 | Variable            | Value                    | Description                   |
 | ------------------- | ------------------------ | ----------------------------- |
 | `PYTHONIOENCODING`  | `UTF-8`                  | Python2 UTF-8                 |
+| `PYTHONUTF8`        | `1`                      | Python3 UTF-8                 |
 | `PYTHONHTTPSVERIFY` | `0`                      | Python2 SSL checking disabled |
 | `JAVA_TOOL_OPTIONS` | ` -Dfile.encoding=UTF8 ` | Java UTF-8                    |
 

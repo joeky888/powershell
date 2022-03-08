@@ -1,5 +1,7 @@
 # Python2 UTF8
 $env:PYTHONIOENCODING = "UTF-8"
+# Python3 UTF8
+$env:PYTHONUTF8 = "1"
 # Java UTF8
 $env:JAVA_TOOL_OPTIONS = " -Dfile.encoding=UTF8 "
 # Python2 Disable ssl checking
