@@ -124,7 +124,6 @@ if (Get-Command Set-PSReadlineOption -errorAction SilentlyContinue)
   } catch [Exception] {
     # PSReadline 2.0
     Set-PSReadlineOption -Colors @{
-      "None"      = [ConsoleColor]::Red
       "Comment"   = [ConsoleColor]::Gray
       "Keyword"   = [ConsoleColor]::White
       "String"    = [ConsoleColor]::Yellow
@@ -496,7 +495,7 @@ Function upgradeVimrc {
 $env:DOWNLOADARGS="--continue=true --timeout=12 --connect-timeout=12 --file-allocation=none --content-disposition-default-utf8=true --check-certificate=false --max-tries=2 --max-concurrent-downloads=150 --max-connection-per-server=16 --split=16 --min-split-size=1M --http-accept-gzip=true --parameterized-uri=false"
 $env:DLARGUMENTS="-o '%(title)s.%(ext)s' --write-sub --all-subs --embed-subs --concurrent-fragments 8 --hls-prefer-native --ignore-errors --downloader aria2c --downloader-args 'aria2c:$env:DOWNLOADARGS'"
 $env:TORRENTARGS="--enable-dht=true --bt-enable-lpd=true --bt-max-peers=0 --bt-request-peer-speed-limit=100M --seed-ratio=0 --bt-detach-seed-only=true --seed-time=0 --enable-peer-exchange=true --bt-tracker=$($(curl -s https://raw.githubusercontent.com/XIU2/TrackersListCollection/master/all.txt) -notmatch '^\s*$' -join ',')"
-$env:PLAYER_ARGUMENTS='--cache=yes --cache-dir=$ENV:Temp --cache-on-disk=yes --ytdl-raw-options=no-check-certificate=,yes-playlist=,hls-prefer-native=,ignore-errors=,write-auto-sub=,write-sub=,sub-lang="(en|zh).*"'
+$env:PLAYER_ARGUMENTS='--cache=yes --cache-dir=$ENV:Temp --cache-on-disk=yes --ytdl-raw-options=no-check-certificate=,yes-playlist=,extractor-args="youtube:player-client=ios",hls-prefer-native=,ignore-errors=,write-auto-sub=,write-sub=,sub-lang="(en|zh).*"'
 $env:STREAM_PLAYER_ARGUMENTS='--cache=yes --cache-dir=$ENV:Temp --cache-on-disk=yes'
 Function aria2c {
   Invoke-Expression "aria2c.exe $env:DOWNLOADARGS `"$args`""
@@ -508,20 +507,20 @@ Function yt-dlp {
   Invoke-Expression "yt-dlp.exe $env:DLARGUMENTS `"$args`""
 }
 Function yt-dlp-1080 {
-  Invoke-Expression "yt-dlp.exe $env:DLARGUMENTS -f 'bestvideo[height<=1080][vcodec^=avc]+bestaudio/best' `"$args`""
+  Invoke-Expression "yt-dlp.exe $env:DLARGUMENTS -f 'bestvideo[height<=1080][vcodec!^=av01]+bestaudio/best' `"$args`""
 }
 Function yt-dlp-720 {
-  Invoke-Expression "yt-dlp.exe $env:DLARGUMENTS -f 'bestvideo[height<=720][fps<=30][vcodec^=avc]+bestaudio/best' `"$args`""
+  Invoke-Expression "yt-dlp.exe $env:DLARGUMENTS -f 'bestvideo[height<=720][fps<=30][vcodec!^=av01]+bestaudio/best' `"$args`""
 }
 
 Function mpv-1080 {
-  Invoke-Expression "mpv.com --ytdl-format=`"bestvideo[height<=1080][vcodec^=avc]+bestaudio/best`" $env:PLAYER_ARGUMENTS `"$args`""
+  Invoke-Expression "mpv.com --ytdl-format=`"bestvideo[height<=1080][vcodec!^=av01]+bestaudio/best`" $env:PLAYER_ARGUMENTS `"$args`""
 }
 Function mpv-720 {
-  Invoke-Expression "mpv.com --ytdl-format=`"bestvideo[height<=720][fps<=30][vcodec^=avc]+bestaudio/best`" $env:PLAYER_ARGUMENTS `"$args`""
+  Invoke-Expression "mpv.com --ytdl-format=`"bestvideo[height<=720][fps<=30][vcodec!^=av01]+bestaudio/best`" $env:PLAYER_ARGUMENTS `"$args`""
 }
 Function mpv-480 {
-  Invoke-Expression "mpv.com --ytdl-format=`"bestvideo[height<=480][fps<=30][vcodec^=avc]+bestaudio/best`" $env:PLAYER_ARGUMENTS `"$args`""
+  Invoke-Expression "mpv.com --ytdl-format=`"bestvideo[height<=480][fps<=30][vcodec!^=av01]+bestaudio/best`" $env:PLAYER_ARGUMENTS `"$args`""
 }
 Function mpv-4by3 {
   Invoke-Expression "mpv.com --video-aspect-override=4:3 $env:PLAYER_ARGUMENTS `"$args`""
