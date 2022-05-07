@@ -73,7 +73,7 @@ PowerShellGet\Install-Module -Scope CurrentUser posh-docker
 #### Install oh-my-posh (Recommended)
 
 ```ps1
-scoop install https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/oh-my-posh.json
+scoop install oh-my-posh
 ```
 
 | Keys           | Action                                   | Description                                        |
