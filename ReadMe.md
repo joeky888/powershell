@@ -43,11 +43,11 @@ if(!(Split-Path -parent $path) -or !(Test-Path -pathType Container (Split-Path -
 (New-Object System.Net.WebClient).DownloadFile($url, $path)
 ```
 
-## Install theme
+#### Install theme
 
 See https://github.com/joeky888/MonoKombat.cmd
 
-## Install chocolatey and chocolatey packages (Recommended)
+#### Install chocolatey and chocolatey packages (Recommended)
 
 ```sh
 # Open powershell (as administrator)
@@ -55,20 +55,25 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.We
 choco install 7zip git miniconda miniconda3 -y
 ```
 
-## Install scoop (Recommended)
+#### Install scoop (Recommended)
 
 ```sh
 Set-ExecutionPolicy Bypass -Scope Process -Force; iwr -useb get.scoop.sh | iex
 scoop install neovim wezterm ripgrep fd
 ```
 
-## Install Powershell modules (Recommended)
+#### Install Powershell modules (Recommended)
 
 ```sh
 # Open powershell (as administrator)
 PowerShellGet\Install-Module -Scope CurrentUser posh-git
-PowerShellGet\Install-Module -Scope CurrentUser oh-my-posh
 PowerShellGet\Install-Module -Scope CurrentUser posh-docker
+```
+
+#### Install oh-my-posh (Recommended)
+
+```ps1
+scoop install https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/oh-my-posh.json
 ```
 
 | Keys           | Action                                   | Description                                        |

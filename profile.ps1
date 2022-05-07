@@ -182,7 +182,8 @@ if (Get-Command Set-PSReadlineOption -errorAction SilentlyContinue)
 }
 
 if (Get-Command oh-my-posh.exe -errorAction SilentlyContinue) {
-  oh-my-posh init pwsh | Invoke-Expression
+  $env:POSH_THEMES_PATH = "$(scoop prefix oh-my-posh)\themes\powerlevel10k_rainbow.omp.json"
+  oh-my-posh init pwsh --config $env:POSH_THEMES_PATH | Invoke-Expression
 }
 
 # alias bash/zsh command
