@@ -16,6 +16,14 @@ $env:TERM = ""
 # Pipe non-ASCII content with utf8 encoding, this is a fix for ripgrep
 $OutputEncoding = [System.Text.UTF8Encoding]::new()
 
+# Import modules from Powershell Gallery
+if (Get-Module -ListAvailable -Name posh-git) {
+  Import-Module posh-git
+}
+if (Get-Module -ListAvailable -Name posh-docker) {
+  Import-Module posh-docker
+}
+
 try {
   # UTF8
   [Console]::InputEncoding = [Text.UTF8Encoding]::UTF8
@@ -425,18 +433,6 @@ Function Prompt {
   Write-Host ">" -NoNewline -ForegroundColor Yellow
   Write-Host ">" -NoNewline -ForegroundColor Green
   Return " "
-}
-
-# Import modules from Powershell Gallery
-if (Get-Module -ListAvailable -Name posh-git) {
-  Import-Module posh-git
-  if (Get-Module -ListAvailable -Name oh-my-posh) {
-    Import-Module oh-my-posh
-    Set-PoshPrompt -Theme Paradox
-  }
-}
-if (Get-Module -ListAvailable -Name posh-docker) {
-  Import-Module posh-docker
 }
 
 # Command to upgrade all chocolatey packages
