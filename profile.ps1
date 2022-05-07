@@ -51,14 +51,6 @@ ForEach ($path in ${env:PATH}.Split(';')) {
 }
 $env:PATH = $nonwinpath + $winpath
 
-# Import modules from Powershell Gallery
-if (Get-Module -ListAvailable -Name posh-git) {
-  Import-Module posh-git
-}
-if (Get-Module -ListAvailable -Name posh-docker) {
-  Import-Module posh-docker
-}
-
 try {
   # UTF8
   [Console]::InputEncoding = [Text.UTF8Encoding]::UTF8
@@ -179,11 +171,6 @@ if (Get-Command Set-PSReadlineOption -errorAction SilentlyContinue)
       "Member"    = [ConsoleColor]::White
     }
   }
-}
-
-if (Get-Command oh-my-posh.exe -errorAction SilentlyContinue) {
-  $env:POSH_THEMES_PATH = "$(scoop prefix oh-my-posh)\themes\powerlevel10k_rainbow.omp.json"
-  oh-my-posh init pwsh --config $env:POSH_THEMES_PATH | Invoke-Expression
 }
 
 # alias bash/zsh command
@@ -441,38 +428,55 @@ try {
   $env:ChocolateyToolsLocation = $env:ALLUSERSPROFILE
 }
 
-Function Prompt {
-  try {
-   Write-Host  "$([Char]9581)$([Char]9472)" -NoNewline
-  } catch [Exception] { <# Older version of powershell doesn't support special characters #> }
+Function defaultPropmt {
+  Function Prompt {
+    try {
+     Write-Host  "$([Char]9581)$([Char]9472)" -NoNewline
+    } catch [Exception] { <# Older version of powershell doesn't support special characters #> }
 
-  Write-Host  "$env:username" -NoNewline -ForegroundColor Red
+    Write-Host  "$env:username" -NoNewline -ForegroundColor Red
 
-  If (([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole(`
-    [Security.Principal.WindowsBuiltInRole] "Administrator")) {
-    Write-Host  "(Admin)" -NoNewline -ForegroundColor Yellow
-  }
-  Write-Host "@" -NoNewline
-  Write-Host "$env:computername" -NoNewline -ForegroundColor Green
-  Write-Host " " -NoNewline
-  # Use full path since it's easier to understand for newbies
-  # Write-Host "$PWD".Replace("$HOME", "~") -ForegroundColor Yellow
-  Write-Host "$PWD" -ForegroundColor Cyan -NoNewline
-  try {
-    if (-not ([string]::IsNullOrEmpty($(git rev-parse --git-dir)))){
-        Write-Host " * $(git rev-parse --abbrev-ref HEAD)" -NoNewline -ForegroundColor Yellow
+    If (([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole(`
+      [Security.Principal.WindowsBuiltInRole] "Administrator")) {
+      Write-Host  "(Admin)" -NoNewline -ForegroundColor Yellow
     }
-  } catch [Exception] { <# Not in git directory or git is not installed #> }
+    Write-Host "@" -NoNewline
+    Write-Host "$env:computername" -NoNewline -ForegroundColor Green
+    Write-Host " " -NoNewline
+    # Use full path since it's easier to understand for newbies
+    # Write-Host "$PWD".Replace("$HOME", "~") -ForegroundColor Yellow
+    Write-Host "$PWD" -ForegroundColor Cyan -NoNewline
+    try {
+      if (-not ([string]::IsNullOrEmpty($(git rev-parse --git-dir)))){
+          Write-Host " * $(git rev-parse --abbrev-ref HEAD)" -NoNewline -ForegroundColor Yellow
+      }
+    } catch [Exception] { <# Not in git directory or git is not installed #> }
 
-  Write-Host ""
+    Write-Host ""
 
-  try {
-    Write-Host  "$([Char]9584)$([Char]9472)" -NoNewline
-  } catch [Exception] { <# Older version of powershell doesn't support special characters #> }
-  Write-Host ">" -NoNewline -ForegroundColor Red
-  Write-Host ">" -NoNewline -ForegroundColor Yellow
-  Write-Host ">" -NoNewline -ForegroundColor Green
-  Return " "
+    try {
+      Write-Host  "$([Char]9584)$([Char]9472)" -NoNewline
+    } catch [Exception] { <# Older version of powershell doesn't support special characters #> }
+    Write-Host ">" -NoNewline -ForegroundColor Red
+    Write-Host ">" -NoNewline -ForegroundColor Yellow
+    Write-Host ">" -NoNewline -ForegroundColor Green
+    Return " "
+  }
+}
+
+if (Get-Command oh-my-posh.exe -errorAction SilentlyContinue) {
+  $env:POSH_THEMES_PATH = "$(scoop prefix oh-my-posh)\themes\powerlevel10k_rainbow.omp.json"
+  oh-my-posh init pwsh --config $env:POSH_THEMES_PATH | Invoke-Expression
+} else {
+  defaultPrompt
+}
+
+# Import modules from Powershell Gallery
+if (Get-Module -ListAvailable -Name posh-git) {
+  Import-Module posh-git
+}
+if (Get-Module -ListAvailable -Name posh-docker) {
+  Import-Module posh-docker
 }
 
 # Command to upgrade all chocolatey packages
