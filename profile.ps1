@@ -16,6 +16,41 @@ $env:TERM = ""
 # Pipe non-ASCII content with utf8 encoding, this is a fix for ripgrep
 $OutputEncoding = [System.Text.UTF8Encoding]::new()
 
+Function Set-EnvPath($path) {
+  if((Test-Path -Path "$path") -and ($env:PATH -NotLike "*$path*")) {
+      $env:PATH = "$path;$env:PATH"
+  }
+}
+
+Set-EnvPath("$env:ALLUSERSPROFILE\chocolatey\bin")
+Set-EnvPath("$env:ProgramFiles\7-Zip")
+Set-EnvPath("$env:ProgramFiles\OpenSSH-Win64")
+Set-EnvPath("$env:ProgramFiles\Microsoft VS Code")
+Set-EnvPath("$env:ProgramFiles\Microsoft VS Code Insiders")
+Set-EnvPath("$env:ProgramFiles\VSCodium\bin")
+Set-EnvPath("$env:ProgramFiles\Nmap")
+Set-EnvPath("$env:ProgramFiles (x86)\Nmap")
+Set-EnvPath("$env:USERPROFILE\.oh-my-posh")
+Set-EnvPath("$env:USERPROFILE\scoop\shims")
+Set-EnvPath("$env:USERPROFILE\scoop\apps\mpv\current")
+Set-EnvPath("$env:USERPROFILE\scoop\apps\mpv-git\current")
+Set-EnvPath("$env:USERPROFILE\scoop\apps\vscode\current\bin")
+Set-EnvPath("$env:LOCALAPPDATA\Android\sdk\platform-tools")
+Set-EnvPath("$env:USERPROFILE\go\bin")
+Set-EnvPath("$env:ProgramFiles\Docker\Docker\Resources\bin")
+
+# Move Windows path to end
+$winpath=""
+$nonwinpath=""
+ForEach ($path in ${env:PATH}.Split(';')) {
+  if($path -match '.*windows.*') {
+    $winpath = $winpath + $path + ";"
+  } else {
+    $nonwinpath = $nonwinpath + $path + ";"
+  }
+}
+$env:PATH = $nonwinpath + $winpath
+
 # Import modules from Powershell Gallery
 if (Get-Module -ListAvailable -Name posh-git) {
   Import-Module posh-git
@@ -144,6 +179,10 @@ if (Get-Command Set-PSReadlineOption -errorAction SilentlyContinue)
       "Member"    = [ConsoleColor]::White
     }
   }
+}
+
+if (Get-Command oh-my-posh.exe -errorAction SilentlyContinue) {
+  oh-my-posh init pwsh | Invoke-Expression
 }
 
 # alias bash/zsh command
@@ -616,38 +655,3 @@ if(Test-Path -Path "$env:USERPROFILE\.npmrc") {
     npm update -g
   }
 }
-
-Function Set-EnvPath($path) {
-  if((Test-Path -Path "$path") -and ($env:PATH -NotLike "*$path*")) {
-      $env:PATH = "$path;$env:PATH"
-  }
-}
-
-Set-EnvPath("$env:ALLUSERSPROFILE\chocolatey\bin")
-Set-EnvPath("$env:ProgramFiles\7-Zip")
-Set-EnvPath("$env:ProgramFiles\OpenSSH-Win64")
-Set-EnvPath("$env:ProgramFiles\Microsoft VS Code")
-Set-EnvPath("$env:ProgramFiles\Microsoft VS Code Insiders")
-Set-EnvPath("$env:ProgramFiles\VSCodium\bin")
-Set-EnvPath("$env:ProgramFiles\Nmap")
-Set-EnvPath("$env:ProgramFiles (x86)\Nmap")
-Set-EnvPath("$env:USERPROFILE\.oh-my-posh")
-Set-EnvPath("$env:USERPROFILE\scoop\shims")
-Set-EnvPath("$env:USERPROFILE\scoop\apps\mpv\current")
-Set-EnvPath("$env:USERPROFILE\scoop\apps\mpv-git\current")
-Set-EnvPath("$env:USERPROFILE\scoop\apps\vscode\current\bin")
-Set-EnvPath("$env:LOCALAPPDATA\Android\sdk\platform-tools")
-Set-EnvPath("$env:USERPROFILE\go\bin")
-Set-EnvPath("$env:ProgramFiles\Docker\Docker\Resources\bin")
-
-# Move Windows path to end
-$winpath=""
-$nonwinpath=""
-ForEach ($path in ${env:PATH}.Split(';')) {
-  if($path -match '.*windows.*') {
-    $winpath = $winpath + $path + ";"
-  } else {
-    $nonwinpath = $nonwinpath + $path + ";"
-  }
-}
-$env:PATH = $nonwinpath + $winpath
