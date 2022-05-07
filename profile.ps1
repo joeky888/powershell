@@ -428,7 +428,10 @@ try {
   $env:ChocolateyToolsLocation = $env:ALLUSERSPROFILE
 }
 
-Function defaultPropmt {
+if (Get-Command oh-my-posh.exe -errorAction SilentlyContinue) {
+  $env:POSH_THEMES_PATH = "$(scoop prefix oh-my-posh)\themes\powerlevel10k_rainbow.omp.json"
+  oh-my-posh init pwsh --config $env:POSH_THEMES_PATH | Invoke-Expression
+} else {
   Function Prompt {
     try {
      Write-Host  "$([Char]9581)$([Char]9472)" -NoNewline
@@ -462,13 +465,6 @@ Function defaultPropmt {
     Write-Host ">" -NoNewline -ForegroundColor Green
     Return " "
   }
-}
-
-if (Get-Command oh-my-posh.exe -errorAction SilentlyContinue) {
-  $env:POSH_THEMES_PATH = "$(scoop prefix oh-my-posh)\themes\powerlevel10k_rainbow.omp.json"
-  oh-my-posh init pwsh --config $env:POSH_THEMES_PATH | Invoke-Expression
-} else {
-  defaultPrompt
 }
 
 # Import modules from Powershell Gallery
