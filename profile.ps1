@@ -529,7 +529,7 @@ Function upgradeVimrc {
 }
 
 $env:DOWNLOADARGS="--continue=true --timeout=12 --connect-timeout=12 --file-allocation=none --content-disposition-default-utf8=true --check-certificate=false --max-tries=2 --max-concurrent-downloads=150 --max-connection-per-server=16 --split=16 --min-split-size=1M --http-accept-gzip=true --parameterized-uri=false"
-$env:DLARGUMENTS="-o '%(title)s.%(ext)s' --write-sub --all-subs --embed-subs --concurrent-fragments 8 --hls-prefer-native --ignore-errors --downloader aria2c --downloader-args 'aria2c:$env:DOWNLOADARGS'"
+$env:DLARGUMENTS="-o '%(title)s.%(ext)s' --write-sub --all-subs --embed-subs --concurrent-fragments 8 --hls-prefer-native --ignore-errors"
 $env:TORRENTARGS="--enable-dht=true --bt-enable-lpd=true --bt-max-peers=0 --bt-request-peer-speed-limit=100M --seed-ratio=0 --bt-detach-seed-only=true --seed-time=0 --enable-peer-exchange=true --bt-tracker=$($(curl -s https://raw.githubusercontent.com/XIU2/TrackersListCollection/master/all.txt) -notmatch '^\s*$' -join ',')"
 $env:PLAYER_ARGUMENTS='--cache=yes --cache-dir=$ENV:Temp --cache-on-disk=yes --ytdl-raw-options=no-check-certificate=,yes-playlist=,hls-prefer-native=,ignore-errors=,write-auto-sub=,write-sub=,sub-lang="(en|zh).*"'
 $env:STREAM_PLAYER_ARGUMENTS='--cache=yes --cache-dir=$ENV:Temp --cache-on-disk=yes'
@@ -542,6 +542,11 @@ Function aria2c-bt-qBittorrent {
 Function yt-dlp {
   Invoke-Expression "yt-dlp.exe $env:DLARGUMENTS `"$args`""
 }
+
+Function yt-dlp-aria2c {
+  Invoke-Expression "yt-dlp.exe $env:DLARGUMENTS --downloader aria2c --downloader-args 'aria2c:$env:DOWNLOADARGS' `"$args`""
+}
+
 Function yt-dlp-1080 {
   Invoke-Expression "yt-dlp.exe $env:DLARGUMENTS -f 'bestvideo[height<=1080][vcodec!^=av01]+bestaudio/best' `"$args`""
 }
