@@ -570,7 +570,7 @@ Function mpv-16by9 {
   Invoke-Expression "mpv.com --video-aspect-override=16:9 $env:PLAYER_ARGUMENTS `"$args`""
 }
 Function mpv-audio {
-  Invoke-Expression "mpv.com --no-video $env:PLAYER_ARGUMENTS `"$args`""
+  Invoke-Expression "mpv.com --no-video --keep-open=no $env:PLAYER_ARGUMENTS `"$args`""
 }
 Function streamlink-mpv-best {
   streamlink.exe --loglevel debug --verbose-player --player 'mpv.com' --player-arg "$env:STREAM_PLAYER_ARGUMENTS" --title '{title}' --default-stream best "$args"
