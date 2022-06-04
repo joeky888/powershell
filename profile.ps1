@@ -503,6 +503,10 @@ Function upgradeYt-dlp {
 Function upgradeYou-get {
   pip3 install --upgrade --force-reinstall --no-cache-dir https://github.com/soimort/you-get/archive/develop.zip
 }
+Function upgradeYkdl {
+  pip3 install --upgrade --force-reinstall --no-cache-dir https://github.com/SeaHOH/ykdl/archive/master.zip
+}
+
 Function upgradeStreamlink {
   pip3 install --upgrade --force-reinstall --no-cache-dir https://github.com/streamlink/streamlink/archive/master.zip
 }
