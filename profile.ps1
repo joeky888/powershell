@@ -224,7 +224,7 @@ if (Get-Command robocopy -errorAction SilentlyContinue)
 Function fd {
   $VCS_FOLDERS = ".bzr,CVS,.git,.hg,.svn"
   $VCS_FOLDERS_MORE = "$VCS_FOLDERS,vendor,node_modules,ohmyzsh,dist,bin"
-  Invoke-Expression "fd.exe --hidden --glob --exclude=`"{$VCS_FOLDERS_MORE}`" `"$args`""
+  Invoke-Expression "fd.exe --hidden --ignore-case --glob --exclude=`"{$VCS_FOLDERS_MORE}`" `"$args`""
 }
 Function rg {
   $pipeline = $input | Out-String -stream
@@ -233,7 +233,7 @@ Function rg {
   if ($pipeline.length -gt 0) { # grep from stdin
     $pipeline | Out-String -stream | rg.exe $args
   } else {
-    Invoke-Expression "rg.exe --hidden --glob `"!{$VCS_FOLDERS_MORE}`" `"$args`""
+    Invoke-Expression "rg.exe --hidden --ignore-case --glob `"!{$VCS_FOLDERS_MORE}`" `"$args`""
   }
 }
 
