@@ -115,7 +115,7 @@ if (Get-Command Set-PSReadlineKeyHandler -errorAction SilentlyContinue)
     [Microsoft.PowerShell.PSConsoleReadLine]::RevertLine()
     [Microsoft.PowerShell.PSConsoleReadLine]::Insert( "Get-ChildItem -File -Recurse *.rar | Foreach { echo `$_.fullname }")
   }
-  Set-PSReadlineKeyHandler -Chord Ctrl+V,Ctrl+v -ScriptBlock {
+  Set-PSReadlineKeyHandler -Chord Ctrl+V,Ctrl+v,Ctrl+Shift+V,Ctrl+Shift+v -ScriptBlock {
     $clipboard = $(Get-Clipboard -Raw).Trim()
     if ($clipboard -match '^(http|ftp|magnet)' -or `
         (Test-Path $clipboard) ) {

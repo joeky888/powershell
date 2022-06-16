@@ -8,7 +8,7 @@ Features
 * Git current branch
 * Zsh-like Tab-Completion
 * Powershell ISE supported
-* Runs on Powershell >= 2.0 (Windows XP+)
+* Depends on Powershell >= 2.0 (Windows XP+)
 * UTF-8
 
 The code is under Public-domain licence.
@@ -76,33 +76,33 @@ PowerShellGet\Install-Module -Scope CurrentUser posh-docker
 scoop install oh-my-posh
 ```
 
-| Keys           | Action                                   | Description                                        |
-| -------------- | ---------------------------------------- | -------------------------------------------------- |
-| Ctrl A         | Move cursor to the beginning of the line | Just like macOS and terminals                      |
-| Ctrl E         | Move cursor to the end of the line       | Just like macOS and terminals                      |
-| Ctrl C         | Copy/Cancel command                      |                                                    |
-| Ctrl X         | Cut                                      |                                                    |
-| Ctrl V         | Paste with url decoding                  | Use Ctrl-Shift-V if it is not an intended behavior |
-| Ctrl D         | Exit                                     |                                                    |
-| Ctrl K         | Kill whole line                          | Just like nano                                     |
-| Ctrl F         | Run current command forever              |                                                    |
-| Ctrl R         | Search the history backward              | Just like bash                                     |
-| Ctrl G         | Select all                               |                                                    |
-| Ctrl T         | New Window                               | Open new tab in Powershell ISE                     |
-| Ctrl Z         | Undo                                     |                                                    |
-| Ctrl Y         | Redo                                     |                                                    |
-| Ctrl S         | Search the history forward               | Just like Emacs                                    |
-| Ctrl W         | Close tab                                | Powershell ISE only                                |
-| Ctrl L         | Clear                                    |                                                    |
-| Ctrl O         | Open file explorer here                  |                                                    |
-| Ctrl →         | Next word                                |                                                    |
-| Ctrl ←         | Previous word                            |                                                    |
-| Shift →        | Select one character right               |                                                    |
-| Shift ←        | Select one character left                |                                                    |
-| ↑              | Previous command in history              |                                                    |
-| ↓              | Next command in history                  |                                                    |
-| Ctrl Backspace | Delete a word backward                   |                                                    |
-| Shift+Insert   | Paste                                    | Paste raw data from clipboard                      |
+| Keys           | Action                                   | Description                    |
+| -------------- | ---------------------------------------- | ------------------------------ |
+| Ctrl A         | Move cursor to the beginning of the line | Just like macOS and terminals  |
+| Ctrl E         | Move cursor to the end of the line       | Just like macOS and terminals  |
+| Ctrl C         | Copy/Cancel command                      |                                |
+| Ctrl X         | Cut                                      |                                |
+| Ctrl V         | Paste with url decoding                  | Same with Ctrl-Shift-V         |
+| Ctrl D         | Exit                                     |                                |
+| Ctrl K         | Kill whole line                          | Just like nano                 |
+| Ctrl F         | Run current command forever              |                                |
+| Ctrl R         | Search the history backward              | Just like bash                 |
+| Ctrl G         | Select all                               |                                |
+| Ctrl T         | New Window                               | Open new tab in Powershell ISE |
+| Ctrl Z         | Undo                                     |                                |
+| Ctrl Y         | Redo                                     |                                |
+| Ctrl S         | Search the history forward               | Just like Emacs                |
+| Ctrl W         | Close tab                                | Powershell ISE only            |
+| Ctrl L         | Clear                                    |                                |
+| Ctrl O         | Open file explorer here                  |                                |
+| Ctrl →         | Next word                                |                                |
+| Ctrl ←         | Previous word                            |                                |
+| Shift →        | Select one character right               |                                |
+| Shift ←        | Select one character left                |                                |
+| ↑              | Previous command in history              |                                |
+| ↓              | Next command in history                  |                                |
+| Ctrl Backspace | Delete a word backward                   |                                |
+| Shift+Insert   | Paste                                    | Paste raw data from clipboard  |
 
 ## Extra commands
 
@@ -111,7 +111,7 @@ scoop install oh-my-posh
 | upgradeProfile | Upgrade [this file](profile.ps1)                        |                          |
 | upgradeChoco   | Upgrade all installed choco packages                    |                          |
 | upgradeModule  | Upgrade all installed Modules from Powershell Gallery   |                          |
-| upgradeScoop   | Upgrade all installed Scooop packages                   |                          |
+| upgradeScoop   | Upgrade all installed Scoop packages                    |                          |
 | upgradeConda   | Upgrade all Anaconda/Miniconda packages                 |                          |
 | upgradeConda2  | Upgrade all Miniconda2 packages                         | choco install miniconda2 |
 | upgradeConda3  | Upgrade all Miniconda3 packages                         | choco install miniconda3 |
