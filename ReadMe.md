@@ -133,9 +133,9 @@ scoop install oh-my-posh
 
 | Command       | Action                                                                   | Example                                                           |
 | ------------- | ------------------------------------------------------------------------ | ----------------------------------------------------------------- |
-| ..            | cd ..                                                                    |                                                                   |
-| ...           | cd ..\..                                                                 |                                                                   |
-| ....          | cd ..\..\..                                                              |                                                                   |
+| ..            | `cd ..`                                                                  |                                                                   |
+| ...           | `cd ..\..`                                                               |                                                                   |
+| ....          | `cd ..\..\..`                                                            |                                                                   |
 | url-encode    | Encode a given url                                                       | `url-encode "wikipedia.org/wiki/鬼車_(ライブラリ)"`               |
 | url-decode    | Decode a given url                                                       | `url-decode "wikipedia.org/wiki/%E9%AC%BC%E8%BB%8A"`              |
 | base64-encode | base64 encode a given string                                             | `base64-encode "hi"`                                              |
