@@ -30,6 +30,7 @@ Set-EnvPath("$env:ProgramFiles\Microsoft VS Code Insiders")
 Set-EnvPath("$env:ProgramFiles\VSCodium\bin")
 Set-EnvPath("$env:ProgramFiles\Nmap")
 Set-EnvPath("$env:ProgramFiles (x86)\Nmap")
+Set-EnvPath("$env:USERPROFILE\scoop\apps\starship\current")
 Set-EnvPath("$env:USERPROFILE\scoop\apps\oh-my-posh\current\bin")
 Set-EnvPath("$env:USERPROFILE\scoop\shims")
 Set-EnvPath("$env:USERPROFILE\scoop\apps\mpv\current")
@@ -431,6 +432,8 @@ try {
 if (Get-Command oh-my-posh.exe -errorAction SilentlyContinue) {
   $env:POSH_THEMES_PATH = "$(scoop prefix oh-my-posh)\themes\powerlevel10k_rainbow.omp.json"
   oh-my-posh init pwsh --config $env:POSH_THEMES_PATH | Invoke-Expression
+} elseif (Get-Command starship.exe -errorAction SilentlyContinue) {
+  Invoke-Expression (&starship init powershell)
 } else {
   Function Prompt {
     try {
