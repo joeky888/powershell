@@ -160,6 +160,7 @@ scoop install oh-my-posh
 | `PYTHONIOENCODING`  | `UTF-8`                  | Python2 UTF-8                 |
 | `PYTHONUTF8`        | `1`                      | Python3 UTF-8                 |
 | `PYTHONHTTPSVERIFY` | `0`                      | Python2 SSL checking disabled |
+| `PIP_USE_FEATURE`   | `fast-deps`              | Pip parallel downloading      |
 | `JAVA_TOOL_OPTIONS` | ` -Dfile.encoding=UTF8 ` | Java UTF-8                    |
 
 ### Extra notes

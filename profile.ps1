@@ -6,6 +6,8 @@ $env:PYTHONUTF8 = "1"
 $env:JAVA_TOOL_OPTIONS = " -Dfile.encoding=UTF8 "
 # Python2 Disable ssl checking
 $env:PYTHONHTTPSVERIFY = 0
+# Enable Pip parallel downloading
+$env:PIP_USE_FEATURE = "fast-deps"
 
 # Increase history size
 $global:MaximumHistoryCount = 10000
