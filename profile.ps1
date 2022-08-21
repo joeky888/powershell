@@ -588,13 +588,16 @@ Function mpv-audio {
   Invoke-Expression "mpv.com --no-video --keep-open=no --input-terminal=yes $env:PLAYER_ARGUMENTS `"$args`""
 }
 Function streamlink-mpv-best {
-  streamlink.exe --loglevel debug --verbose-player --player 'mpv.com' --player-arg "$env:STREAM_PLAYER_ARGUMENTS" --title '{title}' --default-stream best "$args"
+  streamlink.exe --loglevel debug --verbose-player --player 'mpv.com' --player-arg "$env:STREAM_PLAYER_ARGUMENTS" --hls-segment-threads 10 --title '{title}' --default-stream best "$args"
 }
 Function streamlink-mpv-1080 {
-  streamlink.exe --loglevel debug --verbose-player --player 'mpv.com' --player-arg "$env:STREAM_PLAYER_ARGUMENTS" --title '{title}' --default-stream 1080p "$args"
+  streamlink.exe --loglevel debug --verbose-player --player 'mpv.com' --player-arg "$env:STREAM_PLAYER_ARGUMENTS" --hls-segment-threads 10 --title '{title}' --default-stream 1080p60 "$args"
 }
 Function streamlink-mpv-720 {
-  streamlink.exe --loglevel debug --verbose-player --player 'mpv.com' --player-arg "$env:STREAM_PLAYER_ARGUMENTS" --title '{title}' --default-stream 720p "$args"
+  streamlink.exe --loglevel debug --verbose-player --player 'mpv.com' --player-arg "$env:STREAM_PLAYER_ARGUMENTS" --hls-segment-threads 10 --title '{title}' --default-stream 720p "$args"
+}
+Function streamlink-download {
+  streamlink.exe --loglevel debug --hls-segment-threads 10 --title '{title}' --default-stream best -o '{title}.mp4' "$args"
 }
 
 if (Test-Path -Path "$env:USERPROFILE\.pythonrc") {
