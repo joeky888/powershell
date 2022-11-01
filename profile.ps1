@@ -591,7 +591,7 @@ Function streamlink-mpv-best {
   streamlink.exe --loglevel debug --verbose-player --player 'mpv.com' --player-arg "$env:STREAM_PLAYER_ARGUMENTS" --stream-segment-threads 10 --title '{title}' --default-stream best "$args"
 }
 Function streamlink-mpv-1080 {
-  streamlink.exe --loglevel debug --verbose-player --player 'mpv.com' --player-arg "$env:STREAM_PLAYER_ARGUMENTS" --stream-segment-threads 10 --title '{title}' --default-stream 1080p60 "$args"
+  streamlink.exe --loglevel debug --verbose-player --player 'mpv.com' --player-arg "$env:STREAM_PLAYER_ARGUMENTS" --stream-segment-threads 10 --title '{title}' --default-stream 1080p "$args"
 }
 Function streamlink-mpv-720 {
   streamlink.exe --loglevel debug --verbose-player --player 'mpv.com' --player-arg "$env:STREAM_PLAYER_ARGUMENTS" --stream-segment-threads 10 --title '{title}' --default-stream 720p "$args"
