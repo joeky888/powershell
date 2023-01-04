@@ -15,6 +15,9 @@ $global:MaximumHistoryCount = 10000
 # Clear TERM variable
 $env:TERM = ""
 
+# Get System TEMP DIR
+$TEMPDIR = [System.Environment]::GetEnvironmentVariable('TEMP','Machine')
+
 # Pipe non-ASCII content with utf8 encoding, this is a fix for ripgrep
 $OutputEncoding = [System.Text.UTF8Encoding]::new()
 
@@ -367,7 +370,7 @@ Function url-decode {
 
 Set-Alias htop top
 Function curl-status() {
-  curl.exe -o $ENV:Temp\curl.tmp -L -s -w "Content Type: %{content_type}\nStatus Code: %{response_code}\nNumber of Redirects: %{num_redirects}\nSize: %{size_download}Bytes\nSpeed of Download: %{speed_download}Bytes/s\nServer IP: %{remote_ip}:%{remote_port}\nServer Final URL: %{url_effective}\n\nDNS Resolve: %{time_namelookup}s\nClient -> Server: %{time_connect}s\nServer Response: %{time_starttransfer}s\nTotal time: %{time_total}s\n" $args
+  curl.exe -o $TEMPDIR\curl.tmp -L -s -w "Content Type: %{content_type}\nStatus Code: %{response_code}\nNumber of Redirects: %{num_redirects}\nSize: %{size_download}Bytes\nSpeed of Download: %{speed_download}Bytes/s\nServer IP: %{remote_ip}:%{remote_port}\nServer Final URL: %{url_effective}\n\nDNS Resolve: %{time_namelookup}s\nClient -> Server: %{time_connect}s\nServer Response: %{time_starttransfer}s\nTotal time: %{time_total}s\n" $args
 }
 
 Function ..() { Set-Location .. }
@@ -546,8 +549,8 @@ Function upgradeVimrc {
 $env:DOWNLOADARGS="--continue=true --timeout=12 --connect-timeout=12 --file-allocation=none --content-disposition-default-utf8=true --check-certificate=false --max-tries=2 --max-concurrent-downloads=150 --max-connection-per-server=16 --split=16 --min-split-size=1M --http-accept-gzip=true --parameterized-uri=false"
 $env:DLARGUMENTS="-o '%(title)s.%(ext)s' --write-sub --all-subs --embed-subs --concurrent-fragments 8 --hls-prefer-native --ignore-errors"
 $env:TORRENTARGS="--enable-dht=true --enable-dht6=true --bt-enable-lpd=true --bt-max-peers=0 --bt-request-peer-speed-limit=100M --seed-ratio=0 --bt-detach-seed-only=true --seed-time=0 --enable-peer-exchange=true --bt-tracker=$($(curl -s https://raw.githubusercontent.com/XIU2/TrackersListCollection/master/all.txt) -notmatch '^\s*$' -join ',')"
-$env:PLAYER_ARGUMENTS='--cache=yes --cache-dir=$ENV:Temp --cache-on-disk=yes --ytdl-raw-options=no-check-certificate=,yes-playlist=,hls-prefer-native=,ignore-errors=,write-auto-sub=,write-sub=,sub-lang="(en|zh).*"'
-$env:STREAM_PLAYER_ARGUMENTS='--cache=yes --cache-dir=$ENV:Temp --cache-on-disk=yes'
+$env:PLAYER_ARGUMENTS='--cache=yes --cache-dir=$TEMPDIR --cache-on-disk=yes --ytdl-raw-options=no-check-certificate=,yes-playlist=,hls-prefer-native=,ignore-errors=,write-auto-sub=,write-sub=,sub-lang="(en|zh).*"'
+$env:STREAM_PLAYER_ARGUMENTS='--cache=yes --cache-dir=$TEMPDIR --cache-on-disk=yes'
 Function aria2c {
   Invoke-Expression "aria2c.exe $env:DOWNLOADARGS `"$args`""
 }
