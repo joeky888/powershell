@@ -8,6 +8,8 @@ $env:JAVA_TOOL_OPTIONS = " -Dfile.encoding=UTF8 "
 $env:PYTHONHTTPSVERIFY = 0
 # Enable Pip parallel downloading
 $env:PIP_USE_FEATURE = "fast-deps"
+# Set cache dir for starship
+$ENV:STARSHIP_CACHE = "$HOME\AppData\Local\Temp"
 
 # Increase history size
 $global:MaximumHistoryCount = 10000
