@@ -70,9 +70,11 @@ PowerShellGet\Install-Module -Scope CurrentUser posh-git
 PowerShellGet\Install-Module -Scope CurrentUser posh-docker
 ```
 
-#### Install oh-my-posh (Recommended)
+#### Install either starship or oh-my-posh (Recommended)
 
 ```ps1
+scoop install starship
+# or
 scoop install oh-my-posh
 ```
 
