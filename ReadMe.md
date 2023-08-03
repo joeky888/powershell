@@ -165,10 +165,6 @@ scoop install oh-my-posh
 | `PIP_USE_FEATURE`   | `fast-deps`              | Pip parallel downloading      |
 | `JAVA_TOOL_OPTIONS` | ` -Dfile.encoding=UTF8 ` | Java UTF-8                    |
 
-### Extra notes
-
-* The best font for Powershell is [Sarasa-Gothic](https://github.com/be5invis/Sarasa-Gothic/releases) (previously [Iosevka](https://github.com/be5invis/Iosevka/releases)), which is made by one of the Microsoft employees. see [this Chinese post](https://www.zhihu.com/question/19637242/answer/41116173)
-
 ### TODO
 * Compatible with upcoming Powershell 6
 * Compatible with WindowsFX(LinuxFX)
