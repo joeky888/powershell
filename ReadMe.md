@@ -84,7 +84,7 @@ scoop install oh-my-posh
 | Ctrl E         | Move cursor to the end of the line       | Just like macOS and terminals  |
 | Ctrl C         | Copy/Cancel command                      |                                |
 | Ctrl X         | Cut                                      |                                |
-| Ctrl V         | Paste with url decoding                  | Same with Ctrl-Shift-V         |
+| Ctrl V         | Paste with url decoding                  | Same as Ctrl-Shift-V           |
 | Ctrl D         | Exit                                     |                                |
 | Ctrl K         | Kill whole line                          | Just like nano                 |
 | Ctrl F         | Run current command forever              |                                |
