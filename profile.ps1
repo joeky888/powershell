@@ -238,7 +238,7 @@ if (Get-Command robocopy -errorAction SilentlyContinue)
 Function fd {
   $VCS_FOLDERS = ".bzr,CVS,.git,.hg,.svn"
   $VCS_FOLDERS_MORE = "$VCS_FOLDERS,vendor,node_modules,ohmyzsh,dist,bin"
-  Invoke-Expression "fd.exe --hidden --ignore-case --glob --exclude=`"{$VCS_FOLDERS_MORE}`" `"$args`""
+  Invoke-Expression "fd.exe --hidden --ignore-case --glob --exclude=`"{$VCS_FOLDERS_MORE}`" $args"
 }
 Function rg {
   $pipeline = $input | Out-String -stream
@@ -247,7 +247,7 @@ Function rg {
   if ($pipeline.length -gt 0) { # grep from stdin
     $pipeline | Out-String -stream | rg.exe $args
   } else {
-    Invoke-Expression "rg.exe --hidden --ignore-case --glob `"!{$VCS_FOLDERS_MORE}`" `"$args`""
+    Invoke-Expression "rg.exe --hidden --ignore-case --glob `"!{$VCS_FOLDERS_MORE}`" $args"
   }
 }
 
@@ -554,46 +554,46 @@ $env:TORRENTARGS="--enable-dht=true --enable-dht6=true --bt-enable-lpd=true --bt
 $env:PLAYER_ARGUMENTS='--cache=yes --force-seekable=yes --ytdl-raw-options=no-check-certificate=,yes-playlist=,hls-prefer-native=,ignore-errors=,write-auto-sub=,write-sub=,sub-lang="(en|zh).*"'
 $env:STREAM_PLAYER_ARGUMENTS='--cache=yes --force-seekable=yes'
 Function aria2c {
-  Invoke-Expression "aria2c.exe $env:DOWNLOADARGS `"$args`""
+  Invoke-Expression "aria2c.exe $env:DOWNLOADARGS $args"
 }
 Function aria2c-bt-qBittorrent {
-  Invoke-Expression "aria2c.exe $env:DOWNLOADARGS $env:TORRENTARGS --user-agent='qBittorrent/4.1.1' --peer-id-prefix='-qB4110-' `"$args`""
+  Invoke-Expression "aria2c.exe $env:DOWNLOADARGS $env:TORRENTARGS --user-agent='qBittorrent/4.1.1' --peer-id-prefix='-qB4110-' $args"
 }
 Function yt-dlp {
   Invoke-Expression "yt-dlp.exe $env:DLARGUMENTS `"$args`""
 }
 
 Function yt-dlp-aria2c {
-  Invoke-Expression "yt-dlp.exe $env:DLARGUMENTS --downloader aria2c --downloader-args 'aria2c:$env:DOWNLOADARGS' `"$args`""
+  Invoke-Expression "yt-dlp.exe $env:DLARGUMENTS --downloader aria2c --downloader-args 'aria2c:$env:DOWNLOADARGS' $args"
 }
 
 Function yt-dlp-1080 {
-  Invoke-Expression "yt-dlp.exe $env:DLARGUMENTS -f 'bestvideo[height<=1080][vcodec!^=av01]+bestaudio/best' `"$args`""
+  Invoke-Expression "yt-dlp.exe $env:DLARGUMENTS -f 'bestvideo[height<=1080][vcodec!^=av01]+bestaudio/best' $args"
 }
 Function yt-dlp-720 {
-  Invoke-Expression "yt-dlp.exe $env:DLARGUMENTS -f 'bestvideo[height<=720][fps<=30][vcodec!^=av01]+bestaudio/best' `"$args`""
+  Invoke-Expression "yt-dlp.exe $env:DLARGUMENTS -f 'bestvideo[height<=720][fps<=30][vcodec!^=av01]+bestaudio/best' $args"
 }
 
 Function mpv-fast {
   cmd /c "yt-dlp.exe $env:DLARGUMENTS -f best -o - `"$args`" | mpv.com --cache=yes --force-media-title=`"$(yt-dlp.exe --get-title $args)`" - "
 }
 Function mpv-1080 {
-  Invoke-Expression "mpv.com --ytdl-format=`"bestvideo[height<=1080][vcodec!^=av01]+bestaudio/best`" $env:PLAYER_ARGUMENTS `"$args`""
+  Invoke-Expression "mpv.com --ytdl-format=`"bestvideo[height<=1080][vcodec!^=av01]+bestaudio/best`" $env:PLAYER_ARGUMENTS $args"
 }
 Function mpv-720 {
-  Invoke-Expression "mpv.com --ytdl-format=`"bestvideo[height<=720][fps<=30][vcodec!^=av01]+bestaudio/best`" $env:PLAYER_ARGUMENTS `"$args`""
+  Invoke-Expression "mpv.com --ytdl-format=`"bestvideo[height<=720][fps<=30][vcodec!^=av01]+bestaudio/best`" $env:PLAYER_ARGUMENTS $args"
 }
 Function mpv-480 {
-  Invoke-Expression "mpv.com --ytdl-format=`"bestvideo[height<=480][fps<=30][vcodec!^=av01]+bestaudio/best`" $env:PLAYER_ARGUMENTS `"$args`""
+  Invoke-Expression "mpv.com --ytdl-format=`"bestvideo[height<=480][fps<=30][vcodec!^=av01]+bestaudio/best`" $env:PLAYER_ARGUMENTS $args"
 }
 Function mpv-4by3 {
-  Invoke-Expression "mpv.com --video-aspect-override=4:3 $env:PLAYER_ARGUMENTS `"$args`""
+  Invoke-Expression "mpv.com --video-aspect-override=4:3 $env:PLAYER_ARGUMENTS $args"
 }
 Function mpv-16by9 {
-  Invoke-Expression "mpv.com --video-aspect-override=16:9 $env:PLAYER_ARGUMENTS `"$args`""
+  Invoke-Expression "mpv.com --video-aspect-override=16:9 $env:PLAYER_ARGUMENTS $args"
 }
 Function mpv-audio {
-  Invoke-Expression "mpv.com --no-video --keep-open=no --input-terminal=yes $env:PLAYER_ARGUMENTS `"$args`""
+  Invoke-Expression "mpv.com --no-video --keep-open=no --input-terminal=yes $env:PLAYER_ARGUMENTS $args"
 }
 Function streamlink-mpv-best {
   streamlink.exe --loglevel debug --verbose-player --player 'mpv.com' --player-arg "$env:STREAM_PLAYER_ARGUMENTS" --stream-segment-threads 10 --twitch-low-latency --http-no-ssl-verify --title '{title}' --default-stream best "$args"
