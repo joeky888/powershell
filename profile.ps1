@@ -46,6 +46,7 @@ Set-EnvPath("$env:USERPROFILE\scoop\apps\vscode\current\bin")
 Set-EnvPath("$env:LOCALAPPDATA\Android\sdk\platform-tools")
 Set-EnvPath("$env:USERPROFILE\go\bin")
 Set-EnvPath("$env:ProgramFiles\Docker\Docker\Resources\bin")
+Set-EnvPath("$env:ProgramFiles\VideoLAN\VLC")
 
 # Move Windows path to end
 $winpath=""
