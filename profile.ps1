@@ -583,21 +583,21 @@ Function mpv-fast-4k {
   if ($subs) {
     $subs = "--sub-file=" + $subs
   }
-  Invoke-Expression "mpv.com --cache=yes --ytdl-raw-options=no-check-certificate=,concurrent-fragments=8 --audio-file=`"$(yt-dlp.exe --get-url -f 'bestaudio[protocol^=m3u]' $args)`" $subs `"$(yt-dlp.exe --get-url -f 'bestvideo[height<=2160][protocol^=m3u][vcodec!^=av01]' $args)`" --force-media-title='$(yt-dlp.exe --get-title $args)'"
+  Invoke-Expression "mpv.com --cache=yes --ytdl-raw-options=no-check-certificate=,concurrent-fragments=8 --audio-file=`"$(yt-dlp.exe --get-url -f 'bestaudio[protocol^=m3u]' $args)`" `"$subs`" `"$(yt-dlp.exe --get-url -f 'bestvideo[height<=2160][protocol^=m3u][vcodec!^=av01]' $args)`" --force-media-title='$(yt-dlp.exe --get-title $args)'"
 }
 Function mpv-fast-2k {
   $subs = (yt-dlp.exe --write-sub --write-auto-sub --sub-format vtt --print '%(requested_subtitles.:.url)j' --sub-langs 'en.*,zh.*' $args | jq -r 'join(",")')
   if ($subs) {
     $subs = "--sub-file=" + $subs
   }
-  Invoke-Expression "mpv.com --cache=yes --ytdl-raw-options=no-check-certificate=,concurrent-fragments=8 --audio-file=`"$(yt-dlp.exe --get-url -f 'bestaudio[protocol^=m3u]' $args)`" $subs `"$(yt-dlp.exe --get-url -f 'bestvideo[height<=1440][protocol^=m3u][vcodec!^=av01]' $args)`" --force-media-title='$(yt-dlp.exe --get-title $args)'"
+  Invoke-Expression "mpv.com --cache=yes --ytdl-raw-options=no-check-certificate=,concurrent-fragments=8 --audio-file=`"$(yt-dlp.exe --get-url -f 'bestaudio[protocol^=m3u]' $args)`" `"$subs`" `"$(yt-dlp.exe --get-url -f 'bestvideo[height<=1440][protocol^=m3u][vcodec!^=av01]' $args)`" --force-media-title='$(yt-dlp.exe --get-title $args)'"
 }
 Function mpv-fast-1080 {
   $subs = (yt-dlp.exe --write-sub --write-auto-sub --sub-format vtt --print '%(requested_subtitles.:.url)j' --sub-langs 'en.*,zh.*' $args | jq -r 'join(",")')
   if ($subs) {
     $subs = "--sub-file=" + $subs
   }
-  Invoke-Expression "mpv.com --cache=yes --ytdl-raw-options=no-check-certificate=,concurrent-fragments=8 --audio-file=`"$(yt-dlp.exe --get-url -f 'bestaudio[protocol^=m3u]' $args)`" $subs `"$(yt-dlp.exe --get-url -f 'bestvideo[height<=1080][protocol^=m3u][vcodec!^=av01]' $args)`" --force-media-title='$(yt-dlp.exe --get-title $args)'"
+  Invoke-Expression "mpv.com --cache=yes --ytdl-raw-options=no-check-certificate=,concurrent-fragments=8 --audio-file=`"$(yt-dlp.exe --get-url -f 'bestaudio[protocol^=m3u]' $args)`" `"$subs`" `"$(yt-dlp.exe --get-url -f 'bestvideo[height<=1080][protocol^=m3u][vcodec!^=av01]' $args)`" --force-media-title='$(yt-dlp.exe --get-title $args)'"
 }
 Function mpv-1080 {
   Invoke-Expression "mpv.com --ytdl-format=`"bestvideo[height<=1080][vcodec!^=av01]+bestaudio/best`" $env:PLAYER_ARGUMENTS $args"
