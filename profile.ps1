@@ -309,8 +309,9 @@ Function rm {
 }
 Function touch {
   $numOfArgs = $args.Length
+  $Utf8NoBomEncoding = New-Object System.Text.UTF8Encoding $False
   for ($i=0; $i -lt $numOfArgs; $i++) {
-    [IO.File]::WriteAllLines($args[$i], "")
+    [System.IO.File]::WriteAllLines($args[$i], "", $Utf8NoBomEncoding)
   }
 }
 Function uname {
