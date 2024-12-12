@@ -310,7 +310,7 @@ Function rm {
 Function touch {
   $numOfArgs = $args.Length
   for ($i=0; $i -lt $numOfArgs; $i++) {
-    Write-Output $null >> $($args[$i])
+    [IO.File]::WriteAllLines($args[$i], "")
   }
 }
 Function uname {
