@@ -148,7 +148,7 @@ scoop install oh-my-posh
 | which         | Which command is this                                                    | `which python`                                                    |
 | find          | Find a file in current folder, you don't have to input the full name     | `find bun.htm`                                                    |
 | grep          | Search a string in current folder or given file names or stdout pipeline | `grep TODO` or `grep TODO ./file1 ./file2` or `echo hi \| grep h` |
-| touch         | Create an empty file                                                     | `touch 1.txt`                                                     |
+| touch         | Create an empty utf8 file without bom                                    | `touch 1.txt`                                                     |
 | uname         | System Information                                                       | `uname`                                                           |
 | top           | Process table sorted by CPU usage                                        | `top`                                                             |
 | pkill         | Kill a process                                                           | `pkill notepad`                                                   |
