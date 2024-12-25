@@ -558,10 +558,10 @@ $env:TORRENTARGS="--enable-dht=true --enable-dht6=true --bt-enable-lpd=true --bt
 $env:PLAYER_ARGUMENTS='--cache=yes --force-seekable=yes --ytdl-raw-options=no-check-certificate=,yes-playlist=,hls-prefer-native=,ignore-errors=,write-auto-sub=,write-sub=,sub-lang="(en|zh).*"'
 $env:STREAM_PLAYER_ARGUMENTS='--cache=yes --force-seekable=yes'
 Function aria2c {
-  Invoke-Expression "aria2c.exe $env:DOWNLOADARGS $args"
+  Invoke-Expression "aria2c.exe $env:DOWNLOADARGS `"$args`""
 }
 Function aria2c-bt-qBittorrent {
-  Invoke-Expression "aria2c.exe $env:DOWNLOADARGS $env:TORRENTARGS --user-agent='qBittorrent/4.1.1' --peer-id-prefix='-qB4110-' $args"
+  Invoke-Expression "aria2c.exe $env:DOWNLOADARGS $env:TORRENTARGS --user-agent='qBittorrent/4.1.1' --peer-id-prefix='-qB4110-' `"$args`""
 }
 Function yt-dlp {
   Invoke-Expression "yt-dlp.exe $env:DLARGUMENTS `"$args`""
