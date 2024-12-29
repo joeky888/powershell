@@ -52,7 +52,7 @@ See https://github.com/joeky888/MonoKombat.cmd
 ```sh
 # Open powershell (as administrator)
 Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-choco install 7zip git miniconda miniconda3 -y
+choco install 7zip git -y
 ```
 
 #### Install scoop (Recommended)
@@ -115,19 +115,19 @@ scoop install oh-my-posh
 | upgradeModule  | Upgrade all installed Modules from Powershell Gallery   |                          |
 | upgradeScoop   | Upgrade all installed Scoop packages                    |                          |
 | upgradeConda   | Upgrade all Anaconda/Miniconda packages                 |                          |
-| upgradeConda2  | Upgrade all Miniconda2 packages                         | choco install miniconda2 |
-| upgradeConda3  | Upgrade all Miniconda3 packages                         | choco install miniconda3 |
+| upgradeConda2  | Upgrade all Miniconda2 packages                         |                          |
+| upgradeConda3  | Upgrade all Miniconda3 packages                         |                          |
 | upgradePip     | Upgrade all pip packages                                |                          |
-| upgradePip2    | Upgrade all pip2 packages                               | choco install miniconda2 |
-| upgradePip3    | Upgrade all pip3 packages                               | choco install miniconda3 |
+| upgradePip2    | Upgrade all pip2 packages                               |                          |
+| upgradePip3    | Upgrade all pip3 packages                               |                          |
 | upgradeNpm     | Upgrade all npm global packages                         | choco install nodejs     |
 | upgradeVimrc   | Upgrade [vimrc](https://github.com/joeky888/vimrc) file |                          |
-| python2        | C:\ProgramData\Miniconda2\python.exe                    | choco install miniconda2 |
-| python3        | C:\ProgramData\Miniconda3\python.exe                    | choco install miniconda3 |
-| conda2         | C:\ProgramData\Miniconda2\Scripts\conda.exe             | choco install miniconda2 |
-| conda3         | C:\ProgramData\Miniconda3\Scripts\conda.exe             | choco install miniconda3 |
-| pip2           | C:\ProgramData\Miniconda2\Scripts\pip.exe               | choco install miniconda2 |
-| pip3           | C:\ProgramData\Miniconda3\Scripts\pip.exe               | choco install miniconda3 |
+| python2        | C:\ProgramData\Miniconda2\python.exe                    |                          |
+| python3        | C:\ProgramData\Miniconda3\python.exe                    |                          |
+| conda2         | C:\ProgramData\Miniconda2\Scripts\conda.exe             |                          |
+| conda3         | C:\ProgramData\Miniconda3\Scripts\conda.exe             |                          |
+| pip2           | C:\ProgramData\Miniconda2\Scripts\pip.exe               |                          |
+| pip3           | C:\ProgramData\Miniconda3\Scripts\pip.exe               |                          |
 | Find-RegKey    | Find a key in regedit recursively                       | Find-RegKey "some key"   |
 | Find-RegValue  | Find a value in regedit recursively                     | Find-RegKey "some value" |
 

@@ -634,7 +634,7 @@ Function getCondaPath($i)
 {
   # choco install miniconda
   $PossiblePrefix = @("C:\ProgramData", "$env:ALLUSERSPROFILE", "$env:USERPROFILE", "$env:LOCALAPPDATA\Continuum", "$env:USERPROFILE\scoop\apps")
-  $PossiblePath = @("Miniconda$i", "miniconda$i", "Anaconda$i", "anaconda$i")
+  $PossiblePath = @("Miniconda$i", "miniconda$i", "Miniforge$i", "miniforge$i")
   $PossiblePostfix = @("", "\current")
   foreach ($a in $PossiblePrefix) {
     foreach ($b in $PossiblePath) {
