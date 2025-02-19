@@ -571,6 +571,14 @@ Function yt-dlp-aria2c {
   Invoke-Expression "yt-dlp.exe $env:DLARGUMENTS --downloader aria2c --downloader-args 'aria2c:$env:DOWNLOADARGS' $args"
 }
 
+Function yt-dlp-4k {
+  Invoke-Expression "yt-dlp.exe $env:DLARGUMENTS -f 'bestvideo[height<=2160][vcodec!^=av01]+bestaudio/best' $args"
+}
+
+Function yt-dlp-2k {
+  Invoke-Expression "yt-dlp.exe $env:DLARGUMENTS -f 'bestvideo[height<=1440][vcodec!^=av01]+bestaudio/best' $args"
+}
+
 Function yt-dlp-1080 {
   Invoke-Expression "yt-dlp.exe $env:DLARGUMENTS -f 'bestvideo[height<=1080][vcodec!^=av01]+bestaudio/best' $args"
 }
