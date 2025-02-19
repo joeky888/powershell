@@ -572,15 +572,15 @@ Function yt-dlp-aria2c {
 }
 
 Function yt-dlp-4k {
-  Invoke-Expression "yt-dlp.exe $env:DLARGUMENTS -f 'bestvideo[height<=2160][vcodec!^=av01]+bestaudio/best' $args"
+  Invoke-Expression "yt-dlp.exe $env:DLARGUMENTS -f 'bestvideo[height<=2160]+bestaudio/best' $args"
 }
 
 Function yt-dlp-2k {
-  Invoke-Expression "yt-dlp.exe $env:DLARGUMENTS -f 'bestvideo[height<=1440][vcodec!^=av01]+bestaudio/best' $args"
+  Invoke-Expression "yt-dlp.exe $env:DLARGUMENTS -f 'bestvideo[height<=1440]+bestaudio/best' $args"
 }
 
 Function yt-dlp-1080 {
-  Invoke-Expression "yt-dlp.exe $env:DLARGUMENTS -f 'bestvideo[height<=1080][vcodec!^=av01]+bestaudio/best' $args"
+  Invoke-Expression "yt-dlp.exe $env:DLARGUMENTS -f 'bestvideo[height<=1080]+bestaudio/best' $args"
 }
 Function yt-dlp-720 {
   Invoke-Expression "yt-dlp.exe $env:DLARGUMENTS -f 'bestvideo[height<=720][fps<=30][vcodec!^=av01]+bestaudio/best' $args"
@@ -590,16 +590,16 @@ Function mpv-fast {
   cmd /c "yt-dlp.exe $env:DLARGUMENTS -f best -o - `"$args`" | mpv.com --cache=yes --force-media-title=`"$(yt-dlp.exe --get-title $args)`" - "
 }
 Function mpv-fast-4k {
-  Invoke-Expression "mpv.com --ytdl-format=`"bestvideo[height<=2160][protocol^=m3u][vcodec!^=av01]+bestaudio[protocol^=m3u]`" $env:PLAYER_ARGUMENTS $args"
+  Invoke-Expression "mpv.com --ytdl-format=`"bestvideo[height<=2160][protocol^=m3u]+bestaudio[protocol^=m3u]`" $env:PLAYER_ARGUMENTS $args"
 }
 Function mpv-fast-2k {
-  Invoke-Expression "mpv.com --ytdl-format=`"bestvideo[height<=1440][protocol^=m3u][vcodec!^=av01]+bestaudio[protocol^=m3u]`" $env:PLAYER_ARGUMENTS $args"
+  Invoke-Expression "mpv.com --ytdl-format=`"bestvideo[height<=1440][protocol^=m3u]+bestaudio[protocol^=m3u]`" $env:PLAYER_ARGUMENTS $args"
 }
 Function mpv-fast-1080 {
-  Invoke-Expression "mpv.com --ytdl-format=`"bestvideo[height<=1080][protocol^=m3u][vcodec!^=av01]+bestaudio[protocol^=m3u]`" $env:PLAYER_ARGUMENTS $args"
+  Invoke-Expression "mpv.com --ytdl-format=`"bestvideo[height<=1080][protocol^=m3u]+bestaudio[protocol^=m3u]`" $env:PLAYER_ARGUMENTS $args"
 }
 Function mpv-1080 {
-  Invoke-Expression "mpv.com --ytdl-format=`"bestvideo[height<=1080][vcodec!^=av01]+bestaudio/best`" $env:PLAYER_ARGUMENTS $args"
+  Invoke-Expression "mpv.com --ytdl-format=`"bestvideo[height<=1080]+bestaudio/best`" $env:PLAYER_ARGUMENTS $args"
 }
 Function mpv-720 {
   Invoke-Expression "mpv.com --ytdl-format=`"bestvideo[height<=720][fps<=30][vcodec!^=av01]+bestaudio/best`" $env:PLAYER_ARGUMENTS $args"
