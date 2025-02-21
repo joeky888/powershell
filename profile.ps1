@@ -619,8 +619,26 @@ Function mpv-audio {
 Function streamlink-mpv-best {
   streamlink.exe --loglevel debug --verbose-player --player 'mpv.com' --player-arg "$env:STREAM_PLAYER_ARGUMENTS" --stream-segment-threads 10 --twitch-low-latency --http-no-ssl-verify --title '{title}' --default-stream best "$args"
 }
+Function streamlink-mpv-4kp60 {
+  streamlink.exe --loglevel debug --verbose-player --player 'mpv.com' --player-arg "$env:STREAM_PLAYER_ARGUMENTS" --stream-segment-threads 10 --twitch-low-latency --http-no-ssl-verify --title '{title}' --default-stream 2160p60 "$args"
+}
+Function streamlink-mpv-4k {
+  streamlink.exe --loglevel debug --verbose-player --player 'mpv.com' --player-arg "$env:STREAM_PLAYER_ARGUMENTS" --stream-segment-threads 10 --twitch-low-latency --http-no-ssl-verify --title '{title}' --default-stream 2160p "$args"
+}
+Function streamlink-mpv-2kp60 {
+  streamlink.exe --loglevel debug --verbose-player --player 'mpv.com' --player-arg "$env:STREAM_PLAYER_ARGUMENTS" --stream-segment-threads 10 --twitch-low-latency --http-no-ssl-verify --title '{title}' --default-stream 1440p60 "$args"
+}
+Function streamlink-mpv-2k {
+  streamlink.exe --loglevel debug --verbose-player --player 'mpv.com' --player-arg "$env:STREAM_PLAYER_ARGUMENTS" --stream-segment-threads 10 --twitch-low-latency --http-no-ssl-verify --title '{title}' --default-stream 1440p "$args"
+}
+Function streamlink-mpv-1080p60 {
+  streamlink.exe --loglevel debug --verbose-player --player 'mpv.com' --player-arg "$env:STREAM_PLAYER_ARGUMENTS" --stream-segment-threads 10 --twitch-low-latency --http-no-ssl-verify --title '{title}' --default-stream 1080p60 "$args"
+}
 Function streamlink-mpv-1080 {
   streamlink.exe --loglevel debug --verbose-player --player 'mpv.com' --player-arg "$env:STREAM_PLAYER_ARGUMENTS" --stream-segment-threads 10 --twitch-low-latency --http-no-ssl-verify --title '{title}' --default-stream 1080p "$args"
+}
+Function streamlink-mpv-720p60 {
+  streamlink.exe --loglevel debug --verbose-player --player 'mpv.com' --player-arg "$env:STREAM_PLAYER_ARGUMENTS" --stream-segment-threads 10 --twitch-low-latency --http-no-ssl-verify --title '{title}' --default-stream 720p60 "$args"
 }
 Function streamlink-mpv-720 {
   streamlink.exe --loglevel debug --verbose-player --player 'mpv.com' --player-arg "$env:STREAM_PLAYER_ARGUMENTS" --stream-segment-threads 10 --twitch-low-latency --http-no-ssl-verify --title '{title}' --default-stream 720p "$args"
