@@ -13,7 +13,19 @@ Features
 
 The code is under Public-domain licence.
 
-## Install for Windows 8+
+## Install for Windows 8+ (Non-Admin)
+
+Copy all and paste to powershell, then press Enter
+
+```sh
+# Install this config, Open powershell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
+New-Item -ItemType file -Force -Path $Profile.CurrentUserAllHosts
+Invoke-WebRequest https://raw.githubusercontent.com/joeky888/powershell/master/profile.ps1 -o $Profile.CurrentUserAllHosts
+Unblock-File $Profile.CurrentUserAllHosts
+```
+
+## Install for Windows 8+ (Admin)
 
 Copy all and paste to powershell, then press Enter
 
