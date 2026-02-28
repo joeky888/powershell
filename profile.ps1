@@ -594,10 +594,10 @@ Function mpv-fast-4k {
   Invoke-Expression "mpv.com --ytdl-format=`"bv[height<=2160][protocol^=m3u]+ba[protocol^=m3u]/bv[height<=2160]+ba/best[height<=2160][protocol^=m3u8]/best[height<=2160]`" $env:PLAYER_ARGUMENTS $args"
 }
 Function mpv-fast-2k {
-  Invoke-Expression "mpv.com --ytdl-format=`"bv[height<=1440][protocol^=m3u]+ba[protocol^=m3u]/bv[height<=1440]+ba/best[height<=2160][protocol^=m3u8]/best[height<=2160]`" $env:PLAYER_ARGUMENTS $args"
+  Invoke-Expression "mpv.com --ytdl-format=`"bv[height<=1440][protocol^=m3u]+ba[protocol^=m3u]/bv[height<=1440]+ba/best[height<=1440][protocol^=m3u8]/best[height<=1440]`" $env:PLAYER_ARGUMENTS $args"
 }
 Function mpv-fast-1080 {
-  Invoke-Expression "mpv.com --ytdl-format=`"bv[height<=1080][protocol^=m3u]+ba[protocol^=m3u]/bv[height<=1080]+ba/best[height<=2160][protocol^=m3u8]/best[height<=2160]`" $env:PLAYER_ARGUMENTS $args"
+  Invoke-Expression "mpv.com --ytdl-format=`"bv[height<=1080][protocol^=m3u]+ba[protocol^=m3u]/bv[height<=1080]+ba/best[height<=1080][protocol^=m3u8]/best[height<=1080]`" $env:PLAYER_ARGUMENTS $args"
 }
 Function mpv-1080 {
   Invoke-Expression "mpv.com --ytdl-format=`"bv[height<=1080]+ba/best`" $env:PLAYER_ARGUMENTS $args"
