@@ -699,6 +699,7 @@ if ($c2 -ne "") {
 $c3 = getCondaPath(3)
 if ($c3 -ne "") {
   $env:PATH = "$c3;$env:PATH"
+  $env:PATH = "$c3\bin;$env:PATH"
   $env:PATH = "$c3\Scripts;$env:PATH"
   $env:PATH = "$c3\Library\bin;$env:PATH"
   Set-Alias pip3 "$c3\Scripts\pip.exe"
