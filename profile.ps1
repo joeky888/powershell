@@ -146,7 +146,9 @@ if (Get-Command Set-PSReadlineKeyHandler -errorAction SilentlyContinue)
 }
 
 # Set default starting path to Desktop
-Set-Location $([Environment]::GetFolderPath("Desktop"))
+if ($PWD.Path -eq $HOME) {
+    Set-Location "$HOME\Desktop"
+}
 
 # Theme
 $Host.UI.RawUI.ForegroundColor = "Gray"
