@@ -30,6 +30,7 @@ Function Set-EnvPath($path) {
 }
 
 Set-EnvPath("$env:ALLUSERSPROFILE\chocolatey\bin")
+Set-EnvPath("$env:USERPROFILE\.local\bin") # For uv tools
 Set-EnvPath("$env:ProgramFiles\7-Zip")
 Set-EnvPath("$env:ProgramFiles\OpenSSH-Win64")
 Set-EnvPath("$env:ProgramFiles\Microsoft VS Code")
