@@ -146,6 +146,16 @@ if (Get-Command Set-PSReadlineKeyHandler -errorAction SilentlyContinue)
   }
 }
 
+Set-PSReadLineOption -AddToHistoryHandler {
+    param([string]$command)
+    # If command starts with a space, skip saving it to the history file
+    if ($command -like ' *') {
+        return $false
+    }
+    return $true
+}
+
+
 # Set default starting path to Desktop
 if ($PWD.Path -eq $HOME) {
     Set-Location "$HOME\Desktop"
