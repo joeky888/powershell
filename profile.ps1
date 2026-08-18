@@ -532,8 +532,7 @@ Function upgradeConda {
   conda update --no-channel-priority --all --yes
 }
 Function upgradeYt-dlp {
-  pip3 install --upgrade --force-reinstall --no-cache-dir https://github.com/yt-dlp/yt-dlp/archive/master.zip
-  pip3 install --upgrade --force-reinstall --no-cache-dir https://github.com/yt-dlp/ejs/archive/master.zip
+  uv tool install --force-reinstall "yt-dlp[default] @ https://github.com/yt-dlp/yt-dlp/archive/master.tar.gz"
 }
 Function upgradeYou-get {
   pip3 install --upgrade --force-reinstall --no-cache-dir https://github.com/soimort/you-get/archive/develop.zip
